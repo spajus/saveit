@@ -1,9 +1,13 @@
 Bm::Application.routes.draw do
 
+  resources :bookmarks
+
   root :to => "home#index"
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
+
+  match "*path" => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
