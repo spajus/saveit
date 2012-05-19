@@ -1,9 +1,9 @@
-<div class="hero-unit">
-  <h1>Bookmarks? Fuck yeah!</h1>
-  <p>Dead simple bookmarking that works everywhere</p>
-  <p>
-    <a class="btn btn-primary btn-large">
-      Learn more
-    </a>
-  </p>
+<div class="row">
+  <div class="span12">
+    <% if current_user %>
+    <div id="container">Loading...</div>
+    <% else %>
+    <%= render 'index.anonymous' %>
+    <% end %>
+  </div>
 </div>

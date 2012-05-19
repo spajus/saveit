@@ -1,0 +1,5 @@
+== How to set everything up
+
+add bm.tib.com localhost alias to /etc/hosts
+
+
