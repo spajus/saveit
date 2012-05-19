@@ -22,3 +22,6 @@
 
 # Ignore fixtures
 /test/fixtures/*
+
+# RubyMine project
+/.idea
