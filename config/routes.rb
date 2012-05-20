@@ -1,12 +1,16 @@
 Bm::Application.routes.draw do
 
-  resources :bookmarks
+  scope "api" do
+    resources :bookmarks
+  end
 
   root :to => "home#index"
 
   match "/auth/:provider/callback" => "sessions#create"
+  match "/auth/failure" => "sessions#failure"
   match "/signout" => "sessions#destroy", :as => :signout
 
+  # This should go last. It's for the main backbone app
   match "*path" => "home#index"
 
   # The priority is based upon order of creation:

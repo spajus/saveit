@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span12">
     <% if current_user %>
-    <div id="container">Loading...</div>
+        <%=  content_tag "div", "Loading...", id: "container", data: { bookmarks: current_user.bookmarks } %>
     <% else %>
     <%= render 'index.anonymous' %>
     <% end %>

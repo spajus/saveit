@@ -1,0 +1,1 @@
+<a href="<%= @bookmark.get 'url' %>"><%= @bookmark.get 'title' %></a>

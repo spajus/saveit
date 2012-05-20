@@ -1,1 +1,11 @@
-Works
+<h1>My Bookmarks</h1>
+
+<hr/>
+
+<form class="well" id="new_bookmark">
+  <input type="text" name="url" id="new_bookmark_url">
+  <input type="submit" value="Add">
+</form>
+
+<ul id="bookmarks"></ul>
+
