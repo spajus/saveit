@@ -10,5 +10,5 @@
   </div>
 </form>
 
-<ul id="bookmarks"></ul>
+<ul class="nav nav-tabs nav-stacked" id="bookmarks"></ul>
 

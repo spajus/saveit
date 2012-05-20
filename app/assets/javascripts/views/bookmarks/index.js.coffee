@@ -10,14 +10,16 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     @collection.on 'add', @appendBookmark
     @collection.on 'error', @handleError
 
-  render: =>
+  render: ->
     @$el.html @template()
-    @collection.each @appendBookmark
+    @collection.each (bookmark) =>
+      view = new Bm.Views.Bookmark(model: bookmark)
+      (@$ '#bookmarks').append view.render().el
     @
 
   appendBookmark: (bookmark) =>
     view = new Bm.Views.Bookmark(model: bookmark)
-    (@$ '#bookmarks').append view.render().el
+    (@$ '#bookmarks').prepend view.render().el
 
   createEntry: (event) ->
     event.preventDefault()
