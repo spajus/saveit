@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<%= content_tag "div", "", id: "backbone-settings", data: { settings: backbone_settings } %>
+
 <% if current_user %>
   <%= render 'nav' %>
 <% else %>

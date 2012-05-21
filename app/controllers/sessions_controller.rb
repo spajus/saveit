@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     redirect_to root_url, :flash => {:success => 'Signed in!'}
   end
   def failure
-    raise 'fuck'
     redirect root_url, :error => params[:message]
   end
   def destroy

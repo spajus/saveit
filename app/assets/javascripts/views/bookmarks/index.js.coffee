@@ -12,6 +12,8 @@ class Bm.Views.BookmarksIndex extends Backbone.View
 
   render: ->
     @$el.html @template()
+    bookmarklet = new Bm.Views.Bookmarklet()
+    (@$ '#bookmarklet').html(bookmarklet.render().el)
     @collection.each (bookmark) =>
       view = new Bm.Views.Bookmark(model: bookmark)
       (@$ '#bookmarks').append view.render().el
