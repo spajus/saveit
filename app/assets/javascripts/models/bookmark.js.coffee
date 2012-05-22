@@ -5,3 +5,7 @@ class Bm.Models.Bookmark extends Backbone.Model
   validate: (attrs) ->
     unless attrs.url
       return "url can't be empty!"
+    url = attrs.url.toLowerCase()
+    unless url.indexOf('http://') is 0
+      unless url.indexOf('https://') is 0
+        return "url must start with http:// or https://"

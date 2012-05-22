@@ -1,1 +1,8 @@
-<ul class="nav nav-tabs nav-stacked"></ul>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= @title %></th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>

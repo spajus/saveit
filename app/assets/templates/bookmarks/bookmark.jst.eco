@@ -1,1 +1,5 @@
+<td>
 <a class="link" href="<%= @bookmark.get 'url' %>"><%= @bookmark.get 'title' %></a>
+  <a class="close">x</a>
+</td>
+

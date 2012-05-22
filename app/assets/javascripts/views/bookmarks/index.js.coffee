@@ -8,9 +8,11 @@ class Bm.Views.BookmarksIndex extends Backbone.View
   initialize: ->
     @bookmarks_read = new Bm.Views.BookmarksList
       collection: @collection
+      title: 'Fresh'
       visited: true
     @bookmarks_unread = new Bm.Views.BookmarksList
       collection: @collection
+      title: 'Archive'
       visited: false
     @bookmarklet = new Bm.Views.Bookmarklet()
 

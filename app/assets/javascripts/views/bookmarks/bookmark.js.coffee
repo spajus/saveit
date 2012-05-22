@@ -1,10 +1,11 @@
 class Bm.Views.Bookmark extends Backbone.View
 
   template: JST['bookmarks/bookmark']
-  tagName: 'li'
+  tagName: 'tr'
 
   events:
     'click a.link': 'openBookmark'
+    'click a.close': 'removeBookmark'
 
   id: =>
     "bookmark-#{@model.get 'id'}"
@@ -22,3 +23,7 @@ class Bm.Views.Bookmark extends Backbone.View
       @model.set 'visited': true
       @model.save()
       @collection.add @model
+
+  removeBookmark: (event) ->
+    @collection.remove @model
+    @model.destroy()

@@ -1,10 +1,10 @@
 class Bm.Views.BookmarksList extends Backbone.View
 
   template: JST['bookmarks/bookmark_list']
-  tagName: 'ul'
 
   initialize: (args) ->
     @visited = args.visited
+    @title = args.title
     @collection.on 'reset', @render
 
     @collection.on 'add', @appendBookmark
@@ -13,8 +13,8 @@ class Bm.Views.BookmarksList extends Backbone.View
 
 
   render: ->
-    @$el.html @template()
-    list = @$ 'ul'
+    @$el.html @template title: @title
+    list = @$ 'tbody'
     @collection.each (bookmark) =>
       if (bookmark.get 'visited') is @visited
         view = new Bm.Views.Bookmark
@@ -29,7 +29,7 @@ class Bm.Views.BookmarksList extends Backbone.View
       view = new Bm.Views.Bookmark
         model: bookmark
         collection: @collection
-      (@$ 'ul').prepend view.render().el
+      (@$ 'tbody').prepend view.render().el
 
   removeBookmark: (bookmark) =>
     view = new Bm.Views.Bookmark
