@@ -6,22 +6,20 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     'submit #new_bookmark': 'createEntry'
 
   initialize: ->
-    @collection.on 'reset', @render
-    @collection.on 'add', @appendBookmark
-    @collection.on 'error', @handleError
+    @bookmarks_read = new Bm.Views.BookmarksList
+      collection: @collection
+      visited: true
+    @bookmarks_unread = new Bm.Views.BookmarksList
+      collection: @collection
+      visited: false
+    @bookmarklet = new Bm.Views.Bookmarklet()
 
   render: ->
     @$el.html @template()
-    bookmarklet = new Bm.Views.Bookmarklet()
-    (@$ '#bookmarklet').html(bookmarklet.render().el)
-    @collection.each (bookmark) =>
-      view = new Bm.Views.Bookmark(model: bookmark)
-      (@$ '#bookmarks').append view.render().el
+    (@$ '#bookmarklet').html @bookmarklet.render().el
+    (@$ '#bookmarks-read').html @bookmarks_read.render().el
+    (@$ '#bookmarks-unread').html @bookmarks_unread.render().el
     @
-
-  appendBookmark: (bookmark) =>
-    view = new Bm.Views.Bookmark(model: bookmark)
-    (@$ '#bookmarks').prepend view.render().el
 
   createEntry: (event) ->
     event.preventDefault()

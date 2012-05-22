@@ -1,7 +1,3 @@
-<h1>My Bookmarks</h1>
-
-<hr/>
-
 <div id="bookmarklet"></div>
 
 <form class="form-horizontal" id="new_bookmark">
@@ -12,5 +8,14 @@
   </div>
 </form>
 
-<ul class="nav nav-tabs nav-stacked" id="bookmarks"></ul>
+<div class="row">
+  <div class="span6">
+    <h1>Fresh</h1>
+    <div id="bookmarks-unread"></div>
+  </div>
+  <div class="span6">
+    <h1>Archive</h1>
+   <div id="bookmarks-read"></div>
+  </div>
+</div>
 
