@@ -35,7 +35,7 @@ el.style.cssText=css;
 el.textContent="Success adding <%= h(@bookmark.title || @bookmark.url).gsub(/\n/, '').gsub(/"/, "'") %>";
 
 document.body.appendChild(el);
-setTimeout('removeBmPopup()',1000);
+setTimeout('removeBmPopup()', 2000);
 
 function removeBmPopup() {
   if ( n = document.getElementById('bm-notification-id')) {
