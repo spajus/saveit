@@ -2,6 +2,7 @@ class Bookmark < ActiveRecord::Base
   attr_accessible :title, :url, :visited
   belongs_to :user
   validates_presence_of :url
+  validates :url, :uniqueness => { :scope => :user_id }
   default_scope :order => "created_at desc"
   after_initialize :default_values
 
