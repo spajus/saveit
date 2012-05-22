@@ -1,4 +1,4 @@
 <div class="well">
-  <span class="bookmarklet label label-info"><a href="javascript:function bm_add_new(){var d=document,s=d.createElement('scr'+'ipt'),l=d.location;s.setAttribute('src','<%= @settings.full_bookmarklet_url %>?b=' + encodeURIComponent(l.href) + '&t=' + encodeURIComponent(d.getElementsByTagName('title')[0].innerHTML));d.body.appendChild(s);};bm_add_new();">Save It</a></span>
+  <span class="bookmarklet label label-info"><a href="javascript:function bm_add_new(){var d=document,s=d.createElement('scr'+'ipt'),l=d.location;s.setAttribute('src','<%= @settings.full_bookmarklet_url %>?b=' + encodeURIComponent(l.href) + '&t=' + encodeURIComponent(d.getElementsByTagName('title')[0].innerHTML)+'&s='+(new%20Date().getTime()));d.body.appendChild(s);};bm_add_new();">Save It</a></span>
   &nbsp;<i class="icon-arrow-left"></i> Drag this bookmarklet to your bookmarks bar.
 </div>
