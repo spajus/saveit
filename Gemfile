@@ -1,10 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
+
 gem 'omniauth'
 gem 'omniauth-twitter'
 
 gem 'sqlite3'
+
+gem 'jquery-rails'
+
+gem 'backbone-on-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -13,8 +18,6 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-#gem 'mysql'
-
-gem 'jquery-rails'
-
-gem 'backbone-on-rails'
+group :production do
+  gem 'mysql'
+end
