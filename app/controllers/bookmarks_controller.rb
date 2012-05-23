@@ -21,7 +21,4 @@ class BookmarksController < ApplicationController
     respond_with current_user.bookmarks.destroy(params[:id])
   end
 
-  def create_via_bookmarklet
-  end
-
 end

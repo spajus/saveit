@@ -1,3 +1,6 @@
+<%- if not current_user %>
+window.location.assign('<%= url_for :controller => :home, :only_path => false %>');
+<%- else -%>
 el=document.createElement('div');
 el.setAttribute('id','bm-notification-id');
 
@@ -42,3 +45,4 @@ function removeBmPopup() {
     document.body.removeChild(n);
   }
 }
+<%- end %>
