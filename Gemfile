@@ -13,9 +13,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-group :production do
-  gem 'mysql'
-end
+#gem 'mysql'
 
 gem 'jquery-rails'
 
