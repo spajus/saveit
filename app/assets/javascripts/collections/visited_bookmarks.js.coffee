@@ -1,3 +1,3 @@
-class Bm.Collections.VisitedBookmarks extends Backbone.Collection
+class Bm.Collections.VisitedBookmarks extends Bm.Collections.Bookmarks
 
   url: '/api/bookmarks/filter/visited'
