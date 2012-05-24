@@ -14,6 +14,7 @@ gem 'backbone-on-rails'
 gem 'exception_notification', :require => 'exception_notifier'
 
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
