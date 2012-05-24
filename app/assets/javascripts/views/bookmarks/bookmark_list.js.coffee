@@ -10,8 +10,6 @@ class Bm.Views.BookmarksList extends Backbone.View
     @collection.on 'add', @appendBookmark
     @collection.on 'remove', @removeBookmark
 
-
-
   render: ->
     @$el.html @template title: @title
     list = @$ 'tbody'

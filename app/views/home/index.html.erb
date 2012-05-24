@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span12">
     <% if current_user %>
-      <%=  content_tag "div", "Loading...", id: "container", data: { bookmarks: current_user.bookmarks } %>
+      <%=  content_tag "div", "Loading...", id: "container",  data: {  "visited-bookmarks" => current_user.bookmarks.where(visited: true), "unvisited-bookmarks" => current_user.bookmarks.where(visited: false) } %>
     <% else %>
       <%= render 'index.anonymous' %>
     <% end %>

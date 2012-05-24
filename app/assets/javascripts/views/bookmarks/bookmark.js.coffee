@@ -15,14 +15,14 @@ class Bm.Views.Bookmark extends Backbone.View
     @
 
   openBookmark: (event) ->
-
-    unless @model.get 'visited'
+    event.preventDefault()
+    visited = @model.get 'visited'
+    unless visited
       # We will remove this model from collection and add it again,
       # so list views will refresh themselves
-      @collection.remove @model
       @model.set 'visited': true
       @model.save()
-      @collection.add @model
+    @collection.trigger 'open-bookmark', @model, visited: visited
 
   removeBookmark: (event) ->
     @collection.remove @model

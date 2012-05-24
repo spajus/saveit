@@ -5,6 +5,17 @@ class BookmarksController < ApplicationController
     respond_with current_user.bookmarks
   end
 
+  def filter
+    case params[:type]
+      when 'visited'
+        respond_with current_user.bookmarks.where visited: false
+      when 'unvisited'
+        respond_with current_user.bookmarks.where visited: false
+      else
+        raise "Unsupported bookmark type: #{params[:type]}"
+    end
+  end
+
   def show
     respond_with current_user.bookmarks.find(params[:id])
   end

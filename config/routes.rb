@@ -1,6 +1,7 @@
 Bm::Application.routes.draw do
 
   scope "api" do
+    match "/bookmarks/filter/:type" => "bookmarks#filter"
     resources :bookmarks
   end
 
