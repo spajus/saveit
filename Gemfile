@@ -11,6 +11,8 @@ gem 'jquery-rails'
 
 gem 'backbone-on-rails'
 
+gem 'exception_notification', :require => 'exception_notifier'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
