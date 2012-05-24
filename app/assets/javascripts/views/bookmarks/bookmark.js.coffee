@@ -25,5 +25,6 @@ class Bm.Views.Bookmark extends Backbone.View
     @collection.trigger 'open-bookmark', @model, visited: visited
 
   removeBookmark: (event) ->
-    @collection.remove @model
-    @model.destroy()
+    if confirm "Are you sure you want to delete: '#{@model.get 'title'}'?"
+      @collection.remove @model
+      @model.destroy()
