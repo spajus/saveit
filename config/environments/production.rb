@@ -67,15 +67,14 @@ Bm::Application.configure do
 
   config.middleware.use ExceptionNotifier,
     email_prefix:         '[Exception] ',
-    sender_address:       %{'Exception Notifier' <notifications@saveit.in>},
-    exception_recipients: %w{simas.cepaitis@snc.lt tomas.varaneckas@gmail.com vd@tib.lt}
+    sender_address:       %{'Exception Notifier' <no-reply@saveit.in>},
+    exception_recipients: %w{simas.cepaitis@snc.lt tomas.varaneckas@gmail.com vd@par.lt}
 
   config.action_mailer.smtp_settings = {
     address:               'localhost',
     port:                  25,
     domain:                'tib.lt',
     delivery_method:       'sendmail',
-    outgoing_address:      'no-reply@tib.lt',
     enable_starttls_auto:  false
   }
 end
