@@ -5,10 +5,12 @@ class HomeController < ApplicationController
   end
 
   def bookmarklet
+    url = params[:b]
+    title = params[:t] or url
     if current_user
-      @bookmark = current_user.bookmarks.create title: params[:t], url: params[:b]
+      @bookmark = create_bookmark(url, title)
     else
-      _session_flash url: params[:b], title: params[:t]
+      _session_flash(url, title)
     end
 
     render :layout => false, :content_type => 'text/javascript', :formats => [:js]
@@ -19,10 +21,10 @@ class HomeController < ApplicationController
     url = params[:b]
 
     if current_user
-      @bookmark = current_user.bookmarks.create title: url, url: url
+      @bookmark = create_bookmark(url, url)
       redirect_to url
     else
-      _session_flash url: url, title: url
+      _session_flash(url, url)
       redirect_to action: "index"
     end
 

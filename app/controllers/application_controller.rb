@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def create_bookmark(url, title)
+    bookmark = current_user.bookmarks.where(url: url).first
+    unless bookmark
+      bookmark = current_user.bookmarks.create url: url, title: title
+    end
+    bookmark
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
