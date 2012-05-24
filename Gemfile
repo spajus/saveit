@@ -13,6 +13,8 @@ gem 'backbone-on-rails'
 
 gem 'exception_notification', :require => 'exception_notifier'
 
+gem 'capistrano'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
