@@ -1,9 +1,35 @@
+<%#
+//javascript:
+//javascript:
+/*
+function iprl5() {
+    var d=document, z=d.createElement('scr'+'ipt'),b=d.body, l=d.location;
+    try{
+        if(!b) throw(0);
+        d.title='(Saving...) '+d.title;
+        z.setAttribute('src', l.protocol+'//www.instapaper.com/j/3d4mwifUcqRf?u='
+                +encodeURIComponent(l.href)+'&t='
+                +(new Date().getTime()));
+        b.appendChild(z);
+    }catch(e){alert('Please wait until the page has loaded.');}}iprl5();void(0)
+    */%>
 function bm_add_new() {
-    var d=document,s=d.createElement('scr'+'ipt'), l=d.location;
-    s.setAttribute('src', '<%= url_for action: "bookmarklet" %>?b='
-            + encodeURIComponent(l.href)
-            + '&t=' + encodeURIComponent(d.getElementsByTagName('title')[0].innerHTML)
-            +'&s='+(new Date().getTime()));
-    d.body.appendChild(s);
+    try {
+        var d=document,s=d.createElement('scr'+'ipt'), l=d.location, t=d.getElementsByTagName('title')[0];
+        s.setAttribute('src', '<%= url_for controller: "home", action: "bookmarklet", only_path: false %>?b='
+                + encodeURIComponent(l.href)
+                + '&t=' + encodeURIComponent(t ? t.innerHTML : l.href)
+                + '&s='+(new Date().getTime()));
+        if (d.body) {
+            d.body.appendChild(s);
+        } else {
+            window.onload = function() {
+                d.body.appendChild(s);
+            };
+        }
+    } catch(e) {
+        window.location.assign('<%= url_for controller: "home", action: "bookmarklet_failover", only_path: false %>?b='
+            + encodeURIComponent(l.href));
+    }
 };
 bm_add_new();
