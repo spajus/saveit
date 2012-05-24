@@ -16,6 +16,8 @@ gem 'exception_notification', :require => 'exception_notifier'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+gem 'acts-as-taggable-on', '~> 2.2.2'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
