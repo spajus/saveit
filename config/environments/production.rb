@@ -75,6 +75,7 @@ Bm::Application.configure do
     port:                  25,
     domain:                'tib.lt',
     delivery_method:       'sendmail',
-    outgoing_address:      'no-reply@tib.lt'
+    outgoing_address:      'no-reply@tib.lt',
+    enable_starttls_auto:  false
   }
 end
