@@ -73,6 +73,9 @@ Bm::Application.configure do
   config.action_mailer.smtp_settings = {
     address:               'localhost',
     port:                  25,
-    domain:                'tib.lt'
+    domain:                'tib.lt',
+    delivery_method:       'sendmail',
+    outgoing_address:      'no-reply@tib.lt',
+    enable_starttls_auto:  false
   }
 end
