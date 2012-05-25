@@ -17,6 +17,7 @@ gem 'exception_notification', :require => 'exception_notifier'
 
 gem 'capistrano'
 gem 'rvm-capistrano'
+gem 'cape'
 
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'net-ssh', '= 2.4.0'
