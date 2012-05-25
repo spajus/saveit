@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'gon'
 
 gem 'sqlite3'
 
@@ -17,6 +18,7 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 gem 'acts-as-taggable-on', '~> 2.2.2'
+gem 'net-ssh', '= 2.4.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -26,5 +28,5 @@ group :assets do
 end
 
 group :production do
-  gem 'mysql'
+  gem 'pg'
 end
