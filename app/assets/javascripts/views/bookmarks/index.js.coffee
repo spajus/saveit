@@ -8,8 +8,9 @@ class Bm.Views.BookmarksIndex extends Backbone.View
   initialize: ->
     @unvisited_collection = new Bm.Collections.UnvisitedBookmarks()
     @visited_collection = new Bm.Collections.VisitedBookmarks()
-    @unvisited_collection.reset(($ '#container').data 'unvisited-bookmarks')
-    @visited_collection.reset(($ '#container').data 'visited-bookmarks')
+    @unvisited_collection.reset(gon.unvisited_bookmarks)
+    @visited_collection.reset(gon.visited_bookmarks)
+    window.collections = [@unvisited_collection, @visited_collection]
     @unvisited_collection.on 'open-bookmark', @openBookmark
     @visited_collection.on 'open-bookmark', @openBookmark
 

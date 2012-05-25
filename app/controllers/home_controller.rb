@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
 
   def index
+    if current_user
+      gon.visited_bookmarks = current_user.bookmarks.where(visited: true)
+      gon.unvisited_bookmarks = current_user.bookmarks.where(visited: false)
+    end
     render content_type: 'text/html'
   end
 

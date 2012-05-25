@@ -8,7 +8,7 @@ class BookmarksController < ApplicationController
   def filter
     case params[:type]
       when 'visited'
-        respond_with current_user.bookmarks.where visited: false
+        respond_with current_user.bookmarks.where visited: true
       when 'unvisited'
         respond_with current_user.bookmarks.where visited: false
       else
