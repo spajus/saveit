@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
     user ||= User.create_with_omniauth(auth)
-    session[:user_id] = user.id
+    cookies.permanent.signed[:user_id] = user.id
     if session[:save_and_return_to]
       b = session[:save_and_return_to]
       session.delete :save_and_return_to
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies.delete :user_id
     redirect_to root_url, :notice => 'Signed out!'
   end
 end
