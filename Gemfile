@@ -7,6 +7,7 @@ gem 'omniauth-twitter'
 gem 'gon'
 
 gem 'sqlite3'
+gem 'yaml_db'
 
 gem 'jquery-rails'
 
