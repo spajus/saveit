@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   def bookmarklet
     url = params[:b]
     title = params[:t] or url
+
     if current_user
       @bookmark = create_bookmark(url, title)
     else

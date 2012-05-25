@@ -2,11 +2,11 @@
 <div class="row">
   <div class="span12">
     <% flash.each do |name, msg| %>
-        <div class="alert alert-#{name}">
+        <%= content_tag "div", class: "alert alert-#{name}" do -%>
           <button class="close" data-dismiss="alert">x</button>
           <%= msg %>
-        </div>
-    <% end %>
+        <% end %>
+    <% end -%>
   </div>
 </div>
 <% end %>

@@ -1,5 +1,5 @@
 <%- if not current_user %>
-window.location.assign('<%= url_for :controller => :home, :only_path => false %>');
+window.location.assign('<%= url_for controller: :home, only_path: false %>');
 <%- else -%>
 el=document.createElement('div');
 el.setAttribute('id','bm-notification-id');
@@ -38,7 +38,7 @@ el.style.cssText=css;
 el.textContent="Success adding <%= h(@bookmark.title || @bookmark.url).gsub(/\n/, '').gsub(/"/, "'") %>";
 
 document.body.appendChild(el);
-setTimeout('removeBmPopup()', 2000);
+setTimeout('removeBmPopup()', 1000);
 
 function removeBmPopup() {
   if ( n = document.getElementById('bm-notification-id')) {

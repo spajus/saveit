@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    redirect root_url, :error => params[:message]
+    redirect_to root_url, flash: {error: 'Login cancelled.'}
   end
 
   def destroy
