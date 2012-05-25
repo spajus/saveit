@@ -12,8 +12,6 @@ class Bookmark < ActiveRecord::Base
   scope :unvisited, conditions: { visited: false }
 
 
-  acts_as_taggable
-
   protected
 
   def default_values
