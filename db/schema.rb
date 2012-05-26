@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525191619) do
+ActiveRecord::Schema.define(:version => 20120525215313) do
 
   create_table "bookmarks", :force => true do |t|
     t.string   "title"
@@ -25,14 +25,31 @@ ActiveRecord::Schema.define(:version => 20120525191619) do
   add_index "bookmarks", ["url"], :name => "index_bookmarks_on_url"
   add_index "bookmarks", ["user_id"], :name => "index_bookmarks_on_user_id"
 
+<<<<<<< HEAD
   create_table "settings", :force => true do |t|
     t.integer  "user_id"
     t.string   "key"
     t.string   "value"
+=======
+  create_table "taggings", :force => true do |t|
+    t.integer "bookmark_id"
+    t.integer "tag_id"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+>>>>>>> Self made tag support
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+<<<<<<< HEAD
+=======
+  add_index "tags", ["name"], :name => "index_tags_on_name"
+  add_index "tags", ["user_id"], :name => "index_tags_on_user_id"
+
+>>>>>>> Self made tag support
   create_table "users", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
