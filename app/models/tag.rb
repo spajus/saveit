@@ -26,4 +26,13 @@ class Tag < ActiveRecord::Base
   def to_s
     name
   end
+
+  def as_json(options={})
+    {
+      name: name,
+      bookmarks: {
+        count: bookmarks.count
+      }
+    }
+  end
 end

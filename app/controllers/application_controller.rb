@@ -6,11 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def create_bookmark(url, title)
-    bookmark = current_user.bookmarks.where(url: url).first
-    unless bookmark
-      bookmark = current_user.bookmarks.create url: url, title: title
-    end
-    bookmark
+    current_bookmarks.where(url: url).first || current_bookmarks.create(url: url, title: title)
   end
 
   def require_user
@@ -18,7 +14,7 @@ class ApplicationController < ActionController::Base
 
     respond_to do |format|
       format.html { redirect_to '/' }
-      format.json { render json: {error:'authentication required'}, status: 403 }
+      format.json { render json: {error:'forbidden'}, status: 403 }
     end
     false
   end
@@ -35,13 +31,20 @@ class ApplicationController < ActionController::Base
     current_user.settings
   end
 
+  def current_tags
+    current_user.tags
+  end
+
   def backbone_settings
     bookmarklet_js = render_to_string partial: "bookmarklet", formats: [:js]
     gon.bookmarklet_js = bookmarklet_js.gsub(/\s*\n+\s*/, '').gsub(/\s*(,|\{|\}|;)\s*/, "\\1")
     if current_user
       gon.user_settings = current_settings
     end
+  end
 
+  def respond_404(msg)
+    render json: {error: msg}, status: 404
   end
 
 end
