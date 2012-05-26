@@ -6,6 +6,7 @@
   <div class="modal-body">
     <form class="form-horizontal">
       <fieldset>
+        <!-- link target -->
         <div class="control-group">
           <label class="control-label" for="linkTarget">Open bookmarks</label>
           <div class="controls">
@@ -16,12 +17,24 @@
             <span class="help-inline"></span>
           </div>
         </div>
+        <!-- delete confirmation -->
         <div class="control-group">
-          <label class="control-label" for="sConfirmDelete">Delete bookmarks</label>
+          <label class="control-label" for="confirmDelete">Delete bookmarks</label>
           <div class="controls">
             <select id="confirmDelete">
               <option value="confirm">With confirmation</option>
               <option value="freely">Without confirmation</option>
+            </select>
+            <span class="help-inline"></span>
+          </div>
+        </div>
+        <!-- use tags -->
+        <div class="control-group">
+          <label class="control-label" for="useTags">Tagging</label>
+          <div class="controls">
+            <select id="useTags">
+              <option value="false">Disabled</option>
+              <option value="freely">Enabled</option>
             </select>
             <span class="help-inline"></span>
           </div>
