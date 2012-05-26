@@ -33,4 +33,13 @@ class BookmarksController < ApplicationController
     respond_with current_bookmarks.destroy(params[:id])
   end
 
+
+  def tags
+    bookmark = current_bookmarks.find_by_id(params[:id])
+
+    respond_404('Bookmark not found') and return unless bookmark
+
+    respond_with bookmark.tags
+  end
+
 end

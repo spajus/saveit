@@ -2,7 +2,9 @@ Bm::Application.routes.draw do
 
   scope "api" do
     match "/bookmarks/filter/:type" => "bookmarks#filter"
-    resources :bookmarks
+    resources :bookmarks do
+      get 'tags', on: :member
+    end
     resources :settings
     resources :tags do
       get    'bookmarks'     => 'tags#list_bookmarks'
