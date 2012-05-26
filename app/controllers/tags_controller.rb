@@ -20,7 +20,7 @@ class TagsController < ApplicationController
   end
 
   def add_bookmark
-    tag      = current_tags.find_by_id(params[:tag_id])
+    tag      = current_tags.find_by_name(params[:tag_id])
     bookmark = current_bookmarks.find_by_id(params[:id])
 
     respond_404('Tag not found') and return unless tag
@@ -30,7 +30,7 @@ class TagsController < ApplicationController
   end
 
   def remove_bookmark
-    tag = current_tags.find_by_id(params[:tag_id])
+    tag = current_tags.find_by_name(params[:tag_id])
     bookmark = current_bookmarks.find_by_id(params[:id])
 
     respond_404('Tag not found') and return unless tag
@@ -40,7 +40,7 @@ class TagsController < ApplicationController
   end
 
   def list_bookmarks
-    tag = current_tags.find_by_id(params[:tag_id])
+    tag = current_tags.find_by_name(params[:tag_id])
 
     respond_404('Tag not found') and return unless tag
 
