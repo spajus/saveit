@@ -1,5 +1,5 @@
 class CreateSettings < ActiveRecord::Migration
-  def change
+  def up
     create_table :settings do |t|
       t.integer :user_id
       t.string :key
@@ -7,5 +7,11 @@ class CreateSettings < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :settings, :user_id
+    add_index :settings, :key
+  end
+
+  def down
+    drop_table :settings
   end
 end
