@@ -1,0 +1,5 @@
+<td>
+<a class="link" href="/tags/<%= @tag.getSlug() %>"><%= @tag.get 'name' %></a>
+  <a class="close">x</a>
+</td>
+

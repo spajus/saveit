@@ -24,7 +24,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     @visited_collection.on 'open-bookmark', @openBookmark
 
     @tag_collection = new Bm.Collections.Tags()
-    @tag_collection.reset gon.current_tags
+    @tag_collection.reset gon.user_tags or []
 
     window.collections = [@unvisited_collection, @visited_collection, @tag_collection]
 
@@ -82,7 +82,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
         (@$ '#new_bookmark .control-group').removeClass 'error'
         show_alert "Added new tag: #{name}", 'success'
       error: (object, response) =>
-        @handleError '#new_bookmark', object, response
+        @handleError '#new_tag', object, response
 
 
     attrs = name: $

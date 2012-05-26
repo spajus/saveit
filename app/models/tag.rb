@@ -8,6 +8,7 @@ class Tag < ActiveRecord::Base
 
   validates :name, uniqueness: { scope: :user_id }
 
+  default_scope order: "created_at desc"
 
   def self.create_or_find(owner, tag_name)
     return nil if owner.nil?

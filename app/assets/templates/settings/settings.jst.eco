@@ -21,7 +21,7 @@
 
         <!-- delete confirmation -->
         <div class="control-group">
-          <label class="control-label" for="confirmDelete">Delete bookmarks</label>
+          <label class="control-label" for="confirmDelete">Delete items</label>
           <div class="controls">
             <select id="confirmDelete">
               <option value="true">With confirmation</option>

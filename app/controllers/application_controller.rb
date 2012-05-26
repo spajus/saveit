@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
     gon.bookmarklet_js = bookmarklet_js.gsub(/\s*\n+\s*/, '').gsub(/\s*(,|\{|\}|;)\s*/, "\\1")
     if current_user
       gon.user_settings = current_settings
+      gon.user_tags = current_tags
     end
   end
 
