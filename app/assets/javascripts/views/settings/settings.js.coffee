@@ -7,19 +7,30 @@ class Bm.Views.Settings extends Backbone.View
 
   render: ->
     @$el.html @template()
-    @sLinkTarget = @collection.getSetting 'linkTarget', 'same'
-    (@$ "#sLinkTarget option[value='#{@sLinkTarget.get 'value'}']")
-      .attr 'selected', 'selected'
+
+    @_loadSetting 'linkTarget', 'same'
+    @_loadSetting 'confirmDelete', 'confirm'
+
     @
 
   save: (event) ->
     event.preventDefault()
-    console.log 'saving', @sLinkTarget, @collection
-    @sLinkTarget.save value: (@$ '#sLinkTarget').val(), {wait: true}
+
+    @_saveSetting 'linkTarget'
+    @_saveSetting 'confirmDelete'
+
     (@$ '#settings-modal').modal 'hide'
     show_alert 'Settings saved!', 'success'
 
+  # Private methods
 
+  _loadSetting: (name, defaultValue) ->
+    setting = @collection.getSetting name, defaultValue
+    (@$ "##{name} option[value='#{setting.get 'value'}']").attr 'selected', 'selected'
+
+  _saveSetting: (name) ->
+    setting = @collection.getSetting name
+    setting.save value: (@$ "##{name}").val()
 
 
 Bm.Views.Settings.init = ->
