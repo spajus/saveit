@@ -10,6 +10,7 @@ class Bm.Views.Settings extends Backbone.View
 
     @_loadSetting 'linkTarget', 'same'
     @_loadSetting 'confirmDelete', 'confirm'
+    @_loadSetting 'useTags', 'false'
 
     @
 
@@ -18,6 +19,7 @@ class Bm.Views.Settings extends Backbone.View
 
     @_saveSetting 'linkTarget'
     @_saveSetting 'confirmDelete'
+    @_saveSetting 'useTags'
 
     (@$ '#settings-modal').modal 'hide'
     show_alert 'Settings saved!', 'success'
