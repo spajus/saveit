@@ -20,6 +20,8 @@ class Bookmark < ActiveRecord::Base
       transaction do
         t = Tag.create_or_find(self.user, tag_name)
         taggings.create(tag: t)
+        # XXX: this is ugly, but I don't know how to reset obj cache :(
+        reload
       end
       t
     rescue
