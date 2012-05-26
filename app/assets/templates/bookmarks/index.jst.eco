@@ -5,12 +5,10 @@
   <div class="span6">
     <form class="form" id="new_bookmark">
       <div class="control-group">
-        <label class="control-label" for="inputIcon">Add new URL manually</label>
+        <label class="control-label" for="new_bookmark_url">Add new URL manually</label>
         <div class="controls">
-          <div class="input-prepend">
-            <span class="add-on"><i class="icon-bookmark"></i></span><input class="span4" id="new_bookmark_url" type="text">
-            <input class="btn btn-small" type="submit" value="Add">
-            <span class="help-inline" id="new_bookmark_help"></span>
+          <div class="input-prepend input-append">
+            <span class="add-on"><i class="icon-bookmark"></i></span><input class="span4" id="new_bookmark_url" type="text"><input class="btn" type="submit" value="Add">
           </div>
         </div>
       </div>

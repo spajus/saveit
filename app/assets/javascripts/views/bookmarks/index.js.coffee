@@ -40,7 +40,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
       success: ->
         (@$ '#new_bookmark')[0].reset()
         (@$ '#new_bookmark .control-group').removeClass 'error'
-        (@$ '#new_bookmark_help').empty()
+        show_alert "Added new bookmark: <a href='#{url}'>#{url}</a>", 'success'
       error: @handleError
 
   handleError: (bookmark, response) =>
@@ -52,7 +52,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     else
       error_msg = response
     (@$ '#new_bookmark .control-group').addClass 'error'
-    (@$ '#new_bookmark_help').text error_msg
+    show_alert error_msg
 
   openBookmark: (bookmark, options) =>
     unless options.visited
