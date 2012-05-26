@@ -41,7 +41,6 @@ class ApplicationController < ActionController::Base
     if current_user
       gon.user_settings = current_settings
     end
-
   end
 
 end
