@@ -3,7 +3,6 @@ class Bm.Views.BookmarksIndex extends Backbone.View
   el: '#container'
 
   events:
-    'submit #new_bookmark': 'createBookmark'
     'submit #new_tag': 'createTag'
 
   template: ->
@@ -51,25 +50,22 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     if user_settings.getUseTags()
       @tagBar = new Bm.Views.TagBar
         collection: @tag_collection
+      inputClass = 'span3'
+    else
+      inputClass = 'span4'
 
+    @add_bookmark = new Bm.Views.AddBookmark
+      inputClass: inputClass #inputClass controls width of bookmark input
+      collection: @unvisited_collection
+
+    @add_bookmark.render()
     @bookmarklet.render()
     @bookmarks_read.render()
     @bookmarks_unread.render()
+
     @tagBar.render() if user_settings.getUseTags()
     @
 
-  createBookmark: (event) ->
-    event.preventDefault()
-    url = (@$ '#new_bookmark_url').val()
-    attrs = title: url, url: url
-    @unvisited_collection.create attrs,
-      wait: true
-      success: ->
-        (@$ '#new_bookmark')[0].reset()
-        (@$ '#new_bookmark .control-group').removeClass 'error'
-        show_alert "Added new bookmark: <a href='#{url}'>#{url}</a>", 'success'
-      error: (object, response) =>
-        @handleError '#new_bookmark', object, response
 
   createTag: (event) ->
     event.preventDefault()
@@ -79,7 +75,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
       wait: true
       success: ->
         (@$ '#new_tag')[0].reset()
-        (@$ '#new_bookmark .control-group').removeClass 'error'
+        (@$ '#new_tag .control-group').removeClass 'error'
         show_alert "Added new tag: #{name}", 'success'
       error: (object, response) =>
         @handleError '#new_tag', object, response
