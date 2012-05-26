@@ -1,13 +1,14 @@
 <div class="row">
   <div class="span12">
-    <% if flash %>
-    <% flash.each do |name, msg| %>
-        <%= content_tag "div", class: "alert alert-#{name}" do -%>
-          <button class="close" data-dismiss="alert">x</button>
-          <%= msg %>
-        <% end %>
-    <% end -%>
-    <% end %>
-    <div id="app-alerts"></div>
+    <div id="app-alerts">
+      <% if flash %>
+        <% flash.each do |name, msg| %>
+          <%= content_tag "div", class: "alert alert-#{name}" do -%>
+            <button class="close" data-dismiss="alert">x</button>
+            <%= msg %>
+          <% end %>
+        <% end -%>
+      <% end %>
+    </div>
   </div>
 </div>
