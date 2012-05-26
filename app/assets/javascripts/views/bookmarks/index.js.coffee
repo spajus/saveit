@@ -58,7 +58,11 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     unless options.visited
       @unvisited_collection.remove bookmark
       @visited_collection.add bookmark
-    window.location.assign bookmark.get 'url'
+
+    if (window.user_settings.getSetting 'linkTarget', 'same').get('value') is 'same'
+      window.location.assign bookmark.get 'url'
+    else
+      window.open(bookmark.get 'url', '_blank')
 
 
 

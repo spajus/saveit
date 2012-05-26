@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
   def backbone_settings
     bookmarklet_js = render_to_string partial: "bookmarklet", formats: [:js]
     gon.bookmarklet_js = bookmarklet_js.gsub(/\s*\n+\s*/, '').gsub(/\s*(,|\{|\}|;)\s*/, "\\1")
+    if current_user
+      gon.user_settings = current_settings
+    end
+
   end
 
 end
