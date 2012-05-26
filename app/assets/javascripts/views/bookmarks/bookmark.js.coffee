@@ -2,6 +2,7 @@ class Bm.Views.Bookmark extends Backbone.View
 
   template: JST['bookmarks/bookmark']
   tagName: 'tr'
+  className: 'bookmark'
 
   events:
     'click a.link': 'openBookmark'
@@ -12,6 +13,16 @@ class Bm.Views.Bookmark extends Backbone.View
 
   render: ->
     @$el.html @template(bookmark: @model)
+    if user_settings.getUseTags
+      (@$ '.icon-tag').draggable
+        snap: '#tag-bar .badge'
+        cursor: 'move'
+        helper: 'clone'
+        revert: true
+        start: ->
+          ($ '#tag-bar').addClass 'drag-start'
+        stop: ->
+          ($ '#tag-bar').removeClass 'drag-start'
     @
 
   openBookmark: (event) ->

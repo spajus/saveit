@@ -10,7 +10,14 @@ class Bm.Views.Tag extends Backbone.View
     "tag-#{@model.get 'id'}"
 
   render: ->
-    @$el.html @template(tag: @model)
+    @$el.html @template tag: @model
+    (@$ '.tag').droppable
+      hoverClass: 'tag-hover'
+      drop: (event, ui) ->
+        ui.draggable.draggable 'option', 'revert', false
+
+        console.log 'drop', event, ui
+
     @
 
   removeTag: (event) ->

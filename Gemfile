@@ -28,6 +28,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'compass_twitter_bootstrap'
   gem 'compass-rails'
+  gem 'jquery-ui-rails'
 end
 
 group :production do
