@@ -3,7 +3,8 @@ class Bm.Views.BookmarksIndex extends Backbone.View
   el: '#container'
 
   events:
-    'submit #new_bookmark': 'createEntry'
+    'submit #new_bookmark': 'createBookmark'
+    'submit #new_tag': 'createTag'
 
   template: ->
     if user_settings.getUseTags()
@@ -25,7 +26,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     @tag_collection = new Bm.Collections.Tags()
     @tag_collection.reset gon.current_tags
 
-    window.collections = [@unvisited_collection, @visited_collection]
+    window.collections = [@unvisited_collection, @visited_collection, @tag_collection]
 
     user_settings.on 'change', @render
 
@@ -48,7 +49,8 @@ class Bm.Views.BookmarksIndex extends Backbone.View
       visited: false
 
     if user_settings.getUseTags()
-      @tagBar = new Bm.Views.TagBar()
+      @tagBar = new Bm.Views.TagBar
+        collection: @tag_collection
 
     @bookmarklet.render()
     @bookmarks_read.render()
@@ -56,7 +58,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     @tagBar.render() if user_settings.getUseTags()
     @
 
-  createEntry: (event) ->
+  createBookmark: (event) ->
     event.preventDefault()
     url = (@$ '#new_bookmark_url').val()
     attrs = title: url, url: url
@@ -66,9 +68,27 @@ class Bm.Views.BookmarksIndex extends Backbone.View
         (@$ '#new_bookmark')[0].reset()
         (@$ '#new_bookmark .control-group').removeClass 'error'
         show_alert "Added new bookmark: <a href='#{url}'>#{url}</a>", 'success'
-      error: @handleError
+      error: (object, response) =>
+        @handleError '#new_bookmark', object, response
 
-  handleError: (bookmark, response) =>
+  createTag: (event) ->
+    event.preventDefault()
+    name = (@$ '#new_tag_name').val()
+    attrs = name: name
+    @tag_collection.create attrs,
+      wait: true
+      success: ->
+        (@$ '#new_tag')[0].reset()
+        (@$ '#new_bookmark .control-group').removeClass 'error'
+        show_alert "Added new tag: #{name}", 'success'
+      error: (object, response) =>
+        @handleError '#new_bookmark', object, response
+
+
+    attrs = name: $
+
+
+  handleError: (source, object, response) =>
     error_msg = ""
     if response.status is 422
       errors = ($.parseJSON response.responseText).errors
@@ -76,7 +96,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
         error_msg += "#{attribute} #{message}" for message in messages
     else
       error_msg = response
-    (@$ '#new_bookmark .control-group').addClass 'error'
+    (@$ "#{source} .control-group").addClass 'error'
     show_alert error_msg
 
   openBookmark: (bookmark, options) =>

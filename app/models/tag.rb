@@ -21,7 +21,7 @@ class Tag < ActiveRecord::Base
   end
 
   def remove_bookmark(bookmark)
-    taggings.find(:first, bookmark: bookmark).destroy rescue return false
+    taggings.find(bookmark: bookmark).first.destroy rescue return false
   end
 
 
@@ -30,7 +30,7 @@ class Tag < ActiveRecord::Base
   end
 
   def to_param
-    name.parametrize
+    name.parameterize()
   end
 
   def as_json(options={})
