@@ -15,7 +15,6 @@ class Bm.Views.Bookmark extends Backbone.View
     @$el.html @template(bookmark: @model)
     if user_settings.getUseTags
       (@$ '.icon-tag').draggable
-        snap: '#tag-bar .badge'
         cursor: 'move'
         helper: 'clone'
         revert: true
