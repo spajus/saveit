@@ -26,7 +26,7 @@ class Bm.Views.Bookmark extends Backbone.View
 
   removeBookmark: (event) ->
     remove = true
-    if ((window.user_settings.getSetting 'confirmDelete').get 'value') is 'confirm'
+    if user_settings.getConfirmDelete()
       unless confirm "Are you sure you want to delete: '#{@model.get 'title'}'?"
         remove = false
     if remove

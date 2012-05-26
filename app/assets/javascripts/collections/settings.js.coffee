@@ -13,3 +13,18 @@ class Bm.Collections.Settings extends Backbone.Collection
       result = @create new Bm.Models.Setting key: key, value: defaultValue
     result
 
+  getSettingValue: (key, defaultValue=null) ->
+    setting = @getSetting(key, defaultValue)
+    setting.get 'value'
+
+  # Helper methods
+
+  getLinkTarget: ->
+    @getSettingValue 'linkTarget', 'same'
+
+  getConfirmDelete: ->
+    (@getSettingValue 'confirmDelete', 'true') is 'true'
+
+  getUseTags: ->
+    (@getSettingValue 'useTags', 'false') is 'true'
+

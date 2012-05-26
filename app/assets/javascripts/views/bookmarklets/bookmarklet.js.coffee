@@ -1,6 +1,7 @@
 class Bm.Views.Bookmarklet extends Backbone.View
 
   template: JST['bookmarklets/bookmarklet']
+  el: '#bookmarklet'
   events:
     'click a': 'bookmarkletHelp'
 

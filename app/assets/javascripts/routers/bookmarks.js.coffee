@@ -5,7 +5,7 @@ class Bm.Routers.Bookmarks extends Backbone.Router
 
   index: ->
     view = new Bm.Views.BookmarksIndex collection: @collection
-    ($ '#container').html view.render().el
+    view.render()
 
   show: (id) ->
     alert "show #{id}"

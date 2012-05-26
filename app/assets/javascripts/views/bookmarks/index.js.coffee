@@ -1,34 +1,59 @@
 class Bm.Views.BookmarksIndex extends Backbone.View
 
-  template: JST['bookmarks/index']
+  el: '#container'
 
   events:
     'submit #new_bookmark': 'createEntry'
 
+  template: ->
+    if user_settings.getUseTags()
+      JST['bookmarks/index_with_tags']
+    else
+      JST['bookmarks/index']
+
+
   initialize: ->
+
     @unvisited_collection = new Bm.Collections.UnvisitedBookmarks()
-    @visited_collection = new Bm.Collections.VisitedBookmarks()
-    @unvisited_collection.reset(gon.unvisited_bookmarks)
-    @visited_collection.reset(gon.visited_bookmarks)
-    window.collections = [@unvisited_collection, @visited_collection]
+    @unvisited_collection.reset gon.unvisited_bookmarks
     @unvisited_collection.on 'open-bookmark', @openBookmark
+
+    @visited_collection = new Bm.Collections.VisitedBookmarks()
+    @visited_collection.reset gon.visited_bookmarks
     @visited_collection.on 'open-bookmark', @openBookmark
 
+    @tag_collection = new Bm.Collections.Tags()
+    @tag_collection.reset gon.current_tags
+
+    window.collections = [@unvisited_collection, @visited_collection]
+
+    user_settings.on 'change', @render
+
+  render: =>
+
+    @$el.html @template()
+
+    @bookmarklet = new Bm.Views.Bookmarklet el: '#bookmarklet'
+
     @bookmarks_read = new Bm.Views.BookmarksList
+      el: '#bookmarks-read'
       collection: @visited_collection
       title: 'Archive'
       visited: true
+
     @bookmarks_unread = new Bm.Views.BookmarksList
+      el: '#bookmarks-unread'
       collection: @unvisited_collection
       title: 'Fresh'
       visited: false
-    @bookmarklet = new Bm.Views.Bookmarklet()
 
-  render: ->
-    @$el.html @template()
-    (@$ '#bookmarklet').html @bookmarklet.render().el
-    (@$ '#bookmarks-read').html @bookmarks_read.render().el
-    (@$ '#bookmarks-unread').html @bookmarks_unread.render().el
+    if user_settings.getUseTags()
+      @tagBar = new Bm.Views.TagBar()
+
+    @bookmarklet.render()
+    @bookmarks_read.render()
+    @bookmarks_unread.render()
+    @tagBar.render() if user_settings.getUseTags()
     @
 
   createEntry: (event) ->
@@ -59,7 +84,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
       @unvisited_collection.remove bookmark
       @visited_collection.add bookmark
 
-    if (window.user_settings.getSetting 'linkTarget', 'same').get('value') is 'same'
+    if user_settings.getLinkTarget() is 'same'
       window.location.assign bookmark.get 'url'
     else
       window.open(bookmark.get 'url', '_blank')
