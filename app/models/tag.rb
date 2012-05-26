@@ -6,6 +6,8 @@ class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :bookmarks, through: :taggings
 
+  validates :name, uniqueness: { scope: :user_id }
+
 
   def self.create_or_find(owner, tag_name)
     return nil if owner.nil?
@@ -25,6 +27,10 @@ class Tag < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def to_param
+    name.parametrize
   end
 
   def as_json(options={})
