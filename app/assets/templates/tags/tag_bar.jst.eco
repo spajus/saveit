@@ -1,11 +1,11 @@
 <ul class="tags nav nav-list">
   <li class="nav-header"><i class="icon-tags"></i> Tags</li>
 </ul>
+
 <ul class="nav nav-list">
   <li class="divider"></li>
-  <li>
-  <i class="icon-plus"></i><i class="icon-tag"></i> Drag bookmarks here!
+  <li class="add-tag-zone">
+    <div>Drag <i class="icon-tag"></i> here to create new tag</div>
   </li>
-
 </ul>
 

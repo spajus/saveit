@@ -10,6 +10,12 @@ class Bm.Views.TagBar extends Backbone.View
 
   render: =>
     @$el.html @template()
+    (@$ '.add-tag-zone').droppable
+      hoverClass: 'tag-hover'
+      drop: (event, ui) ->
+        ui.draggable.draggable 'option', 'revert', false
+
+        console.log 'drop', event, ui
     list = @$ 'ul.tags'
     @collection.each (tag) =>
       view = new Bm.Views.Tag

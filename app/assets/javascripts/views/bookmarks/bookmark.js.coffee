@@ -13,15 +13,18 @@ class Bm.Views.Bookmark extends Backbone.View
 
   render: ->
     @$el.html @template(bookmark: @model)
+    tag_bar = ($ '#tag-bar')
     if user_settings.getUseTags
-      (@$ '.tags').draggable
+      (@$ '.drag-tag').draggable
         cursor: 'move'
         helper: 'clone'
         revert: true
-        start: ->
-          ($ '#tag-bar').addClass 'drag-start'
-        stop: ->
-          ($ '#tag-bar').removeClass 'drag-start'
+        start: =>
+          tag_bar.addClass 'drag-start'
+          @$el.addClass 'drag-start'
+        stop: =>
+          tag_bar.removeClass 'drag-start'
+          @$el.removeClass 'drag-start'
     @
 
   openBookmark: (event) ->
