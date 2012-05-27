@@ -1,8 +1,11 @@
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th><i class="icon-tags"></i> Tags</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+<ul class="tags nav nav-list">
+  <li class="nav-header"><i class="icon-tags"></i> Tags</li>
+</ul>
+<ul class="nav nav-list">
+  <li class="divider"></li>
+  <li>
+  <i class="icon-plus"></i><i class="icon-tag"></i> Drag bookmarks here!
+  </li>
+
+</ul>
+

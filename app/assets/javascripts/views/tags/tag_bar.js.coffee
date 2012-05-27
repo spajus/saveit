@@ -10,7 +10,7 @@ class Bm.Views.TagBar extends Backbone.View
 
   render: =>
     @$el.html @template()
-    list = @$ 'tbody'
+    list = @$ 'ul.tags'
     @collection.each (tag) =>
       view = new Bm.Views.Tag
         model: tag
@@ -21,7 +21,7 @@ class Bm.Views.TagBar extends Backbone.View
     view = new Bm.Views.Tag
       model: tag
       collection: @collection
-    (@$ 'tbody').prepend view.render().el
+    (@$ 'ul').prepend view.render().el
 
   removeTag: (tag) =>
     view = new Bm.Views.Tag

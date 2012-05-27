@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
     gon.home_url = url_for controller: :home, action: :index, only_path: false
 
     if current_user
+      gon.current_user = current_user
       gon.user_settings = current_settings
       gon.user_tags = current_tags
     end

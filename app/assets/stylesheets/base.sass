@@ -2,6 +2,9 @@
 @import compass_twitter_bootstrap
 @import compass_twitter_bootstrap_awesome
 @import compass_twitter_bootstrap_responsive
+@import "compass/layout/stretching"
+
+$lightGray: #d3d3d3
 
 body
   padding-bottom: 40px
@@ -18,9 +21,11 @@ body
 .bookmarklet
   padding: 3px 5px
 
-.tag-bar
+#tag-bar
+  @extend .well
+  padding: 8px 0
+
   .tag-hover
-    background-color: #b0c4de !important
     .badge
       @extend .badge-success
 
@@ -33,5 +38,25 @@ body
       @extend .badge-success
 
 
-.bookmark .tags
-  cursor: 'pointer'
+.bookmark
+  .close
+    display: none
+  .tags
+    display: block
+    cursor: move
+    i
+      opacity: 0.2
+  .date
+    color: $lightGray
+    font-size: 10px
+    float: right
+
+.bookmark:hover
+  .close
+    display: inline-block
+  .tags
+    i
+      opacity: 1
+
+
+

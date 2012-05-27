@@ -1,9 +1,14 @@
-<form class="form" id="add-bookmark">
+<form class="form-vertical" id="add-bookmark">
   <div class="control-group">
     <label class="control-label" for="new_bookmark_url">Add new URL</label>
     <div class="controls">
-      <div class="input-append">
-        <input class="<%= @inputClass %>" id="new_bookmark_url" type="text"><button class="btn" type="submit"><i class="icon-plus"></i> <i class="icon-bookmark"></i></button>
+      <div class="input-append row-fluid">
+        <div class="span10" style="margin-right: -1px">
+          <input class="span12"  id="new_bookmark_url" type="text">
+        </div>
+        <div class="span2" style="margin-left: 0px">
+          <button class="btn span12" type="submit"><i class="icon-plus"></i> <i class="icon-bookmark"></i></button>
+        </div>
       </div>
     </div>
   </div>

@@ -2,14 +2,18 @@
 
   <div class="row-fluid">
       <a class="link" href="<%= @bookmark.get 'url' %>"><%= @bookmark.get('title') or @bookmark.get('url') %></a>
-      <a class="close">x</a>
+      <a class="close">&times;</a>
   </div>
+
   <div class="row-fluid">
     <% if user_settings.getUseTags(): %>
-      <div class="tags">
-      <i title="Drop me on a tag!" data-bookmark-id="<%= @bookmark.get 'id' %>" class="icon-tag icon-large"></i>
+      <div class="tags span6">
+        <i title="Drop me on a tag!" data-bookmark-id="<%= @bookmark.get 'id' %>" class="icon-tag icon-large"></i>
       </div>
     <% end %>
+    <div class="date span6">
+      <%= @bookmark.getCreatedAt() %>
+    </div>
   </div>
 
 </td>
