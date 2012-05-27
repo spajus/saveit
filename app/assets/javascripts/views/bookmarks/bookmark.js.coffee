@@ -14,7 +14,7 @@ class Bm.Views.Bookmark extends Backbone.View
   render: ->
     @$el.html @template(bookmark: @model)
     if user_settings.getUseTags
-      (@$ '.icon-tag').draggable
+      (@$ '.tags').draggable
         cursor: 'move'
         helper: 'clone'
         revert: true

@@ -1,12 +1,16 @@
 <td>
-<a class="link" href="<%= @bookmark.get 'url' %>"><%= @bookmark.get('title') or @bookmark.get('url') %></a>
-</td>
-<% if user_settings.getUseTags(): %>
-<td class="tags">
-  <a href="#" rel="tooltip" title="Drag and drop me on a tag!"><i data-bookmark-id="<%= @bookmark.get 'id' %>" class="icon-tag icon-large"></i></a>
-</td>
-<% end %>
-<td>
-  <a class="close">x</a>
+
+  <div class="row-fluid">
+      <a class="link" href="<%= @bookmark.get 'url' %>"><%= @bookmark.get('title') or @bookmark.get('url') %></a>
+      <a class="close">x</a>
+  </div>
+  <div class="row-fluid">
+    <% if user_settings.getUseTags(): %>
+      <div class="tags">
+      <i title="Drop me on a tag!" data-bookmark-id="<%= @bookmark.get 'id' %>" class="icon-tag icon-large"></i>
+      </div>
+    <% end %>
+  </div>
+
 </td>
 
