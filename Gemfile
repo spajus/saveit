@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'gon'
 
 gem 'sqlite3'
