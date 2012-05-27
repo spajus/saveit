@@ -1,6 +1,7 @@
 class Bm.Routers.Bookmarks extends Backbone.Router
   routes:
     '': 'index'
+    '_=_': 'index' # Damn Facebook
     'bookmarks/:id': 'show'
 
   index: ->
