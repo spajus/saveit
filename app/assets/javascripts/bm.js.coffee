@@ -9,6 +9,6 @@ window.Bm =
     Backbone.history.start pushState: true
 
 $(document).ready ->
-  Bm.init()
+  Bm.init() if gon.current_user
 
 

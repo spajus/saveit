@@ -9,3 +9,7 @@ class Bm.Models.Bookmark extends Backbone.Model
     unless url.indexOf('http://') is 0
       unless url.indexOf('https://') is 0
         return "url must start with http:// or https://"
+
+  getCreatedAt: ->
+    created_at = @get 'created_at'
+

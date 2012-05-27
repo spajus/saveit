@@ -1,39 +1,40 @@
 <% if user_settings.getUseTags(): %>
-<div class="row">
+<div class="row-fluid">
 
-  <div class="span5">
-    <div id="bookmarklet" class="well"></div>
-  </div>
+  <div class="span10">
 
-  <div class="span5">
-    <div id="add-bookmark"></div>
+    <div class="row-fluid">
+
+      <div class="span6">
+        <div id="bookmarklet" class="well"></div>
+      </div>
+
+      <div class="span6">
+        <div class="row-fluid">
+          <div id="add-bookmark"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row-fluid">
+
+      <div class="span6">
+        <div id="bookmarks-unread"></div>
+      </div>
+
+      <div class="span6">
+        <div id="bookmarks-read"></div>
+      </div>
+
+    </div>
+
   </div>
 
   <div class="span2">
-    <form class="form" id="new_tag">
-      <div class="control-group">
-        <label class="control-label" for="new_tag">Add new tag</label>
-        <div class="controls">
-          <div class="input-append">
-          <input class="span1" id="new_tag_name" type="text"><button style="width: 30%" class="btn" type="submit"><i class="icon-plus"></i> <i class="icon-tag"></i></button>
-          </div>
-        </div>
-      </div>
-    </form>
+    <div id="tag-bar"></div>
   </div>
-</div>
 
-
-<div class="row">
-    <div class="span5">
-      <div id="bookmarks-unread"></div>
-    </div>
-    <div class="span5">
-      <div id="bookmarks-read"></div>
-    </div>
-    <div class="span2">
-      <div id="tag-bar"></div>
-    </div>
 </div>
 
 

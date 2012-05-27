@@ -18,6 +18,9 @@
 //= require jquery.ui.position
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
+//= require jquery.effects.core
+//= require jquery.effects.fade
+//= require jquery.effects.highlight
 //= require bootstrap-all
 //= require underscore
 //= require backbone

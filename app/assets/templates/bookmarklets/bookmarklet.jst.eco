@@ -1,2 +1,8 @@
+<div class="visible-desktop">
   <span class="bookmarklet label label-info"><a href="javascript:<%= @bookmarklet_js %>">Save It</a></span>
   &nbsp;<i class="icon-arrow-left"></i> Drag this bookmarklet to your bookmarks bar.
+</div>
+<div class="hidden-desktop">
+  Go to <a href="gon.home_url">https://saveit.in</a> via your favorite browser on your computer
+  and you will get a bookmarklet for saving all those urls in a snap.
+</div>
