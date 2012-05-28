@@ -1,6 +1,6 @@
 class Tagging < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :bookmark, :tag
+  attr_accessible :bookmark, :tag, :bookmark_id, :tag_id
 
   validates :bookmark_id, uniqueness: { scope: :tag_id }
 

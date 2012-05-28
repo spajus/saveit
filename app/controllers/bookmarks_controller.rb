@@ -3,7 +3,7 @@ class BookmarksController < ApplicationController
   respond_to :json
 
   def index
-    respond_with current_bookmarks
+    respond_with current_bookmarks.to_json(include: :taggings)
   end
 
   def filter
@@ -18,7 +18,7 @@ class BookmarksController < ApplicationController
   end
 
   def show
-    respond_with current_bookmarks.find(params[:id])
+    respond_with current_bookmarks.find(params[:id]).to_json(include: :taggings)
   end
 
   def create
@@ -26,7 +26,11 @@ class BookmarksController < ApplicationController
   end
 
   def update
-    respond_with current_bookmarks.update(params[:id], params[:bookmark])
+    if params[:bookmark].has_key? :taggings
+      params[:bookmark][:taggings_attributes] = params[:bookmark].delete(:taggings)
+    end
+
+    respond_with current_bookmarks.update(params[:id], params[:bookmark]).to_json(include: :taggings)
   end
 
   def destroy

@@ -1,5 +1,5 @@
 class Bookmark < ActiveRecord::Base
-  attr_accessible :title, :url, :visited
+  attr_accessible :title, :url, :visited, :taggings, :taggings_attributes
 
   belongs_to :user
   has_many :taggings, dependent: :destroy
@@ -13,6 +13,8 @@ class Bookmark < ActiveRecord::Base
   default_scope order: "created_at desc"
   scope :visited,   conditions: { visited: true }
   scope :unvisited, conditions: { visited: false }
+
+  accepts_nested_attributes_for :taggings, allow_destroy: true
 
   def add_tag(tag_name)
     begin
