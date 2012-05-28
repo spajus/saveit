@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with current_tags
+    respond_with current_tags.to_json( include_bookmarks_count: true)
   end
 
 

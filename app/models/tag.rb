@@ -35,12 +35,12 @@ class Tag < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {
-      id: id,
-      name: name,
-      bookmarks: {
-        count: bookmarks.count
-      }
-    }
+    tag = { id: id, name: name }
+
+    if options[:include_bookmarks_count] == true
+      tag[:bookmarks] = { count: bookmarks.count }
+    end
+
+    tag
   end
 end
