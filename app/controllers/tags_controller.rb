@@ -15,13 +15,13 @@ class TagsController < ApplicationController
 
   def update
     tag = current_tags.find_by_name(params[:id])
-    respond_404 if tag.nil?
+    respond_404("Tag not found: #{params[:id]}") if tag.nil?
     respond_with tag.update_attributes( params[:tag]), api_template: :with_bookmarks_count
   end
 
   def destroy
     tag = current_tags.find_by_name(params[:id])
-    respond_404 if tag.nil?
+    respond_404("Tag not found: #{params[:id]}") if tag.nil?
     respond_with tag.destroy()
   end
 
