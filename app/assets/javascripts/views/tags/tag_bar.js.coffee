@@ -18,6 +18,7 @@ class Bm.Views.TagBar extends Backbone.View
         console.log 'drop', event, ui
     list = @$ 'ul.tags'
     @collection.each (tag) =>
+      console.log 'tag', tag
       view = new Bm.Views.Tag
         model: tag
         collection: @collection

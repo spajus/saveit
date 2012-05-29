@@ -5,7 +5,7 @@
 <ul class="nav nav-list">
   <li class="divider"></li>
   <li class="add-tag-zone">
-    <div>Drag <i class="icon-tag"></i> here to create new tag</div>
+    <div>Drag bookmark here to create new tag</div>
   </li>
 </ul>
 

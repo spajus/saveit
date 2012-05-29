@@ -1,5 +1,8 @@
 <td>
 
+  <div class="dragger" data-bookmark-id="<%= @bookmark.get 'id' %>"></div>
+  <i class="drag-tag icon-tag icon-large"></i>
+
   <div class="row-fluid ninja">
       <div class="span12 ninja">
         <a class="link" href="<%= @bookmark.get 'url' %>"><%= @bookmark.get('title') or @bookmark.get('url') %></a>
@@ -11,7 +14,6 @@
     <% if user_settings.getUseTags(): %>
       <div class="span6 ninja">
         <div class="tags">
-          <span class="drag-tag" data-bookmark-id="<%= @bookmark.get 'id' %>"><i title="Drop me on a tag!"  class="icon-tag icon-large"></i></span>
         </div>
       </div>
       <div class="span6 ninja">
