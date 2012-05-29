@@ -16,6 +16,18 @@ class Bookmark < ActiveRecord::Base
 
   accepts_nested_attributes_for :taggings, allow_destroy: true
 
+  acts_as_api
+
+  api_accessible :default do |t|
+    t.add :id
+    t.add :url
+    t.add :title
+  end
+
+  api_accessible :with_taggings, extend: :default do |t|
+    t.add  :taggings, template: :with_tag_name
+  end
+
   def add_tag(tag_name)
     begin
       t = nil

@@ -22,6 +22,9 @@ gem 'cape'
 
 gem 'net-ssh', '= 2.4.0'
 
+
+gem 'acts_as_api'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

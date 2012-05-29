@@ -1,50 +1,36 @@
 class TagsController < ApplicationController
+  self.responder = ActsAsApi::Responder
+
   before_filter :require_user
   respond_to :json
 
   def index
-    respond_with current_tags.to_json( include_bookmarks_count: true)
+    respond_with current_tags, api_template: :with_bookmarks_count
   end
 
 
   def create
-    respond_with current_tags.create(params[:tag])
+    respond_with current_tags.create(params[:tag]), api_template: :with_bookmarks_count
   end
 
   def update
-    respond_with current_tags.update(params[:id], params[:tag])
+    tag = current_tags.find_by_name(params[:id])
+    respond_404 if tag.nil?
+    respond_with tag.update_attributes( params[:tag]), api_template: :with_bookmarks_count
   end
 
   def destroy
-    respond_with current_tags.destroy(params[:id])
+    tag = current_tags.find_by_name(params[:id])
+    respond_404 if tag.nil?
+    respond_with tag.destroy()
   end
 
-  def add_bookmark
-    tag      = current_tags.find_by_name(params[:tag_id])
-    bookmark = current_bookmarks.find_by_id(params[:id])
-
-    respond_404('Tag not found') and return unless tag
-    respond_404('Bookmark not found') and return unless bookmark
-
-    respond_with tag.add_bookmark(bookmark)
-  end
-
-  def remove_bookmark
-    tag = current_tags.find_by_name(params[:tag_id])
-    bookmark = current_bookmarks.find_by_id(params[:id])
-
-    respond_404('Tag not found') and return unless tag
-    respond_404('Bookmark not found') and return unless bookmark
-
-    respond_with tag.remove_bookmark(bookmark)
+  def show
+    respond_with current_tags.find_by_name(params[:id]), api_template: :with_bookmarks_count
   end
 
   def list_bookmarks
-    tag = current_tags.find_by_name(params[:tag_id])
-
-    respond_404('Tag not found') and return unless tag
-
-    respond_with tag.bookmarks
+    respond_with current_tags.find_by_name(params[:tag_id]), api_template: :with_bookmarks
   end
 
 end
