@@ -54,7 +54,6 @@ body
       color: $black
   .add-tag-zone
     border: 3px dashed $screamingGreen !important
-    padding: 100px 10px !important
     position: relative
     bottom: 0px
   .bookmark
@@ -62,12 +61,23 @@ body
       background-color: $tagBarDragBg !important
 
 .bookmark
+  td
+    padding-left: 20px
+    .drag-tag
+      display: none
+
+    .dragger
+      position: relative
+      width: 10px
+      height: 43px
+      left: -14px
+      top: 3px
+      cursor: move
+      margin-bottom: -43px
+      background: url(image-path('dragHandle.png')) no-repeat
+      display: block
   .close
     display: none
-  .drag-tag
-    cursor: move
-    i
-      opacity: 0.2
   .date
     color: $lightGray
     font-size: 10px
@@ -76,9 +86,6 @@ body
 .bookmark:hover
   .close
     display: inline-block
-  .drag-tag
-    i
-      opacity: 1
 
 .ninja
   padding: 0

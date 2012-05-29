@@ -15,9 +15,11 @@ class Bm.Views.Bookmark extends Backbone.View
     @$el.html @template(bookmark: @model)
     tag_bar = ($ '#tag-bar')
     if user_settings.getUseTags
-      (@$ '.drag-tag').draggable
+      (@$ '.dragger').draggable
         cursor: 'move'
-        helper: 'clone'
+        helper: (a, b, c) =>
+          console.log a, b, c
+          (@$ '.drag-tag').clone().show().draggable('option', 'helper').draggable('option', 'revert', true)
         revert: true
         start: =>
           tag_bar.addClass 'drag-start'
