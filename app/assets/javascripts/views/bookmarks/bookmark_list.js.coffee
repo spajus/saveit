@@ -20,6 +20,8 @@ class Bm.Views.BookmarksList extends Backbone.View
           model: bookmark
           collection: @collection
         list.append view.render().el
+      else
+        console.log 'wrong bookmark', bookmark, @title
     @
 
   appendBookmark: (bookmark) =>

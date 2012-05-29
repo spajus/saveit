@@ -22,6 +22,7 @@ class Bookmark < ActiveRecord::Base
     t.add :id
     t.add :url
     t.add :title
+    t.add :visited
   end
 
   api_accessible :with_taggings, extend: :default do |t|

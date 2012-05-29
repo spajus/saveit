@@ -51,5 +51,4 @@ class Tag < ActiveRecord::Base
     name.parameterize()
   end
 
-
 end

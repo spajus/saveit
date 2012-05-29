@@ -15,6 +15,7 @@ class Bm.Views.Bookmark extends Backbone.View
     @$el.html @template(bookmark: @model)
     tag_bar = ($ '#tag-bar')
     if user_settings.getUseTags
+      (@$ '.dragger').data 'bookmark', @model
       (@$ '.dragger').draggable
         helper: (a, b, c) =>
           console.log a, b, c

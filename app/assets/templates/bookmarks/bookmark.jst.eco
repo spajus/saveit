@@ -1,6 +1,6 @@
 <td>
 
-  <div class="dragger" data-bookmark-id="<%= @bookmark.get 'id' %>"></div>
+  <div class="dragger"></div>
   <i class="drag-tag icon-tag icon-large"></i>
 
   <div class="row-fluid ninja">

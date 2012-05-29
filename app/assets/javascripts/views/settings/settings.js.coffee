@@ -7,6 +7,7 @@ class Bm.Views.Settings extends Backbone.View
 
   render: ->
     @$el.html @template()
+    @
 
     @_loadSetting 'linkTarget', 'same'
     @_loadSetting 'confirmDelete', 'confirm'
