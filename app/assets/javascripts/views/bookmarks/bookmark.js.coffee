@@ -8,21 +8,25 @@ class Bm.Views.Bookmark extends Backbone.View
     'click a.link': 'openBookmark'
     'click a.close': 'removeBookmark'
 
+  initialize: ->
+    @model.on 'change', @render
+
   id: =>
     "bookmark-#{@model.get 'id'}"
 
-  render: ->
+  render: =>
     @$el.html @template(bookmark: @model)
     tag_bar = ($ '#tag-bar')
     if user_settings.getUseTags
 
       # Draw existing tags
       taggings = @model.get 'tag_names'
-      if taggings
+      if taggings.length > 0
         for tagging in taggings
-          tag_view = new Bm.Views.BookmarkTag model: tagging
-          console.log 'appendingtag', tagging
-          (@$ '.tags').append tag_view.render().el
+          tag_view = new Bm.Views.BookmarkTag tag: tagging
+          tag = tag_view.render().el
+          console.log 'appendingtag', tag
+          (@$ '.tags').append tag
 
       (@$ '.dragger').data 'bookmark', @model
       (@$ '.dragger').draggable

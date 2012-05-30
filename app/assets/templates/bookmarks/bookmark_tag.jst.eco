@@ -1,1 +1,1 @@
-<span class="badge"><%= @tag.tag_name %></span>
+<span class="label"><%= @tag %></span>
