@@ -4,6 +4,7 @@ class Bm.Views.TagBar extends Backbone.View
 
   el: '#tag-bar'
 
+
   initialize: ->
     @collection.on 'reset', @render
     @collection.on 'add', @appendTag
@@ -18,19 +19,21 @@ class Bm.Views.TagBar extends Backbone.View
         new_tag_view = new Bm.Views.NewTag(collection: @collection).render()
         new_tag_view.setBookmark ui.draggable.data 'bookmark'
         ui.draggable.draggable 'option', 'revert', false
-    list = @$ 'ul.tags'
+    list = @$ 'tbody.tags'
+    dropZone = list.children().first().remove()
     @collection.each (tag) =>
       console.log 'tag', tag
       view = new Bm.Views.Tag
         model: tag
         collection: @collection
       list.append view.render().el
+    list.append dropZone
 
   appendTag: (tag) =>
     view = new Bm.Views.Tag
       model: tag
       collection: @collection
-    (@$ 'ul.tags').children().first().after view.render().el
+    (@$ 'tbody.tags').prepend view.render().el
 
 
   removeTag: (tag) =>

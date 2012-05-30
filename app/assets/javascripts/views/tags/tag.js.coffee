@@ -1,8 +1,8 @@
 class Bm.Views.Tag extends Backbone.View
 
   template: JST['tags/tag']
-  tagName: 'li'
-  className: 'tag row-fluid'
+  tagName: 'tr'
+  className: 'tag'
 
   events:
     'click a.close': 'removeTag'

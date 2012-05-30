@@ -44,11 +44,11 @@ body
 .bookmarklet
   padding: 3px 5px
 
-
-
 #tag-bar
   @extend .well
   padding: 8px 0
+  table
+    margin-bottom: 0px
 
   .tag-hover
     .badge
@@ -60,7 +60,6 @@ body
     text-align: center
     @include border-radius($borderRadius, $borderRadius)
     border: 3px dashed $lightGray
-
 
 .drag-start
   background-color: $tagBarDragBg !important

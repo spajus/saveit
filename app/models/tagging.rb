@@ -4,6 +4,7 @@ class Tagging < ActiveRecord::Base
   attr_protected :tag_name
 
   validates :bookmark_id, uniqueness: { scope: :tag_id }
+  validates_presence_of :bookmark_id, :tag_id
 
   belongs_to :bookmark
   belongs_to :tag
