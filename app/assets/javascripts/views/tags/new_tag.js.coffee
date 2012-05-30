@@ -21,19 +21,10 @@ class Bm.Views.NewTag extends Backbone.View
       @modal.modal 'hide'
       show_alert "You must provide a name for your new tag"
       return
-    new_tag = new Bm.Models.Tag
-      name: name
-      bookmarks_count: 1
-    new_tag.save {}, {wait: true}
-    console.log 'saved tag', new_tag
-    @collection.add new_tag
-    taggings = @bookmark.get('taggings') or []
-    tagging =
-      bookmark_id: @bookmark.get 'id'
-      tag_id: new_tag.get 'id'
-      tag_name: new_tag.get 'name'
-    taggings.push tagging
-    @bookmark.save tags: taggings
+    tag_names = @bookmark.get 'tag_names'
+    tag_names.push name
+    @bookmark.save tags_names: tag_names
+
     show_alert "Succesfully bookmarked #{@bookmark.get 'title'} with tag: #{name}", 'success'
     @modal.modal 'hide'
 
