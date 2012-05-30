@@ -24,6 +24,7 @@ class Bookmark < ActiveRecord::Base
     t.add :title
     t.add :visited
     t.add :tag_names
+    t.add :created_at
   end
 
   def tag_names
