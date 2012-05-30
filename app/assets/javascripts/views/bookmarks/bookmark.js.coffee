@@ -35,7 +35,7 @@ class Bm.Views.Bookmark extends Backbone.View
 
   renderTags: =>
     # Draw existing tags
-    (@$ '.tags').empty()
+    (@$ '.tags').html('&nbsp;')
     taggings = @model.get 'tag_names'
     if taggings.length > 0
       for tagging in taggings
