@@ -6,14 +6,18 @@ class Bm.Views.NewTag extends Backbone.View
     'click .save': 'createTag'
 
   render: ->
+    console.log 'render', @
     @$el.html @template()
     @modal = (@$ '#new-tag-modal')
     @modal.modal()
     @modal.on 'hide', =>
+      @$el.unbind()
       @$el.empty()
+      @bookmark = null
     @
 
   createTag: (event) =>
+    console.log 'create tag on', event, @
     event.preventDefault()
     name = (@$ '#tag-name').val()
     unless name

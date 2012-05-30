@@ -18,7 +18,6 @@ class Bm.Views.Bookmark extends Backbone.View
       (@$ '.dragger').data 'bookmark', @model
       (@$ '.dragger').draggable
         helper: (a, b, c) =>
-          console.log a, b, c
           (@$ '.drag-tag').clone().show().draggable('option', 'helper').draggable('option', 'revert', true)
         revert: true
         start: =>
