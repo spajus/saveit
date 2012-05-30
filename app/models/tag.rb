@@ -1,6 +1,7 @@
 class Tag < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :name, :user
+  attr_accessible :name, :user, :user_id
+  attr_accessor :bookmarks_count
 
   belongs_to :user
   has_many :taggings, dependent: :destroy
@@ -22,13 +23,13 @@ class Tag < ActiveRecord::Base
   end
 
   api_accessible :with_bookmarks_count, extend: :default do |t|
-    t.add :bookmarks_count, as: :bookmarks
+    t.add :bookmarks_count
   end
 
   def self.create_or_find(owner, tag_name)
     return nil if owner.nil?
 
-    where( name: tag_name, user_id: owner.id).first || create(name: tag_name, user: owner)
+     where( name: tag_name, user_id: owner.id).first || create(name: tag_name, user: owner)
   end
 
   def add_bookmark(bookmark)
@@ -40,12 +41,12 @@ class Tag < ActiveRecord::Base
   end
 
   def bookmarks_count
-    { count: bookmarks.count }
+    self.bookmarks.count
   end
 
-  def to_s
-    name
-  end
+  #def to_s
+  #  name
+  #end
 
   def to_param
     name.parameterize()

@@ -1,5 +1,6 @@
 class Bookmark < ActiveRecord::Base
-  attr_accessible :title, :url, :visited, :taggings, :taggings_attributes
+  attr_accessible :title, :url, :visited, :tag_names
+  attr_accessor :tag_names
 
   belongs_to :user
   has_many :taggings, dependent: :destroy
@@ -9,12 +10,11 @@ class Bookmark < ActiveRecord::Base
   validates :url, uniqueness: { scope: :user_id }
 
   after_initialize :default_values
+  after_save :assign_tags
 
   default_scope order: "created_at desc"
   scope :visited,   conditions: { visited: true }
   scope :unvisited, conditions: { visited: false }
-
-  accepts_nested_attributes_for :taggings, allow_destroy: true
 
   acts_as_api
 
@@ -23,47 +23,28 @@ class Bookmark < ActiveRecord::Base
     t.add :url
     t.add :title
     t.add :visited
+    t.add :tag_names
   end
-
-  api_accessible :with_taggings, extend: :default do |t|
-    t.add  :taggings, template: :with_tag_name
-  end
-
-  def add_tag(tag_name)
-    begin
-      t = nil
-      transaction do
-        t = Tag.create_or_find(self.user, tag_name)
-        taggings.create(tag: t)
-        # XXX: this is ugly, but I don't know how to reset obj cache :(
-        reload
-      end
-      t
-    rescue
-      return nil
-    end
-  end
-
-  def remove_tag(tag_name)
-    begin
-      tagging = self.taggings.with_tag(tag_name).first
-      tagging.destroy
-      reload
-    rescue
-      return false
-    end
-  end
-
 
   def tag_names
-    tags.collect(&:name)
+    self.tags.collect(&:name)
   end
-
 
   protected
 
   def default_values
     self.visited ||= false
+  end
+
+
+  def assign_tags
+    if @tag_names
+      tags = []
+      @tag_names.each do |t|
+        tags.push(Tag.create_or_find(self.user, t))
+      end
+      self.tags = tags
+    end
   end
 
 end

@@ -8,7 +8,6 @@ class TagsController < ApplicationController
     respond_with current_tags, api_template: :with_bookmarks_count
   end
 
-
   def create
     respond_with current_tags.create(params[:tag]), api_template: :with_bookmarks_count
   end

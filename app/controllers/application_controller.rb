@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     if current_user
       gon.current_user = current_user
       gon.user_settings = current_settings
-      gon.user_tags = current_tags
+      gon.user_tags = current_tags.as_api_response(:with_bookmarks_count)
     end
   end
 

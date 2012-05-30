@@ -13,7 +13,8 @@
   <div class="row-fluid ninja">
     <% if user_settings.getUseTags(): %>
       <div class="span6 ninja">
-        <div class="tags">&nbsp;
+      <div class="tags">&nbsp;
+        <%= @bookmark.get('tag_names').join(' ') %>
         </div>
       </div>
       <div class="span6 ninja">
