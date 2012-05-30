@@ -24,7 +24,8 @@ class Bm.Views.NewTag extends Backbone.View
     new_tag = new Bm.Models.Tag
       name: name
       bookmarks_count: 1
-    new_tag.save wait: true
+    new_tag.save {}, {wait: true}
+    console.log 'saved tag', new_tag
     @collection.add new_tag
     taggings = @bookmark.get('taggings') or []
     tagging =
@@ -32,7 +33,7 @@ class Bm.Views.NewTag extends Backbone.View
       tag_id: new_tag.get 'id'
       tag_name: new_tag.get 'name'
     taggings.push tagging
-    @bookmark.save taggings: taggings
+    @bookmark.save tags: taggings
     show_alert "Succesfully bookmarked #{@bookmark.get 'title'} with tag: #{name}", 'success'
     @modal.modal 'hide'
 
