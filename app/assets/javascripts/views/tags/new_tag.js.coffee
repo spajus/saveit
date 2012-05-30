@@ -23,8 +23,7 @@ class Bm.Views.NewTag extends Backbone.View
       return
     new_tag = new Bm.Models.Tag
       name: name
-      bookmarks:
-        count: 1
+      bookmarks_count: 1
     new_tag.save wait: true
     @collection.add new_tag
     taggings = @bookmark.get('taggings') or []
