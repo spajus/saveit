@@ -20,8 +20,8 @@ class Bm.Views.Bookmark extends Backbone.View
       taggings = @model.get 'tag_names'
       if taggings
         for tagging in taggings
-          #tag_view = new Bm.Views.BookmarkTag model: tagging
-          #console.log 'appendingtag', tagging
+          tag_view = new Bm.Views.BookmarkTag model: tagging
+          console.log 'appendingtag', tagging
           (@$ '.tags').append tag_view.render().el
 
       (@$ '.dragger').data 'bookmark', @model
