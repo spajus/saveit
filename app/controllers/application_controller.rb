@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_bookmarks
-    current_user.bookmarks
+    current_user.bookmarks.as_api_response :with_taggings
   end
 
   def current_settings
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_tags
-    current_user.tags
+    current_user.tags.as_api_response :with_bookmarks_count
   end
 
   def backbone_settings
