@@ -10,15 +10,20 @@ class Bm.Views.Tag extends Backbone.View
   id: =>
     "tag-#{@model.get 'id'}"
 
-  render: ->
+  render: =>
     @$el.html @template tag: @model
-    @$el.droppable
-      hoverClass: 'tag-hover'
-      drop: (event, ui) ->
-        ui.draggable.draggable 'option', 'revert', false
-
-        console.log 'drop', event, ui
-
+    unless @alreadyDroppable
+      @alreadyDroppable = true
+      @$el.droppable
+        hoverClass: 'tag-hover'
+        drop: (event, ui) =>
+          ui.draggable.draggable 'option', 'revert', false
+          bookmark = ui.draggable.data 'bookmark'
+          tag_names = bookmark.get('tag_names') or []
+          tag_names.push @model.get 'name'
+          bookmark.save tag_names: tag_names, {wait: true}
+          bookmark.trigger 'change'
+          @collection.fetch()
     @
 
   removeTag: (event) ->

@@ -9,7 +9,7 @@ class Bm.Views.Bookmark extends Backbone.View
     'click a.close': 'removeBookmark'
 
   initialize: ->
-    @model.on 'change', @render
+    @model.on 'change', @renderTags
 
   id: =>
     "bookmark-#{@model.get 'id'}"
@@ -18,15 +18,7 @@ class Bm.Views.Bookmark extends Backbone.View
     @$el.html @template(bookmark: @model)
     tag_bar = ($ '#tag-bar')
     if user_settings.getUseTags
-
-      # Draw existing tags
-      taggings = @model.get 'tag_names'
-      if taggings.length > 0
-        for tagging in taggings
-          tag_view = new Bm.Views.BookmarkTag tag: tagging
-          tag = tag_view.render().el
-          console.log 'appendingtag', tag
-          (@$ '.tags').append tag
+      @renderTags()
 
       (@$ '.dragger').data 'bookmark', @model
       (@$ '.dragger').draggable
@@ -40,6 +32,17 @@ class Bm.Views.Bookmark extends Backbone.View
           tag_bar.removeClass 'drag-start'
           @$el.removeClass 'drag-start'
     @
+
+  renderTags: =>
+    # Draw existing tags
+    (@$ '.tags').empty()
+    taggings = @model.get 'tag_names'
+    if taggings.length > 0
+      for tagging in taggings
+        tag_view = new Bm.Views.BookmarkTag tag: tagging
+        (@$ '.tags').append tag_view.render().el
+
+
 
   openBookmark: (event) ->
     event.preventDefault()
