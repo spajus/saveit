@@ -67,8 +67,15 @@ class Bm.Views.Bookmark extends Backbone.View
       @model.destroy()
 
   removeTag: (event) =>
+    event.preventDefault()
     tag_names = @model.get 'tag_names'
     tag = $(event.target).data 'tag'
+    remove = true
+    if user_settings.getConfirmDelete()
+      unless confirm "Are you sure you want to remove tag: '#{tag}?"
+        remove = false
+    unless remove
+      return
     for tag_name, i in tag_names
       if tag_name is tag
         tag_names.splice i, 1
