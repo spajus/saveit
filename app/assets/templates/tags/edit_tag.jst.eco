@@ -1,0 +1,4 @@
+<td>
+<span class="badge"><%= @tag.get('bookmarks_count') %></span> <input class="tag-name" value="<%= @tag.get 'name' %>"> <a class="close">&times;</a>
+</td>
+

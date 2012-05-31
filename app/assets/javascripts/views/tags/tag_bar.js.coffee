@@ -26,6 +26,8 @@ class Bm.Views.TagBar extends Backbone.View
         event.preventDefault()
         new_tag_view = new Bm.Views.NewTag(collection: @collection).render()
         new_tag_view.setBookmark ui.draggable.data 'bookmark'
+        dropZone.before new_tag_view.el
+        new_tag_view.focus()
         ui.draggable.draggable 'option', 'revert', false
 
   appendTag: (tag) =>
