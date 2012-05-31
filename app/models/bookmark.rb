@@ -1,4 +1,5 @@
 class Bookmark < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
   attr_accessible :title, :url, :visited, :tag_names
   attr_accessor :tag_names
 
@@ -24,7 +25,7 @@ class Bookmark < ActiveRecord::Base
     t.add :title
     t.add :visited
     t.add :tag_names
-    t.add :created_at
+    t.add lambda{ |b| b.distance_of_time_in_words_to_now(b.created_at) + " ago" }, as: :created_at
   end
 
   def tag_names
