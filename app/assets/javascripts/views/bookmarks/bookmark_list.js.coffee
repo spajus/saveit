@@ -28,13 +28,11 @@ class Bm.Views.BookmarksList extends Backbone.View
         model: bookmark
         collection: @collection
       (@$ 'tbody').prepend view.render().el
+    @
 
   removeBookmark: (bookmark) =>
     view = new Bm.Views.Bookmark
       model: bookmark
       collection: @collection
     (@$ '#' + view.id()).remove()
-
-
-
-
+    @

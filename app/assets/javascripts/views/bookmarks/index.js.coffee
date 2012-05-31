@@ -14,20 +14,27 @@ class Bm.Views.BookmarksIndex extends Backbone.View
 
   initialize: ->
 
+    @tag_collection = new Bm.Collections.Tags()
+    @tag_collection.reset gon.user_tags or []
+
     @unvisited_collection = new Bm.Collections.UnvisitedBookmarks()
     @unvisited_collection.reset gon.unvisited_bookmarks
     @unvisited_collection.on 'open-bookmark', @openBookmark
+    @unvisited_collection.on 'tags-changed', =>
+      @tag_collection.fetch()
 
     @visited_collection = new Bm.Collections.VisitedBookmarks()
     @visited_collection.reset gon.visited_bookmarks
     @visited_collection.on 'open-bookmark', @openBookmark
+    @visited_collection.on 'tags-changed', =>
+      @tag_collection.fetch()
 
-    @tag_collection = new Bm.Collections.Tags()
-    @tag_collection.reset gon.user_tags or []
 
     @tag_collection.on 'remove', =>
       @unvisited_collection.fetch()
       @visited_collection.fetch()
+
+
 
     window.collections = [@unvisited_collection, @visited_collection, @tag_collection]
 

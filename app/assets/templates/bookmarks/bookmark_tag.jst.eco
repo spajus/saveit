@@ -1,1 +1,1 @@
-<span class="label"><%= @tag %></span>
+<span class="tag label"><%= @tag %> <a class="remove" href="#" data-tag="<%= @tag %>">&times;</a></span>

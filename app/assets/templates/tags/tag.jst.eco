@@ -1,4 +1,4 @@
 <td>
-<a class="link" href="/tags/<%= @tag.getSlug() %>"><span class="badge"><%= @tag.get('bookmarks_count') %></span> <%= @tag.get 'name' %></a> <a class="close">&times;</a>
+<span class="badge"><%= @tag.get('bookmarks_count') %></span> <a class="link" href="/tags/<%= @tag.getSlug() %>"><%= @tag.get 'name' %></a> <a class="close">&times;</a>
 </td>
 

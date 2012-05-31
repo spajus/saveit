@@ -7,6 +7,7 @@ class Bm.Views.Bookmark extends Backbone.View
   events:
     'click a.link': 'openBookmark'
     'click a.close': 'removeBookmark'
+    'click a.remove': 'removeTag'
 
   initialize: ->
     @model.on 'change', @renderTags
@@ -46,8 +47,6 @@ class Bm.Views.Bookmark extends Backbone.View
         tag_view = new Bm.Views.BookmarkTag tag: tagging
         (@$ '.tags').append tag_view.render().el
 
-
-
   openBookmark: (event) ->
     event.preventDefault()
     visited = @model.get 'visited'
@@ -66,4 +65,14 @@ class Bm.Views.Bookmark extends Backbone.View
     if remove
       @collection.remove @model
       @model.destroy()
+
+  removeTag: (event) =>
+    tag_names = @model.get 'tag_names'
+    tag = $(event.target).data 'tag'
+    for tag_name, i in tag_names
+      if tag_name is tag
+        tag_names.splice i, 1
+    @model.save tag_names: tag_names, {wait: true}
+    @collection.trigger 'tags-changed'
+    @renderTags()
 
