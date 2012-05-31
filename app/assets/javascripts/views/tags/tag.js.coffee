@@ -32,6 +32,5 @@ class Bm.Views.Tag extends Backbone.View
       unless confirm "Are you sure you want to delete tag: '#{@model.get 'name'}'?"
         remove = false
     if remove
-      @collection.remove @model
-      @model.destroy()
+      @model.destroy wait: true
 

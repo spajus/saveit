@@ -25,6 +25,10 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     @tag_collection = new Bm.Collections.Tags()
     @tag_collection.reset gon.user_tags or []
 
+    @tag_collection.on 'remove', =>
+      @unvisited_collection.fetch()
+      @visited_collection.fetch()
+
     window.collections = [@unvisited_collection, @visited_collection, @tag_collection]
 
     user_settings.on 'change', @render
