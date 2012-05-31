@@ -23,6 +23,9 @@ class Bm.Views.TagBar extends Backbone.View
     (@$ '.add-tag-zone').droppable
       hoverClass: 'tag-hover'
       drop: (event, ui) =>
+        if (@$ '.tag-name').length > 0
+          show_alert 'You are already creating a tag!', 'error'
+          return
         event.preventDefault()
         new_tag_view = new Bm.Views.NewTag(collection: @collection).render()
         new_tag_view.setBookmark ui.draggable.data 'bookmark'
