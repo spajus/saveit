@@ -16,7 +16,7 @@ class Bm.Views.TagBar extends Backbone.View
     list = @$ 'tbody.tags'
     dropZone = list.children().first()
 
-    @collection.each (tag) ->
+    @collection.each (tag) =>
       view = new Bm.Views.Tag
         model: tag
         collection: @collection
