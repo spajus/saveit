@@ -5,7 +5,7 @@
 
   <div class="row-fluid ninja">
       <div class="span12 ninja">
-        <a class="link" href="<%= @bookmark.get 'url' %>"><%= @bookmark.get('title') or @bookmark.get('url') %></a>
+        <a class="link" href="<%= @bookmark.get 'url' %>"><%- @bookmark.get('title') or @bookmark.get('url') %></a>
         <a class="close">&times;</a>
       </div>
   </div>
