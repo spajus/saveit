@@ -46,6 +46,11 @@ class Bm.Views.BookmarksIndex extends Backbone.View
 
     user_settings.on 'change', @render
 
+    search = new Bm.Views.Search
+      unvisited: @unvisited_collection,
+      visited: @visited_collection
+
+
   showTag: (tag) =>
     @unvisited_collection.setSelectedTag tag
     @visited_collection.setSelectedTag tag

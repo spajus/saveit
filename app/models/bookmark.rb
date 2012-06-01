@@ -16,8 +16,8 @@ class Bookmark < ActiveRecord::Base
   default_scope order: "bookmarks.created_at desc"
 
   scope :visited, lambda {|value| where('visited = (?)', value)}
-
-  scope :tagged_with, lambda {|value| includes(:tags).where('tags.name = (?)', value) if value}
+  scope :tagged_with, lambda {|value| joins(:tags).where('tags.name = (?)', value) if value}
+  scope :query, lambda {|value| where('title like (?) OR url like (?)', "%#{value}%", "%#{value}%") if value}
 
   acts_as_api
 

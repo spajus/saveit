@@ -12,6 +12,10 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
     else
       @tag = null
 
+  setQuery: (query) ->
+    @query = query
+
+
   reset: (data, options) =>
     if options.cleanup and @tag
       cleansed = []
@@ -28,8 +32,8 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
 
   _buildFetchParams: (initial={}) =>
     data = initial.data or {}
-    if @tag
-      data.tag = @tag
+    data.tag = @tag if @tag
+    data.query = @query if @query
     data.visited = @visited
     initial.data = data
     initial

@@ -6,7 +6,8 @@ class BookmarksController < ApplicationController
   def index
     visited = params[:visited] == "true"
     tag = params[:tag]
-    bookmarks = current_bookmarks.visited(visited).tagged_with(tag)
+    query = params[:query]
+    bookmarks = current_bookmarks.visited(visited).tagged_with(tag).query(query)
     respond_with bookmarks, api_template: :default
   end
 
