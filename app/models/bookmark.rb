@@ -13,9 +13,11 @@ class Bookmark < ActiveRecord::Base
   after_initialize :default_values
   after_save :assign_tags
 
-  default_scope order: "created_at desc"
-  scope :visited,   conditions: { visited: true }
-  scope :unvisited, conditions: { visited: false }
+  default_scope order: "bookmarks.created_at desc"
+
+  scope :visited, lambda {|value| where('visited = (?)', value)}
+
+  scope :tagged_with, lambda {|value| includes(:tags).where('tags.name = (?)', value) if value}
 
   acts_as_api
 

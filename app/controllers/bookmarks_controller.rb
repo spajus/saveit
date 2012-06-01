@@ -4,18 +4,10 @@ class BookmarksController < ApplicationController
   respond_to :json
 
   def index
-    respond_with current_bookmarks, api_template: :default
-  end
-
-  def filter
-    case params[:type]
-      when 'visited'
-        respond_with current_bookmarks.visited, api_template: :default
-      when 'unvisited'
-        respond_with current_bookmarks.unvisited, api_template: :default
-      else
-        raise "Unsupported bookmark type: #{params[:type]}"
-    end
+    visited = params[:visited] == "true"
+    tag = params[:tag]
+    bookmarks = current_bookmarks.visited(visited).tagged_with(tag)
+    respond_with bookmarks, api_template: :default
   end
 
   def show

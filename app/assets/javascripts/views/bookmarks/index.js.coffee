@@ -12,33 +12,45 @@ class Bm.Views.BookmarksIndex extends Backbone.View
       JST['bookmarks/index']
 
 
-  initialize: ->
-
+  initialize: (opts) ->
     @tag_collection = new Bm.Collections.Tags()
+    @unvisited_collection = new Bm.Collections.Bookmarks visited: false
+    @visited_collection = new Bm.Collections.Bookmarks visited: true
+
+    tag = opts.tag
+    if user_settings.getUseTags() and tag
+      @tag_collection.setSelectedTag tag
+      @unvisited_collection.setSelectedTag tag
+      @visited_collection.setSelectedTag tag
+
+
     @tag_collection.reset gon.user_tags or []
-
-    @unvisited_collection = new Bm.Collections.UnvisitedBookmarks()
-    @unvisited_collection.reset gon.unvisited_bookmarks
-    @unvisited_collection.on 'open-bookmark', @openBookmark
-    @unvisited_collection.on 'tags-changed', =>
-      @tag_collection.fetch()
-
-    @visited_collection = new Bm.Collections.VisitedBookmarks()
-    @visited_collection.reset gon.visited_bookmarks
-    @visited_collection.on 'open-bookmark', @openBookmark
-    @visited_collection.on 'tags-changed', =>
-      @tag_collection.fetch()
-
-
     @tag_collection.on 'remove', =>
       @unvisited_collection.fetch()
       @visited_collection.fetch()
 
+    @unvisited_collection.reset gon.unvisited_bookmarks, cleanup: true
+    @visited_collection.reset gon.visited_bookmarks, cleanup: true
+
+    @unvisited_collection.on 'open-bookmark', @openBookmark
+    @visited_collection.on 'open-bookmark', @openBookmark
+
+    @unvisited_collection.on 'tags-changed', =>
+      @tag_collection.fetch()
+
+    @visited_collection.on 'tags-changed', =>
+      @tag_collection.fetch()
 
 
     window.collections = [@unvisited_collection, @visited_collection, @tag_collection]
 
     user_settings.on 'change', @render
+
+  showTag: (tag) =>
+    @unvisited_collection.setSelectedTag tag
+    @visited_collection.setSelectedTag tag
+    @unvisited_collection.fetch()
+    @visited_collection.fetch()
 
   render: =>
 

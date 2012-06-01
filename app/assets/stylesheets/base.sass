@@ -51,6 +51,17 @@ body
     margin-bottom: 0px
     margin-top: 0px
 
+  .tag
+    a.close
+      display: none
+    .selected
+      background-color: $white
+      a.link
+        font-weight: bold
+  .tag:hover
+    a.close
+      display: inline-block
+
   .tag-hover
     .badge
       @extend .badge-success

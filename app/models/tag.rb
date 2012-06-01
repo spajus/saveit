@@ -9,7 +9,7 @@ class Tag < ActiveRecord::Base
 
   validates :name, uniqueness: { scope: :user_id }
 
-  default_scope order: "created_at desc"
+  default_scope order: "lower(tags.name) asc"
 
   acts_as_api
 

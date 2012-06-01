@@ -79,7 +79,9 @@ class Bm.Views.Bookmark extends Backbone.View
     for tag_name, i in tag_names
       if tag_name is tag
         tag_names.splice i, 1
-    @model.save tag_names: tag_names, {wait: true}
-    @collection.trigger 'tags-changed'
-    @renderTags()
+    @model.save tag_names: tag_names,
+      wait: true
+      success: =>
+        @collection.trigger 'tags-changed'
+        @renderTags()
 

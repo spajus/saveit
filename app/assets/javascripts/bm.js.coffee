@@ -4,7 +4,7 @@ window.Bm =
   Views: {}
   Routers: {}
   init: ->
-    new Bm.Routers.Bookmarks()
+    window.app = new Bm.Routers.Bookmarks()
     Bm.Views.Settings.init()
     Backbone.history.start pushState: true
 

@@ -31,9 +31,11 @@ class Bm.Views.NewTag extends Backbone.View
       return
     tag_names = @bookmark.get 'tag_names'
     tag_names.push name
-    @bookmark.save tags_names: tag_names, {wait: true}
-    @$el.remove()
-    @collection.fetch()
+    @bookmark.save tags_names: tag_names,
+      wait: true
+      success: =>
+        @$el.remove()
+        @collection.fetch()
 
     show_alert "Succesfully bookmarked #{@bookmark.get 'title'} with tag: #{name}", 'success'
 

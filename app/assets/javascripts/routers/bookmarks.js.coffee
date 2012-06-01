@@ -1,13 +1,20 @@
 class Bm.Routers.Bookmarks extends Backbone.Router
   routes:
     '': 'index'
-    '_=_': 'index' # Damn Facebook
-    'bookmarks/:id': 'show'
+    '_=_': 'indexFix' # Damn Facebook
+    'tags/:tag': 'index'
 
-  index: ->
-    view = new Bm.Views.BookmarksIndex collection: @collection
+  index: (tag, fetch) ->
+    view = new Bm.Views.BookmarksIndex
+      tag: tag
+      fetch: fetch
     view.render()
+    @index = view
 
-  show: (id) ->
-    alert "show #{id}"
+
+  indexFix: ->
+    @navigate '/'
+    @index()
+
+
 

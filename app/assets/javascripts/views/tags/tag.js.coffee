@@ -6,6 +6,7 @@ class Bm.Views.Tag extends Backbone.View
 
   events:
     'click a.close': 'removeTag'
+    'click a.link': 'showTag'
 
   id: =>
     "tag-#{@model.get 'id'}"
@@ -33,4 +34,17 @@ class Bm.Views.Tag extends Backbone.View
         remove = false
     if remove
       @model.destroy wait: true
+
+  showTag: (event) =>
+    event.preventDefault()
+    if @model.isSelected()
+      @model.setSelected false
+      app.navigate "/"
+      app.index.showTag()
+    else
+      @model.setSelected true
+      app.navigate "/tags/#{@model.getSlug()}"
+      app.index.showTag @model.getSlug()
+
+
 

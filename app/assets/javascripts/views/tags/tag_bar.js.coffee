@@ -11,16 +11,18 @@ class Bm.Views.TagBar extends Backbone.View
     @collection.on 'remove', @removeTag
 
   render: =>
+
     @$el.html @template()
     list = @$ 'tbody.tags'
-    dropZone = list.children().first().remove()
-    @collection.each (tag) =>
+    dropZone = list.children().first()
+
+    @collection.each (tag) ->
       view = new Bm.Views.Tag
         model: tag
         collection: @collection
-      list.append view.render().el
-    list.append dropZone
-    (@$ '.add-tag-zone').droppable
+      dropZone.before view.render().el
+
+    dropZone.droppable
       hoverClass: 'tag-hover'
       drop: (event, ui) =>
         if (@$ '.tag-name').length > 0
@@ -32,6 +34,16 @@ class Bm.Views.TagBar extends Backbone.View
         dropZone.before new_tag_view.el
         new_tag_view.focus()
         ui.draggable.draggable 'option', 'revert', false
+
+    @collection.each (tag) =>
+      tag.off 'selected'
+      tag.on 'selected', (tg) =>
+        @collection.each (t) =>
+          unless t is tg
+            t.set 'selected', false, {silent: true}
+
+        @render()
+
 
   appendTag: (tag) =>
     view = new Bm.Views.Tag

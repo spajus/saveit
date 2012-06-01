@@ -7,7 +7,6 @@ class Bm.Views.AddBookmark extends Backbone.View
 
   initialize: (opts) ->
     @inputClass = opts.inputClass
-    console.log 'input:', @inputClass
 
   render: ->
     @$el.html @template inputClass: @inputClass
