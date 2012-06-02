@@ -13,6 +13,9 @@ class Bm.Views.BookmarksList extends Backbone.View
 
   render: =>
     @$el.html @template title: @title
+    @pag = new Bm.Views.Pagination
+      collection: @collection
+      el: @$ '.pagination'
     list = @$ 'tbody'
     @collection.each (bookmark) =>
       if (bookmark.get 'visited') is @visited

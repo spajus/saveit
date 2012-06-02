@@ -1,0 +1,17 @@
+<ul>
+  <% if @current_page < 2: %>
+    <li class="disabled"><a>Prev</a></li>
+  <% else: %>
+    <li><a href="<%= @current_page - 1 %>">Prev</a></li>
+  <% end %>
+  <% for page in @pages: %>
+  <li <% if @current_page == page: %>class="active"<% end %>>
+    <a href="<%= page %>"><%= page %></a>
+  </li>
+  <% end %>
+  <% if @current_page >= @last_page: %>
+    <li class="disabled"><a>Next</a></li>
+    <% else: %>
+    <li><a href="<%= @current_page + 1 %>">Next</a></li>
+  <% end %>
+</ul>

@@ -4,7 +4,6 @@ class Bm.Views.Search extends Backbone.View
     'keydown': 'processKeydown'
 
   initialize: (opts) ->
-    console.log @$el, opts
     @visited = opts.visited
     @unvisited = opts.unvisited
 

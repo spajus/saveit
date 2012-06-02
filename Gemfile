@@ -6,6 +6,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'gon'
+gem 'kaminari'
 
 gem 'sqlite3'
 gem 'yaml_db'

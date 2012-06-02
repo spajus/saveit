@@ -7,8 +7,20 @@ class BookmarksController < ApplicationController
     visited = params[:visited] == "true"
     tag = params[:tag]
     query = params[:query]
-    bookmarks = current_bookmarks.visited(visited).tagged_with(tag).query(query)
-    respond_with bookmarks, api_template: :default
+    page = params[:page]
+    per_page = params[:per_page]
+    count = params[:count]
+
+    bookmarks = current_bookmarks
+      .visited(visited)
+      .tagged_with(tag)
+      .query(query)
+
+    if count
+      return respond_with bookmarks.count
+    end
+
+    respond_with bookmarks.page(page).per(per_page), api_template: :default
   end
 
   def show
