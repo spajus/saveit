@@ -21,12 +21,16 @@ class Bm.Views.Tag extends Backbone.View
           ui.draggable.draggable 'option', 'revert', false
           bookmark = ui.draggable.data 'bookmark'
           tag_names = bookmark.get('tag_names') or []
-          tag_names.push @model.get 'name'
-          bookmark.save tag_names: tag_names,
-            wait: true
-            success: =>
-              bookmark.trigger 'change'
-              @collection.fetch()
+          tag_name = @model.get 'name'
+          unless tag_name in tag_names
+            tag_names.push @model.get 'name'
+            bookmark.save tag_names: tag_names,
+              wait: true
+              success: =>
+                bookmark.trigger 'change'
+                @collection.fetch()
+          else
+            ui.draggable.draggable 'option', 'revert', true
     @
 
   removeTag: (event) ->
