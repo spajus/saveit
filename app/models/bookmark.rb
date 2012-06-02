@@ -17,7 +17,7 @@ class Bookmark < ActiveRecord::Base
 
   scope :visited, lambda {|value| where('visited = (?)', value)}
   scope :tagged_with, lambda {|value| joins(:tags).where('tags.name = (?)', value) if value}
-  scope :query, lambda {|value| where('title like (?) OR url like (?)', "%#{value}%", "%#{value}%") if value}
+  scope :query, lambda {|value| where('lower(title) like (?) OR lower(url) like (?)', "%#{value.downcase}%", "%#{value.downcase}%") if value}
 
   acts_as_api
 
