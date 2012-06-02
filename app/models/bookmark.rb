@@ -8,7 +8,7 @@ class Bookmark < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   validates_presence_of :url
-  validates :url, uniqueness: { scope: :user_id }
+  validates :url, uniqueness: { scope: :user_id, case_sensitive: false }
 
   after_initialize :default_values
   after_save :assign_tags
