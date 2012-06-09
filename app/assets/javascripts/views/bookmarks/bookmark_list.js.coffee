@@ -34,8 +34,6 @@ class Bm.Views.BookmarksList extends Backbone.View
     @
 
   removeBookmark: (bookmark) =>
-    view = new Bm.Views.Bookmark
-      model: bookmark
-      collection: @collection
-    (@$ '#' + view.id()).remove()
+    @collection.fetch()
+    @collection.trigger 'tags-changed' # Tag bar needs to know
     @

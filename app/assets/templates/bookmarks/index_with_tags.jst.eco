@@ -31,7 +31,7 @@
 
   </div>
 
-  <div class="span2">
+  <div class="span2 overflow-auto">
     <div id="tag-bar"></div>
   </div>
 

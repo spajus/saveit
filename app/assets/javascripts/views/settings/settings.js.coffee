@@ -9,6 +9,7 @@ class Bm.Views.Settings extends Backbone.View
     @$el.html @template()
     @
 
+    @_loadSetting 'pageSize', 10
     @_loadSetting 'linkTarget', 'same'
     @_loadSetting 'confirmDelete', 'confirm'
     @_loadSetting 'useTags', 'false'
@@ -18,6 +19,7 @@ class Bm.Views.Settings extends Backbone.View
   save: (event) ->
     event.preventDefault()
 
+    @_saveSetting 'pageSize'
     @_saveSetting 'linkTarget'
     @_saveSetting 'confirmDelete'
     @_saveSetting 'useTags'

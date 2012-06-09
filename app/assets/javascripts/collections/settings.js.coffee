@@ -28,3 +28,6 @@ class Bm.Collections.Settings extends Backbone.Collection
   getUseTags: ->
     (@getSettingValue 'useTags', 'false') is 'true'
 
+  getPageSize: ->
+    parseInt(@getSettingValue 'pageSize', 10)
+

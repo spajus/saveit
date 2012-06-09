@@ -6,7 +6,7 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
   initialize: (opts) ->
     @visited = opts.visited or false
     @page = opts.page or 1
-    @per_page = opts.per_page or 10
+    @per_page = opts.per_page or user_settings.getPageSize()
 
   setPage: (page) =>
     @page = parseInt(page)
@@ -18,6 +18,12 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
 
   getPerPage: =>
     @per_page
+
+  updatePageSize: (page_size) =>
+    unless @per_page is page_size
+      @page = 1
+      @per_page = page_size
+      @fetch()
 
   getCount: (callback) =>
     count_req = @fetch data:

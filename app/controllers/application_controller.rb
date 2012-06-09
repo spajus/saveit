@@ -31,6 +31,11 @@ class ApplicationController < ActionController::Base
     current_user.settings
   end
 
+  def current_page_size
+    per_page = current_settings.find_by_key("pageSize")
+    per_page = per_page.nil? ? 10 : per_page.value
+  end
+
   def current_tags
     current_user.tags
   end
