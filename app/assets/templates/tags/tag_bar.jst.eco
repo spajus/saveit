@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table <% if @tag_count > 20: %>table-condensed<% end %>">
   <thead>
     <tr>
       <th><i class="icon-tags"></i> Tags</th>

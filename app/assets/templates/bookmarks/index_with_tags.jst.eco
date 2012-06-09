@@ -19,11 +19,11 @@
 
     <div class="row-fluid">
 
-      <div class="span6">
+      <div class="span6 overflow-auto">
         <div id="bookmarks-unread"></div>
       </div>
 
-      <div class="span6">
+      <div class="span6 overflow-auto">
         <div id="bookmarks-read"></div>
       </div>
 
