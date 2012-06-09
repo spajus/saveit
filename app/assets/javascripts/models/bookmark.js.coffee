@@ -1,5 +1,48 @@
 class Bm.Models.Bookmark extends Backbone.Model
 
+  bookmarkTypes:
+    video: 
+      hosts: [
+        'youtube'
+        'metacafe'
+        'vimeo'
+      ]
+      icon: '<i class="icon-film"></i>'
+    photo:
+      hosts: [
+        'photo'
+        'flickr'
+        '9gag'
+      ]
+      icon: '<i class="icon-camera"></i>'
+    github:
+      hosts: [
+        '.*github'
+      ]
+      icon: '<i class="icon-github"></i>'
+    facebook:
+      hosts: [
+        'facebook'
+      ]
+      icon: '<i class="icon-facebook-sign"></i>'
+    google:
+      hosts: [
+        'google'
+      ]
+      icon: '<i class="icon-google-plus"></i>'
+    linkedin:
+      hosts: [
+        'linkedin'
+      ]
+      icon: '<i class="icon-linkedin-sign"></i>'
+    twitter:
+      hosts: [
+        'twitter'
+      ]
+      icon: '<i class="icon-twitter"></i>'
+
+  defaultIcon: '<i class="icon-globe"></i>'
+
   urlRoot: '/api/bookmarks'
 
   validate: (attrs) ->
@@ -12,4 +55,17 @@ class Bm.Models.Bookmark extends Backbone.Model
 
   getCreatedAt: ->
     created_at = @get 'created_at'
+
+  getIcon: ->
+    url = (@get 'url')
+      .toLowerCase()
+      .replace(/^.*\/\/(www\.)?/, '')
+      .replace(/\/.*/, '')
+    for type of @bookmarkTypes
+      type = @bookmarkTypes[type]
+      for host in type.hosts
+        if url.match host
+          return type.icon
+    return @defaultIcon
+
 

@@ -34,6 +34,16 @@ class Bm.Views.BookmarksList extends Backbone.View
     @
 
   removeBookmark: (bookmark) =>
-    @collection.fetch()
+    view = new Bm.Views.Bookmark
+      model: bookmark
+      collection: @collection
+    (@$ '#' + view.id()).remove()
     @collection.trigger 'tags-changed' # Tag bar needs to know
+    if @collection.size() is 0
+      setTimeout  =>
+          page = @collection.getPage()
+          if page > 1
+            @collection.setPage page - 1
+          @collection.fetch()
+        , 10
     @
