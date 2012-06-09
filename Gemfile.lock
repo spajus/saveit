@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/spajus/compass-twitter-bootstrap.git
-  revision: 4cca6c764580916a20735afd5f6c3b464d5b1917
+  revision: 90c37d16515cc3e52a649777ef9db82cb68a6776
   specs:
     compass_twitter_bootstrap (2.0.3)
       compass
