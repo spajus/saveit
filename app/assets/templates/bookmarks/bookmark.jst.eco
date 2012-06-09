@@ -1,6 +1,6 @@
 <td>
 
-  <div class="dragger">
+  <div <% if user_settings.getUseTags(): %>class="dragger"<% end %>>
 
     <% if user_settings.getUseTags(): %>
       <div class="drag-tag">
