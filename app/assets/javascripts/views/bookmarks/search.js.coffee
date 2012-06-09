@@ -14,6 +14,13 @@ class Bm.Views.Search extends Backbone.View
     else if event.keyCode is 13
       event.preventDefault()
       @search()
+    else
+      @searchTimeout()
+
+  searchTimeout: =>
+    if @searchTimer
+      clearTimeout @searchTimer
+    @searchTimer = setTimeout @search, 300
 
   search: =>
     query = @$el.val()
