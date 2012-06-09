@@ -39,7 +39,7 @@ class Bm.Models.Bookmark extends Backbone.Model
         'last\.fm'
         'discogs'
       ]
-      icon: '<i class="icon-film"></i>'
+      icon: '<i class="icon-music"></i>'
     video:
       hosts: [
         'youtube'
