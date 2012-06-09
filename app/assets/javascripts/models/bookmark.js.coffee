@@ -1,13 +1,57 @@
 class Bm.Models.Bookmark extends Backbone.Model
 
+  ###
+    Used to resolve the icon
+    if fullUrl is true, hosts are matched to complete url, otherwise only
+    hostname part is used, without www
+  ###
   bookmarkTypes:
-    video: 
+    image:
+      fullUrl: true
+      hosts: [
+        /\.jpe?g$/
+        /\.png$/
+        /\.gif$/
+        /\.bmp$/
+      ]
+      icon: '<i class="icon-picture"></i>'
+    document:
+      fullUrl: true
+      hosts: [
+        /\.pdf$/
+        /\.doc$/
+        /\.xls$/
+        /\.epub$/
+      ]
+      icon: '<i class="icon-file"></i>'
+    audio:
+      fullUrl: true
+      hosts: [
+        /\.mp3$/
+        /\.m3u$/
+      ]
+      icon: '<i class="icon-music"></i>'
+    music:
+      hosts: [
+        'soundcloud'
+        'beatport'
+        'itunes'
+        'last\.fm'
+        'discogs'
+      ]
+      icon: '<i class="icon-film"></i>'
+    video:
       hosts: [
         'youtube'
         'metacafe'
         'vimeo'
       ]
       icon: '<i class="icon-film"></i>'
+    mail:
+      hosts: [
+        /^mail\./
+      ]
+      icon: '<i class="icon-envelope"></i>'
     photo:
       hosts: [
         'photo'
@@ -57,14 +101,18 @@ class Bm.Models.Bookmark extends Backbone.Model
     created_at = @get 'created_at'
 
   getIcon: ->
-    url = (@get 'url')
+    full_url = @get 'url'
+    url = full_url
       .toLowerCase()
       .replace(/^.*\/\/(www\.)?/, '')
       .replace(/\/.*/, '')
     for type of @bookmarkTypes
       type = @bookmarkTypes[type]
+      match_url = url
+      if type.fullUrl
+        match_url = full_url
       for host in type.hosts
-        if url.match host
+        if match_url.match host
           return type.icon
     return @defaultIcon
 
