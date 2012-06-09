@@ -23,17 +23,24 @@ class Bm.Views.Bookmark extends Backbone.View
       dragger = @$ '.dragger'
       dragger.data 'bookmark', @model
       dragger.draggable
-        helper: (a, b, c) =>
+        helper: (event) =>
+          console.log event
           (@$ '.drag-tag')
             .clone()
             .show()
+            .width(200)
             .draggable('option', 'helper')
             .draggable('option', 'revert', true)
         revert: true
-        start: =>
+        cursorAt:
+          left: 100
+          top: 20
+        containment: 'document'
+        start: (event, ui) =>
+          ($ ui.helper).animate opacity: 0.7
           tag_bar.addClass 'drag-start'
           @$el.addClass 'drag-start'
-        stop: =>
+        stop: (event, ui) =>
           tag_bar.removeClass 'drag-start'
           @$el.removeClass 'drag-start'
     @
