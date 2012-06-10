@@ -100,22 +100,22 @@ class Bm.Models.Bookmark extends Backbone.Model
   getCreatedAt: ->
     created_at = @get 'created_at'
 
-  getIcon: ->
-    unless @icon
-      full_url = @get 'url'
-      url = full_url
-        .toLowerCase()
-        .replace(/^.*\/\/(www\.)?/, '')
-        .replace(/\/.*/, '')
-      for type of @bookmarkTypes
-        type = @bookmarkTypes[type]
-        match_url = url
-        if type.fullUrl
-          match_url = full_url
-        for host in type.hosts
-          if match_url.match host
-            @icon = type.icon
-            return @icon
-    return @icon
+  getIcon: =>
+    if @icon
+      return @icon
+    full_url = @get 'url'
+    url = full_url
+      .toLowerCase()
+      .replace(/^.*\/\/(www\.)?/, '')
+      .replace(/\/.*/, '')
+    for type of @bookmarkTypes
+      type = @bookmarkTypes[type]
+      match_url = url
+      if type.fullUrl
+        match_url = full_url
+      for host in type.hosts
+        if match_url.match host
+          @icon = type.icon
+          return @icon
 
 

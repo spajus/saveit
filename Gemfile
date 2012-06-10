@@ -37,7 +37,12 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'rspec-rails'
   gem 'jasmine-rails'
+  # Guard requires FSEvent on OSX
+  gem 'growl'
+  gem 'rb-fsevent', require: false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec'
   gem 'guard-rails-assets'
   gem 'guard-jasmine-headless-webkit'
 end
