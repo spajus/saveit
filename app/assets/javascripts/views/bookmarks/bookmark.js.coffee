@@ -10,7 +10,7 @@ class Bm.Views.Bookmark extends Backbone.View
     'click a.remove': 'removeTag'
 
   initialize: ->
-    @model.on 'change', @renderTags
+    @model.on 'change',  @renderTags
 
   id: =>
     "bookmark-#{@model.get 'id'}"

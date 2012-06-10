@@ -117,5 +117,8 @@ class Bm.Models.Bookmark extends Backbone.Model
         if match_url.match host
           @icon = type.icon
           return @icon
+    @icon = @defaultIcon
+    return @icon
+
 
 
