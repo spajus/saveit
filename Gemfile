@@ -36,14 +36,11 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
-#group :test, :development do
-  #gem 'rspec-rails'
-  # Guard requires FSEvent on OSX
-  #gem 'growl'
-  #gem 'rb-fsevent', require: false if RUBY_PLATFORM =~ /darwin/i
-  #gem 'guard-rspec'
-  #gem 'jasmine-rails'
-#end
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'sinon-rails'
+  gem 'jasminerice'
+end
 
 group :production do
   gem 'pg'

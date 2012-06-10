@@ -16,7 +16,7 @@ class Bm.Views.Bookmark extends Backbone.View
     "bookmark-#{@model.get 'id'}"
 
   render: =>
-    @$el.html @template(bookmark: @model)
+    @$el.html @template bookmark: @model
     tag_bar = ($ '#tag-bar')
     if user_settings.getUseTags
       @renderTags()

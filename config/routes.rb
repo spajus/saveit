@@ -21,7 +21,7 @@ Bm::Application.routes.draw do
 
   match "/signout" => "sessions#destroy", :as => :signout
 
-  #mount JasmineRails::Engine => "/specs" unless Rails.env.production?
+  mount Jasminerice::Engine => "/specs" unless Rails.env.production?
 
   # This should go last. It's for the main backbone app
   match "*path" => "home#index"

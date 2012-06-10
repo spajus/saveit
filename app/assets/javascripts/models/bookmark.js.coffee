@@ -104,6 +104,7 @@ class Bm.Models.Bookmark extends Backbone.Model
     if @icon
       return @icon
     full_url = @get 'url'
+    return '' unless full_url
     url = full_url
       .toLowerCase()
       .replace(/^.*\/\/(www\.)?/, '')
