@@ -47,7 +47,7 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
   reset: (data, options) =>
     if data is @models
       return false
-    if options.cleanup and @tag
+    if options?.cleanup and @tag
       cleansed = []
       for datum in data
         for tag in datum.tag_names

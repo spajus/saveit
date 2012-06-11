@@ -16,6 +16,7 @@
 #= require_tree ./
 #= require sinon
 
+
 @JST = []
 @gon =
   user_settings: []
@@ -24,13 +25,20 @@
 
 @server = sinon.fakeServer.create()
 
-@test_bookmarks = []
-@test_bookmarks.push new Bm.Models.Bookmark
-  id: 1
-  title: 'Some title'
-  url: 'http://example.com'
-  tag_names: ['one', 'two']
-  created_at: '1 minute ago'
-  visited: false
+@test_bookmarks =
+  example_com: new Bm.Models.Bookmark
+    id: 1
+    title: 'Some title'
+    url: 'http://example.com'
+    tag_names: ['one', 'two']
+    created_at: '1 minute ago'
+    visited: false
+  spy_link: new Bm.Models.Bookmark
+    id: 2
+    title: 'Open me from javascript'
+    url: 'http://fake.url'
+    created_at: '2 minutes ago'
+    visited: false
 
-($ 'body').append '<div id="container"></div>'
+$ ->
+  ($ 'body').append '<div id="container"></div>'

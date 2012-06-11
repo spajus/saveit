@@ -24,7 +24,6 @@ class Bm.Views.Bookmark extends Backbone.View
       dragger.data 'bookmark', @model
       dragger.draggable
         helper: (event) =>
-          console.log event
           (@$ '.drag-tag')
             .clone()
             .show()
@@ -49,7 +48,7 @@ class Bm.Views.Bookmark extends Backbone.View
     # Draw existing tags
     (@$ '.tags').html('&nbsp;')
     taggings = @model.get 'tag_names'
-    if taggings.length > 0
+    if taggings?.length > 0
       for tagging in taggings
         tag_view = new Bm.Views.BookmarkTag tag: tagging
         (@$ '.tags').append tag_view.render().el
@@ -58,9 +57,7 @@ class Bm.Views.Bookmark extends Backbone.View
     event.preventDefault()
     visited = @model.get 'visited'
     unless visited
-      # We will remove this model from collection and add it again,
-      # so list views will refresh themselves
-      @model.set 'visited': true
+      @model.set 'visited', true
       @model.save()
     @collection.trigger 'open-bookmark', @model, visited: visited
 

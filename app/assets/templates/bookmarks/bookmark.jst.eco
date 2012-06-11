@@ -19,6 +19,8 @@
       </div>
     <% end %>
 
+    <div class="bookmark-content">
+
       <div class="row-fluid ninja">
           <div class="span12 ninja">
             <%- @bookmark.getIcon() %>
@@ -45,6 +47,8 @@
           </div>
         <% end %>
       </div>
+    </div>
+
   </div>
 
 </td>
