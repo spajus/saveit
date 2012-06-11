@@ -37,7 +37,7 @@ class Bm.Views.NewTag extends Backbone.View
         @$el.remove()
         @collection.fetch()
 
-    show_alert "Succesfully bookmarked #{@bookmark.get 'title'} with tag: #{name}", 'success'
+    show_alert "Succesfully bookmarked <a href='#{@bookmark.get 'url'}'>#{@bookmark.get 'title'}</a> with tag: #{name}", 'success'
 
   cancel: (event) ->
     event.preventDefault()

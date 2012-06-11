@@ -10,30 +10,36 @@ class Bm.Views.Bookmark extends Backbone.View
     'click a.remove': 'removeTag'
 
   initialize: ->
-    @model.on 'change', @renderTags
+    @model.on 'change',  @renderTags
 
   id: =>
     "bookmark-#{@model.get 'id'}"
 
   render: =>
-    @$el.html @template(bookmark: @model)
+    @$el.html @template bookmark: @model
     tag_bar = ($ '#tag-bar')
     if user_settings.getUseTags
       @renderTags()
       dragger = @$ '.dragger'
       dragger.data 'bookmark', @model
       dragger.draggable
-        helper: (a, b, c) =>
+        helper: (event) =>
           (@$ '.drag-tag')
             .clone()
             .show()
+            .width(200)
             .draggable('option', 'helper')
             .draggable('option', 'revert', true)
         revert: true
-        start: =>
+        cursorAt:
+          left: 100
+          top: 20
+        containment: 'document'
+        start: (event, ui) =>
+          ($ ui.helper).animate opacity: 0.7
           tag_bar.addClass 'drag-start'
           @$el.addClass 'drag-start'
-        stop: =>
+        stop: (event, ui) =>
           tag_bar.removeClass 'drag-start'
           @$el.removeClass 'drag-start'
     @
@@ -42,7 +48,7 @@ class Bm.Views.Bookmark extends Backbone.View
     # Draw existing tags
     (@$ '.tags').html('&nbsp;')
     taggings = @model.get 'tag_names'
-    if taggings.length > 0
+    if taggings?.length > 0
       for tagging in taggings
         tag_view = new Bm.Views.BookmarkTag tag: tagging
         (@$ '.tags').append tag_view.render().el
@@ -51,9 +57,7 @@ class Bm.Views.Bookmark extends Backbone.View
     event.preventDefault()
     visited = @model.get 'visited'
     unless visited
-      # We will remove this model from collection and add it again,
-      # so list views will refresh themselves
-      @model.set 'visited': true
+      @model.set 'visited', true
       @model.save()
     @collection.trigger 'open-bookmark', @model, visited: visited
 
@@ -72,12 +76,12 @@ class Bm.Views.Bookmark extends Backbone.View
     tag = $(event.target).data 'tag'
     remove = true
     if user_settings.getConfirmDelete()
-      unless confirm "Are you sure you want to remove tag: '#{tag}?"
+      unless confirm "Are you sure you want to remove tag: '#{tag}'?"
         remove = false
     unless remove
       return
     for tag_name, i in tag_names
-      if tag_name is tag
+      if tag_name is tag.toString()
         tag_names.splice i, 1
     @model.save tag_names: tag_names,
       wait: true

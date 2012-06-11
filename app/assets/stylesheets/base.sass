@@ -22,7 +22,6 @@ $tagBarDragBg: #ecf9fd
 $tagDragHoverBg: #a2e1f6
 
 @import compass
-@import compass_twitter_bootstrap
 @import compass_twitter_bootstrap_awesome
 @import compass_twitter_bootstrap_responsive
 @import "compass/layout/stretching"
@@ -79,6 +78,8 @@ a:hover
 $lightGray: #d3d3d3
 $screamingGreen: #006400
 $lawnGreen: #7cfc00
+$borderGray: #DDD
+$cellBackground: #F9F9F9
 
 $borderRadius: 5px
 
@@ -114,6 +115,9 @@ body
 .bookmarklet
   padding: 3px 5px
 
+.overflow-auto
+  overflow: auto
+
 #tag-bar
   @extend .well
   padding: 0px
@@ -140,7 +144,7 @@ body
       @extend .badge-success
 
   .add-tag-zone
-    @include opacity(0.5)
+    @include opacity(0.75)
     padding: 25px 10px
     text-align: center
     @include border-radius($borderRadius, $borderRadius)
@@ -161,25 +165,18 @@ body
     border: 3px dashed $screamingGreen !important
     position: relative
     bottom: 0px
-  .bookmark
-    td
-      background-color: $tagBarDragBg !important
 
 .bookmark
   td
-    padding-left: 20px
     .drag-tag
       display: none
-
-    .dragger
-      position: relative
-      width: 10px
-      height: 43px
-      left: -14px
-      top: 3px
-      margin-bottom: -43px
-      background: url(image-path('dragHandle.png')) no-repeat
-      display: block
+      width: 200
+      @include border-radius($borderRadius, $borderRadius)
+      border: 1px solid $borderGray
+      padding: 8px
+      background: $cellBackground
+      .link
+        @extend a
     .tags
       .span
         display: inline

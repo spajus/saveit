@@ -8,8 +8,8 @@ class BookmarksController < ApplicationController
     tag = params[:tag]
     query = params[:query]
     page = params[:page]
-    per_page = params[:per_page]
     count = params[:count]
+    per_page = params[:per_page] or current_page_size
 
     bookmarks = current_bookmarks
       .visited(visited)

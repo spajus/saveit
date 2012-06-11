@@ -3,3 +3,7 @@
 add bm.tib.lt localhost alias to /etc/hosts
 
 
+== Running Jasmine tests
+
+bundle exec jasmine-headless-webkit --color
+

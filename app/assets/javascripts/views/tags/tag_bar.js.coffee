@@ -12,7 +12,7 @@ class Bm.Views.TagBar extends Backbone.View
 
   render: =>
 
-    @$el.html @template()
+    @$el.html @template tag_count: @collection.size()
     list = @$ 'tbody.tags'
     dropZone = list.children().first()
 

@@ -2,8 +2,16 @@ class HomeController < ApplicationController
 
   def index
     if current_user
-      gon.visited_bookmarks = current_bookmarks.visited(true).page(1).as_api_response(:default)
-      gon.unvisited_bookmarks = current_bookmarks.visited(false).page(1).as_api_response(:default)
+      gon.visited_bookmarks = current_bookmarks
+        .visited(true)
+        .page(1)
+        .per(current_page_size)
+        .as_api_response(:default)
+      gon.unvisited_bookmarks = current_bookmarks
+        .visited(false)
+        .page(1)
+        .per(current_page_size)
+        .as_api_response(:default)
     end
     render content_type: 'text/html'
   end
