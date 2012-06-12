@@ -21,6 +21,11 @@ $btnPrimaryPressedBackground: $baseColor - #050505
 $tagBarDragBg: #ecf9fd
 $tagDragHoverBg: #a2e1f6
 
+$linkNormalColor: #666
+$linkHoverColor: #333
+
+$badgeBackground: #e3e9e8 - #0c0c0c
+
 @import compass
 @import compass_twitter_bootstrap_awesome
 @import compass_twitter_bootstrap_responsive
@@ -42,16 +47,16 @@ body
   +box-shadow(#ccc 0px 0px 10px)
 
 a
-  color: #555
+  color: $linkNormalColor
   font-weight: bold
 
 a:hover
-  color: #333
+  color: $linkHoverColor
 
 .badge, .label
-  background-color: #e3e9e8 - #0a0a0a
+  background-color: $badgeBackground
   color: #fff
-  text-shadow: 0px 0px 3px #666
+  text-shadow: 0px 0px 2px #666
 
 .table
   thead th
@@ -107,7 +112,6 @@ body
 .alert-notice
   @extend .alert-info
 
-
 .label a
   color: $white
   text-decoration: none
@@ -119,6 +123,7 @@ body
   overflow: auto
 
 #tag-bar
+
   @extend .well
   padding: 0px
   table
