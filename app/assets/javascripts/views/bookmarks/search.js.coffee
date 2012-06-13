@@ -46,11 +46,11 @@ class Bm.Views.Search extends Backbone.View
       @previous_url = pathname
     query = "/search/#{encodeURIComponent(query)}"
     if pathname isnt query
-      #if $.cookie 'search-installed'
-      app.navigate query
-      #else
-      #  $.cookie 'search-installed', true, expires: 365
-      #  window.location.assign query
+      if $.cookie 'search-installed'
+        app.navigate query
+      else
+        $.cookie 'search-installed', true, expires: 365
+        window.location.assign query
     @
 
   cancel: =>
