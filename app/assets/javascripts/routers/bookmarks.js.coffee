@@ -3,6 +3,7 @@ class Bm.Routers.Bookmarks extends Backbone.Router
     '': 'index'
     '_=_': 'indexFix' # Damn Facebook
     'tags/:tag': 'index'
+    'search/:q': 'search'
 
   index: (tag, fetch) ->
     view = new Bm.Views.BookmarksIndex
@@ -11,10 +12,12 @@ class Bm.Routers.Bookmarks extends Backbone.Router
     view.render()
     @index = view
 
+  search: (q) ->
+    view = new Bm.Views.BookmarksIndex
+      search_query: q
+    view.render()
+    @index = view
 
   indexFix: ->
     @navigate '/'
     @index()
-
-
-

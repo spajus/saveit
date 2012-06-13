@@ -21,6 +21,7 @@
 //= require jquery.effects.core
 //= require jquery.effects.fade
 //= require jquery.effects.highlight
+//= require jquery-cookie/jquery.cookie
 //= require bootstrap-all
 //= require underscore
 //= require backbone
