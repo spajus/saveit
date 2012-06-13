@@ -43,6 +43,10 @@ class HomeController < ApplicationController
 
   end
 
+  def opensearch
+    render layout: false, content_type: 'text/xml', formats: [:xml]
+  end
+
   private
 
   def _session_flash(url, title)
