@@ -1,6 +1,6 @@
 xml.instruct!
 xml.OpenSearchDescription(:xmlns => 'http://a9.com/-/spec/opensearch/1.1/', 'xmlns:moz' => 'http://www.mozilla.org/2006/browser/search/') do
-  xml.ShortName("Search saveit.in")
+  xml.ShortName("saveit.in bookmarks")
   xml.InputEncoding('UTF-8')
   xml.Description("Search within your saveit.in bookmarks")
   xml.Contact("crew@saveit.in")
