@@ -3,7 +3,6 @@ class Bm.Views.BookmarksList extends Backbone.View
   template: JST['bookmarks/bookmark_list']
 
   initialize: (args) ->
-    @el = args.el
     @visited = args.visited
     @title = args.title
     @collection.on 'reset', @render

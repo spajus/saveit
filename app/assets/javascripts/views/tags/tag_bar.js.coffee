@@ -44,6 +44,7 @@ class Bm.Views.TagBar extends Backbone.View
 
         @render()
 
+    @
 
   appendTag: (tag) =>
     view = new Bm.Views.Tag

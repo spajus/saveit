@@ -87,6 +87,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     if user_settings.getUseTags()
       @tagBar = new Bm.Views.TagBar
         collection: @tag_collection
+      @tagBar.render()
       inputClass = 'span3'
     else
       inputClass = 'span4'
@@ -99,8 +100,6 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     @bookmarklet.render()
     @bookmarks_read.render()
     @bookmarks_unread.render()
-
-    @tagBar.render() if user_settings.getUseTags()
     @
 
 

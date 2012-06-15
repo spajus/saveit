@@ -1,5 +1,9 @@
 describe 'Bm.Views.Bookmark', ->
 
+  afterEach ->
+    ($ '#container').empty()
+
+
   it 'Should render without tags', ->
 
     expect(user_settings.getUseTags()).toBeFalsy()
@@ -114,4 +118,3 @@ describe 'Bm.Views.Bookmark', ->
     expect(collection.length).toEqual 0, "bookmark is still in collection"
 
     stub.reset()
-
