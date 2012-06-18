@@ -1,5 +1,7 @@
 Bm::Application.routes.draw do
 
+  devise_for :users, :controllers => { omniauth_callbacks: "auth" }
+
   scope "api" do
     match "/bookmarks/filter/:type" => "bookmarks#filter"
 
@@ -16,11 +18,6 @@ Bm::Application.routes.draw do
   match "/bookmarklet" => "home#bookmarklet"
   match "/opensearch" => "home#opensearch"
   match "/bookmarklet/failover" => "home#bookmarklet_failover"
-
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/auth/failure" => "sessions#failure"
-
-  match "/signout" => "sessions#destroy", :as => :signout
 
   mount Jasminerice::Engine => "/specs" unless Rails.env.production?
 

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<% if current_user %>
+<% if user_signed_in? %>
   <%= render 'nav' %>
 <% else %>
   <%= render 'nav.anonymous' %>

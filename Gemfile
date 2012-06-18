@@ -23,6 +23,8 @@ gem 'cape'
 
 gem 'net-ssh', '= 2.4.0'
 
+gem 'devise'
+
 
 gem 'acts_as_api'
 

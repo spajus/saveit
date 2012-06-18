@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
     false
   end
 
-  def current_user
-    @current_user ||= User.find(cookies.signed[:user_id]) if cookies.signed[:user_id]
-  end
+#  def current_user
+#    @current_user ||= User.find(cookies.signed[:user_id]) if cookies.signed[:user_id]
+#  end
 
   def current_bookmarks
     current_user.bookmarks

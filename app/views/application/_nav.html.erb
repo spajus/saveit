@@ -27,7 +27,7 @@
             <ul class="dropdown-menu">
               <li><a id="settings-link" href="#"><i class="icon-cogs"></i> Settings</a></li>
               <li class="divider"></li>
-              <li><%= link_to signout_path do %><i class="icon-signout"></i> Sign out<% end %></li>
+              <li><%= link_to :destroy_user_session, method: :delete do %><i class="icon-signout"></i> Sign out<% end %></li>
             </ul>
           </li>
         </ul>
