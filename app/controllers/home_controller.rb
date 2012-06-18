@@ -44,7 +44,7 @@ class HomeController < ApplicationController
   end
 
   def opensearch
-    render controller: '/home', layout: false, content_type: 'text/xml', formats: [:xml]
+    render layout: false, content_type: 'text/xml', formats: [:xml]
   end
 
   private

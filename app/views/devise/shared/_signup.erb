@@ -1,0 +1,21 @@
+<%= form_for(current_user, as: :user, url: registration_path(:user)) do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+    <div class="control-group">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Sign up", class: "btn btn-primary" %>
+    </div>
+  </fieldset>
+
+<% end %>

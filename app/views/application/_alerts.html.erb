@@ -1,8 +1,6 @@
 <div class="row-fluid ninja">
   <div class="span12 ninja">
     <div id="app-alerts">
-      <% if notice %><% flash[:notice] = notice %><% end %>
-      <% if alert %><% flash[:alert] = alert %><% end %>
       <% if flash %>
         <% flash.each do |name, msg| %>
           <%= content_tag "div", class: "alert fade in alert-#{name}" do -%>
