@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   def backbone_settings
     bookmarklet_js = render_to_string partial: "bookmarklet", formats: [:js]
     gon.bookmarklet_js = bookmarklet_js.gsub(/\s*\n+\s*/, '').gsub(/\s*(,|\{|\}|;)\s*/, "\\1")
-    gon.home_url = url_for controller: :home, action: :index, only_path: false
+    gon.home_url = url_for controller: "/home", action: :index, only_path: false
 
     if current_user
       gon.current_user = current_user
