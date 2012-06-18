@@ -17,9 +17,9 @@ function bm_add_new() {
     try {
         var d=document,s=d.createElement('script'), l=d.location, t=d.getElementsByTagName('title')[0];
         if (!l || l == "about:blank") {
-            window.location.assign('<%= url_for controller: :home, only_path: false %>');
+            window.location.assign('<%= url_for controller: '/home', only_path: false %>');
         }
-        s.setAttribute('src', '<%= url_for controller: "home", action: "bookmarklet", only_path: false %>?b='
+        s.setAttribute('src', '<%= url_for controller: "/home", action: "bookmarklet", only_path: false %>?b='
                 + encodeURIComponent(l.href)
                 + '&t=' + encodeURIComponent(t ? t.innerHTML : l.href)
                 + '&s='+(new Date().getTime()));
@@ -31,7 +31,7 @@ function bm_add_new() {
             };
         }
     } catch(e) {
-        window.location.assign('<%= url_for controller: "home", action: "bookmarklet_failover", only_path: false %>?b='
+        window.location.assign('<%= url_for controller: "/home", action: "bookmarklet_failover", only_path: false %>?b='
             + encodeURIComponent(l.href));
     }
 };
