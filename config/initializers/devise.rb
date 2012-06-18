@@ -207,8 +207,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :twitter, 'mRaxR11KHsujUROpi7mdig', 'dRLGaAirZdsbsfOvg8IpHR6pTNNeEDCiA0yrvni8qA'
-  config.omniauth :facebook, '337873696247021', '863108746cd4cb7dcf0dce304ed90a2f', :client_options => {ssl: { verify: false}} #local check
-  #config.omniauth :facebook, '321764964568044', 'b49e77d860de555b777bd79d6581efe1'
+  config.omniauth :facebook, '321764964568044', 'b49e77d860de555b777bd79d6581efe1'
+  #config.omniauth :facebook, '337873696247021', '863108746cd4cb7dcf0dce304ed90a2f', :client_options => {ssl: { verify: false}} #local check
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
