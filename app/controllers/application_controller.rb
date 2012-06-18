@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :current_bookmarks
-  before_filter :backbone_settings
+  before_filter :backbone_settings, :set_encoding
+
 
   protected
 
@@ -54,6 +55,10 @@ class ApplicationController < ActionController::Base
 
   def respond_404(msg)
     render json: {error: msg}, status: 404
+  end
+
+  def set_encoding
+    response.headers["Content-Type"] ||= "text/html; charset=utf8"
   end
 
 end

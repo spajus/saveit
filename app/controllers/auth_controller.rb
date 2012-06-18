@@ -8,8 +8,8 @@ class AuthController < Devise::OmniauthCallbacksController
       if current_user
 
         current_user.user_tokens.find_or_create_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
-        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth['provider']
-        sign_in_and_redirect(:user, authentication.user)
+        flash[:notice] = "Authentication successful"
+        redirect_to edit_user_registration_path
 
       else
 
@@ -18,6 +18,7 @@ class AuthController < Devise::OmniauthCallbacksController
         if authentication
 
           flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth['provider']
+          authentication.user.remember_me = true
           sign_in_and_redirect(:user, authentication.user)
 
         else
@@ -34,6 +35,7 @@ class AuthController < Devise::OmniauthCallbacksController
 
           if user.save
             flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth['provider']
+            user.remember_me = true
             sign_in_and_redirect(:user, user)
           else
             flash[:alert] = "Failed saving auth data: #{omniauth.except('extra')}"

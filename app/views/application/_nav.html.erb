@@ -26,6 +26,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> <%= current_user.name %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a id="settings-link" href="#"><i class="icon-cogs"></i> Settings</a></li>
+              <li><%= link_to :edit_user_registration do %><i class="icon-edit"></i> Edit profile<% end %></li>
               <li class="divider"></li>
               <li><%= link_to :destroy_user_session, method: :delete do %><i class="icon-signout"></i> Sign out<% end %></li>
             </ul>

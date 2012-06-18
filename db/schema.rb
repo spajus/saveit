@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618033758) do
+ActiveRecord::Schema.define(:version => 20120618042704) do
 
   create_table "bookmarks", :force => true do |t|
     t.text     "title",      :limit => 2048
