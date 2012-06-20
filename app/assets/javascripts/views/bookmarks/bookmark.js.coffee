@@ -20,6 +20,8 @@ class Bm.Views.Bookmark extends Backbone.View
     tag_bar = ($ '#tag-bar')
     if user_settings.getUseTags
       @renderTags()
+      elem = @$el
+      model_visited = @model.get 'visited'
       dragger = @$ '.dragger'
       dragger.data 'bookmark', @model
       dragger.draggable
@@ -31,17 +33,26 @@ class Bm.Views.Bookmark extends Backbone.View
             .draggable('option', 'helper')
             .draggable('option', 'revert', true)
         revert: true
+        distance: 10
         cursorAt:
           left: 100
           top: 20
         containment: 'document'
-        start: (event, ui) =>
+
+        start: (event, ui) ->
           ($ ui.helper).animate opacity: 0.7
           tag_bar.addClass 'drag-start'
-          @$el.addClass 'drag-start'
-        stop: (event, ui) =>
+          elem.addClass 'drag-start'
+          if model_visited
+            ($ '#bookmarks-unread table').addClass 'drag-start'
+          else
+            ($ '#bookmarks-read table').addClass 'drag-start'
+
+        stop: (event, ui) ->
           tag_bar.removeClass 'drag-start'
-          @$el.removeClass 'drag-start'
+          elem.removeClass 'drag-start'
+          ($ '#bookmarks-unread table').removeClass 'drag-start'
+          ($ '#bookmarks-read table').removeClass 'drag-start'
     @
 
   renderTags: =>

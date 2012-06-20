@@ -22,6 +22,21 @@ class Bm.Views.BookmarksList extends Backbone.View
           model: bookmark
           collection: @collection
         list.append view.render().el
+    @$el.droppable
+      hoverClass: 'tag-hover'
+      drop: (event, ui) =>
+        event.preventDefault()
+
+        bookmark = ui.draggable.data 'bookmark'
+        unless @visited is bookmark.get 'visited'
+          ui.draggable.draggable 'option', 'revert', false
+          setTimeout( =>
+            bookmark.set 'visited', @visited
+            bookmark.collection.remove bookmark
+            @collection.add bookmark
+            bookmark.save()
+          , 10)
+
     @
 
   appendBookmark: (bookmark) =>
