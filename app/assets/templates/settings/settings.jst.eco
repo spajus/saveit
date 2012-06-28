@@ -1,69 +1,80 @@
-<div class="modal" id="settings-modal">
-  <div class="modal-header">
-    <button class="close" data-dismiss="modal">×</button>
-    <h3>Save It Your Way</h3>
+<div class="row-fluid">
+  <div class="span8">
+
+  <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#settings-misc" data-toggle="tab">Misc</a></li>
+      <li class=""><a href="#settings-account" data-toggle="tab">Account</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="settings-misc" class="tab-pane active">
+
+        <form class="form-horizontal">
+          <fieldset>
+
+            <!-- bookmarks per page -->
+            <div class="control-group">
+              <label class="control-label" for="pageSize">Bookmarks per page</label>
+              <div class="controls">
+                <select id="pageSize">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                <span class="help-inline"></span>
+              </div>
+            </div>
+
+            <!-- link target -->
+            <div class="control-group">
+              <label class="control-label" for="linkTarget">Open bookmarks</label>
+              <div class="controls">
+                <select id="linkTarget">
+                  <option value="same">In same window</option>
+                  <option value="new">In new window (tab)</option>
+                </select>
+                <span class="help-inline"></span>
+              </div>
+            </div>
+
+            <!-- delete confirmation -->
+            <div class="control-group">
+              <label class="control-label" for="confirmDelete">Delete items</label>
+              <div class="controls">
+                <select id="confirmDelete">
+                  <option value="true">With confirmation</option>
+                  <option value="false">Without confirmation</option>
+                </select>
+                <span class="help-inline"></span>
+              </div>
+            </div>
+
+            <!-- use tags -->
+            <div class="control-group">
+              <label class="control-label" for="useTags">Tagging</label>
+              <div class="controls">
+                <select id="useTags">
+                  <option value="true">Enabled</option>
+                  <option value="false">Disabled</option>
+                </select>
+                <span class="help-inline"></span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a href="#" class="save btn btn-primary">Save changes</a>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div id="settings-account" class="tab-pane">
+        bla bla
+      </div>
+    </div>
   </div>
-  <div class="modal-body">
-    <form class="form-horizontal">
-      <fieldset>
-
-        <!-- bookmarks per page -->
-        <div class="control-group">
-          <label class="control-label" for="pageSize">Bookmarks per page</label>
-          <div class="controls">
-            <select id="pageSize">
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-            <span class="help-inline"></span>
-          </div>
-        </div>
-
-        <!-- link target -->
-        <div class="control-group">
-          <label class="control-label" for="linkTarget">Open bookmarks</label>
-          <div class="controls">
-            <select id="linkTarget">
-              <option value="same">In same window</option>
-              <option value="new">In new window (tab)</option>
-            </select>
-            <span class="help-inline"></span>
-          </div>
-        </div>
-
-        <!-- delete confirmation -->
-        <div class="control-group">
-          <label class="control-label" for="confirmDelete">Delete items</label>
-          <div class="controls">
-            <select id="confirmDelete">
-              <option value="true">With confirmation</option>
-              <option value="false">Without confirmation</option>
-            </select>
-            <span class="help-inline"></span>
-          </div>
-        </div>
-
-        <!-- use tags -->
-        <div class="control-group">
-          <label class="control-label" for="useTags">Tagging</label>
-          <div class="controls">
-            <select id="useTags">
-              <option value="true">Enabled</option>
-              <option value="false">Disabled</option>
-            </select>
-            <span class="help-inline"></span>
-          </div>
-        </div>
-
-      </fieldset>
-    </form>
   </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-    <a href="#" class="save btn btn-primary">Save changes</a>
-  </div>
+
 </div>

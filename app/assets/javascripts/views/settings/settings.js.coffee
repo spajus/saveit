@@ -1,5 +1,6 @@
 class Bm.Views.Settings extends Backbone.View
 
+  el: '#container'
   template: JST['settings/settings']
   events:
     'click .save': 'save'
@@ -39,12 +40,10 @@ class Bm.Views.Settings extends Backbone.View
 
 
 Bm.Views.Settings.init = ->
-  window.user_settings = new Bm.Collections.Settings()
-  if gon.user_settings
-    window.user_settings.reset gon.user_settings
 
   # Settings modal can be called from anywhere
-  ($ '#settings-link').click (event) ->
+  # TODO FIXME
+  ($ '#settings-link-obsolete').click (event) ->
     event.preventDefault()
     clear_alerts()
     settings = new Bm.Views.Settings collection: window.user_settings

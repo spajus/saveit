@@ -4,10 +4,11 @@ class Bm.Routers.Bookmarks extends Backbone.Router
     '_=_': 'indexFix' # Damn Facebook
     'tags/:tag': 'index'
     'search/:q': 'search'
-    'users' : 'users'
+    'settings' : 'settings'
 
-  users: () ->
-    console.log 'wtfff'
+  settings: ->
+    view = new Bm.Views.Settings collection: window.user_settings
+    view.render()
 
   index: (tag, fetch) ->
     view = new Bm.Views.BookmarksIndex
