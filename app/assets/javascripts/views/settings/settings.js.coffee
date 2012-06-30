@@ -11,7 +11,7 @@ class Bm.Views.Settings extends Backbone.View
     @
 
     @_loadSetting 'pageSize', 10
-    @_loadSetting 'linkTarget', 'same'
+    @_loadSetting 'linkTarget', 'same', 'radio'
     @_loadSetting 'confirmDelete', 'confirm'
     @_loadSetting 'useTags', 'false'
 
@@ -21,32 +21,24 @@ class Bm.Views.Settings extends Backbone.View
     event.preventDefault()
 
     @_saveSetting 'pageSize'
-    @_saveSetting 'linkTarget'
+    @_saveSetting 'linkTarget', 'radio'
     @_saveSetting 'confirmDelete'
     @_saveSetting 'useTags'
 
-    (@$ '#settings-modal').modal 'hide'
     show_alert 'Settings saved!', 'success'
 
   # Private methods
 
-  _loadSetting: (name, defaultValue) ->
+  _loadSetting: (name, defaultValue, type='select') ->
     setting = @collection.getSetting name, defaultValue
-    (@$ "##{name} option[value='#{setting.get 'value'}']").attr 'selected', 'selected'
+    switch type
+      when 'select' then (@$ "##{name} option[value='#{setting.get 'value'}']").attr 'selected', 'selected'
+      when 'radio' then (@$ "input:radio[name='#{name}'][value='#{setting.get 'value'}']").attr 'checked', 'checked'
 
-  _saveSetting: (name) ->
+  _saveSetting: (name, type='select') ->
     setting = @collection.getSetting name
-    setting.save value: (@$ "##{name}").val()
-
-
-Bm.Views.Settings.init = ->
-
-  # Settings modal can be called from anywhere
-  # TODO FIXME
-  ($ '#settings-link-obsolete').click (event) ->
-    event.preventDefault()
-    clear_alerts()
-    settings = new Bm.Views.Settings collection: window.user_settings
-    ($ '#settings').html settings.render().el
-    ($ '#settings-modal').modal()
+    switch type
+      when 'select' then val = (@$ "##{name}").val()
+      when 'radio' then val = (@$ "input:radio[name='#{name}']:checked").val()
+    setting.save value: val
 
