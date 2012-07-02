@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <div class="span8">
+  <div class="span8 settings-box">
 
     <form class="form-horizontal">
       <fieldset>
@@ -17,7 +17,7 @@
             <div id="settings-bookmarks" class="tab-pane active">
 
               <!-- bookmarks per page -->
-              <div class="control-group">
+              <div class="control-group well">
                 <label class="control-label" for="pageSize">Bookmarks per
                   page</label>
 
@@ -30,14 +30,12 @@
                     <option value="50">50</option>
                     <option value="100">100</option>
                   </select>
-                  <span class="help-inline"></span>
                 </div>
               </div>
 
-              <hr/>
 
               <!-- link target -->
-              <div class="control-group">
+              <div class="control-group well">
                 <label class="control-label" for="linkTarget">Open
                   bookmarks</label>
 
@@ -48,7 +46,6 @@
                   <label class="radio">
                     <input type="radio" name="linkTarget" value="new"> In new window (tab)
                   </label>
-                  <span class="help-inline"></span>
                 </div>
               </div>
 
@@ -62,15 +59,13 @@
             <div id="settings-tagging" class="tab-pane">
 
               <!-- use tags -->
-              <div class="control-group">
-                <label class="control-label" for="useTags">Tagging</label>
+              <div class="control-group well">
+                <label class="control-label" for="useTags"></label>
 
                 <div class="controls">
-                  <select id="useTags">
-                    <option value="true">Enabled</option>
-                    <option value="false">Disabled</option>
-                  </select>
-                  <span class="help-inline"></span>
+                  <label class="checkbox">
+                    <input type="checkbox" id="useTags"> Enable Tagging
+                  </label>
                 </div>
               </div>
 
@@ -82,16 +77,16 @@
             <div id="settings-misc" class="tab-pane">
 
               <!-- delete confirmation -->
-              <div class="control-group">
-                <label class="control-label" for="confirmDelete">Delete
-                  items</label>
+              <div class="control-group well">
+                <label class="control-label" for="confirmDelete">Deleting items</label>
 
                 <div class="controls">
-                  <select id="confirmDelete">
-                    <option value="true">With confirmation</option>
-                    <option value="false">Without confirmation</option>
-                  </select>
-                  <span class="help-inline"></span>
+                  <label class="radio">
+                    <input type="radio" name="confirmDelete" value="true"> Confirm deletion of bookmarks and tags
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="confirmDelete" value="false"> Delete bookmarks and tags instantly
+                  </label>
                 </div>
               </div>
 

@@ -12,8 +12,8 @@ class Bm.Views.Settings extends Backbone.View
 
     @_loadSetting 'pageSize', 10
     @_loadSetting 'linkTarget', 'same', 'radio'
-    @_loadSetting 'confirmDelete', 'confirm'
-    @_loadSetting 'useTags', 'false'
+    @_loadSetting 'confirmDelete', 'confirm', 'radio'
+    @_loadSetting 'useTags', 'false', 'checkbox'
 
     @
 
@@ -22,8 +22,8 @@ class Bm.Views.Settings extends Backbone.View
 
     @_saveSetting 'pageSize'
     @_saveSetting 'linkTarget', 'radio'
-    @_saveSetting 'confirmDelete'
-    @_saveSetting 'useTags'
+    @_saveSetting 'confirmDelete', 'radio'
+    @_saveSetting 'useTags', 'checkbox'
 
     show_alert 'Settings saved!', 'success'
 
@@ -34,11 +34,21 @@ class Bm.Views.Settings extends Backbone.View
     switch type
       when 'select' then (@$ "##{name} option[value='#{setting.get 'value'}']").attr 'selected', 'selected'
       when 'radio' then (@$ "input:radio[name='#{name}'][value='#{setting.get 'value'}']").attr 'checked', 'checked'
+      when 'checkbox'
+        if (setting.get 'value') is 'true'
+          (@$ "##{name}").attr 'checked', 'checked'
+        else
+          (@$ "##{name}").removeAttr 'checked'
 
   _saveSetting: (name, type='select') ->
     setting = @collection.getSetting name
     switch type
       when 'select' then val = (@$ "##{name}").val()
       when 'radio' then val = (@$ "input:radio[name='#{name}']:checked").val()
+      when 'checkbox'
+        if (@$ "##{name}").is ':checked'
+          val = 'true'
+        else
+          val = 'false'
     setting.save value: val
 

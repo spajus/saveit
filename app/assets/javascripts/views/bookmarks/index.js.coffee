@@ -44,9 +44,6 @@ class Bm.Views.BookmarksIndex extends Backbone.View
 
     window.collections = [@unvisited_collection, @visited_collection, @tag_collection]
 
-    user_settings.on 'change', @render
-
-
     search = new Bm.Views.Search
       unvisited: @unvisited_collection,
       visited: @visited_collection
