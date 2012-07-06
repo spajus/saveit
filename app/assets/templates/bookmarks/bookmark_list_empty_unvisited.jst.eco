@@ -1,0 +1,21 @@
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><i class="icon-bookmark"></i> <%= @title %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="empty-info">
+        <div>
+          <strong>You don't have any unread bookmarks.</strong>
+        </div>
+        <div>
+          <span class="bookmarklet label label-info"><a href="javascript:<%= @bookmarklet_js %>">Save It</a></span>
+          &nbsp;<i class="icon-arrow-left"></i> Drag this bookmarklet to your bookmarks bar and use it anywhere you find interesting stuff. Things you bookmark will appear here.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="pagination"></div>

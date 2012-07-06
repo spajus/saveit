@@ -34,6 +34,7 @@ class Bm.Models.Bookmark extends Backbone.Model
     music:
       hosts: [
         'soundcloud'
+        'grooveshark'
         'beatport'
         'itunes'
         'last\.fm'

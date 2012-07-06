@@ -1,6 +1,16 @@
 class Bm.Views.BookmarksList extends Backbone.View
 
-  template: JST['bookmarks/bookmark_list']
+  template:
+    normal: JST['bookmarks/bookmark_list']
+    empty:
+      visited: JST['bookmarks/bookmark_list_empty_visited']
+      unvisited: JST['bookmarks/bookmark_list_empty_unvisited']
+
+  events:
+    'click .bookmarklet a' : 'bookmarkletHelp'
+
+  bookmarkletHelp: (event) ->
+    Bm.Views.Bookmarklet::bookmarkletHelp event
 
   initialize: (args) ->
     @visited = args.visited
@@ -11,7 +21,16 @@ class Bm.Views.BookmarksList extends Backbone.View
     @collection.on 'remove', @removeBookmark
 
   render: =>
-    @$el.html @template title: @title
+    if @collection.length > 0
+      @$el.html @template.normal title: @title
+    else
+      if @visited
+        @$el.html @template.empty.visited title: @title
+      else
+        @$el.html @template.empty.unvisited
+          title: @title
+          bookmarklet_js: gon.bookmarklet_js
+
     @pag = new Bm.Views.Pagination
       collection: @collection
       el: @$ '.pagination'
