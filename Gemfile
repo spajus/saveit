@@ -24,6 +24,7 @@ gem 'cape'
 gem 'net-ssh', '= 2.4.0'
 
 gem 'devise'
+gem 'rest-client'
 
 
 gem 'acts_as_api'

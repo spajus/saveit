@@ -1,3 +1,5 @@
+require 'rest_client'
+
 class HomeController < ApplicationController
 
   def index
@@ -27,6 +29,12 @@ class HomeController < ApplicationController
     end
 
     render :layout => false, :content_type => 'text/javascript', :formats => [:js]
+  end
+
+  def preview
+    data = RestClient.get "http://img.bitpixels.com/getthumbnail?code=73310&size=200&url=#{params[:url]}"
+    response.headers['Content-Type'] = 'image/jpeg'
+    render stream: true, text: data
   end
 
   def bookmarklet_failover

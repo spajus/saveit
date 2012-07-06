@@ -16,6 +16,7 @@ Bm::Application.routes.draw do
   root :to => "home#index"
 
   match "/bookmarklet" => "home#bookmarklet"
+  match "/url-preview" => "home#preview"
   match "/opensearch" => "home#opensearch"
   match "/bookmarklet/failover" => "home#bookmarklet_failover"
 
