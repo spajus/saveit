@@ -3,10 +3,10 @@
     <label class="control-label" for="new_bookmark_url">Add new URL</label>
     <div class="controls">
       <div class="input-append row-fluid">
-        <div class="span10" style="margin-right: -1px">
+        <div class="span8" style="margin-right: -1px">
           <input class="span12"  id="new_bookmark_url" type="text">
         </div>
-        <div class="span2" style="margin-left: 0px">
+        <div class="span4" style="margin-left: 0px">
           <button class="btn span12" type="submit"><i class="icon-plus"></i> <i class="icon-bookmark"></i></button>
         </div>
       </div>

@@ -4,6 +4,7 @@ class Bm.Views.Settings extends Backbone.View
   template: JST['settings/settings']
   events:
     'click .save': 'save'
+    'click .back': 'back'
     'submit': 'save'
 
   render: ->
@@ -16,6 +17,11 @@ class Bm.Views.Settings extends Backbone.View
     @_loadSetting 'useTags', 'false', 'checkbox'
 
     @
+
+  back: (event) =>
+    event.preventDefault()
+    app.index()
+    app.navigate '/'
 
   save: (event) ->
     event.preventDefault()

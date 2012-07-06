@@ -8,6 +8,7 @@ class Bm.Views.Bookmark extends Backbone.View
     'click a.link': 'openBookmark'
     'click a.close': 'removeBookmark'
     'click a.remove': 'removeTag'
+    'dblclick' : 'openBookmark'
 
   initialize: ->
     @model.on 'change',  @renderTags
