@@ -83,6 +83,7 @@ class Bm.Views.Bookmark extends Backbone.View
 
   openBookmark: (event) ->
     event.preventDefault()
+    (@$ 'a.link').popover('hide')
     visited = @model.get 'visited'
     unless visited
       @model.set 'visited', true
