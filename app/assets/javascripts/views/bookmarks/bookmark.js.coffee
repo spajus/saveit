@@ -24,9 +24,12 @@ class Bm.Views.Bookmark extends Backbone.View
 
     # preload thumbnail so it will exist later on
     $.get @previewUrl()
+    placement = 'right'
+    if @model.get 'visited'
+      placement = 'left'
 
     (@$ 'a.link').popover
-      placement: 'right'
+      placement: placement
       content: "<img src=\"#{@previewUrl()}\"/>"
       delay:
         show: 500
