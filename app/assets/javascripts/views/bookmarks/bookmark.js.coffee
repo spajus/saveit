@@ -29,7 +29,7 @@ class Bm.Views.Bookmark extends Backbone.View
     if @model.get 'visited'
       placement = 'left'
 
-    (@$ 'a.link').popover
+    @$el.popover
       placement: placement
       content: "<img src=\"#{@previewUrl()}\"/>"
       delay:
@@ -84,7 +84,7 @@ class Bm.Views.Bookmark extends Backbone.View
 
   openBookmark: (event) ->
     event.preventDefault()
-    (@$ 'a.link').popover('hide')
+    @$el.popover('hide')
     visited = @model.get 'visited'
     unless visited
       @model.set 'visited', true
