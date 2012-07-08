@@ -11,7 +11,9 @@ class Bm.Views.Bookmark extends Backbone.View
     'dblclick' : 'openBookmark'
 
   initialize: ->
-    @model.on 'change',  @renderTags
+    @model.on 'change', =>
+      @$el.popover 'hide'
+      @renderTags
 
   id: =>
     "bookmark-#{@model.get 'id'}"

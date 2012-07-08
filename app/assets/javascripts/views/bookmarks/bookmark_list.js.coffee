@@ -59,6 +59,9 @@ class Bm.Views.BookmarksList extends Backbone.View
     @
 
   appendBookmark: (bookmark) =>
+    if @collection.length is 1
+      @render()
+      return
     if (bookmark.get 'visited') is @visited
       view = new Bm.Views.Bookmark
         model: bookmark
