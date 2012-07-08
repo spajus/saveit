@@ -58,6 +58,7 @@ class Bm.Views.Bookmark extends Backbone.View
         containment: 'document'
 
         start: (event, ui) ->
+          elem.popover('hide')
           ($ ui.helper).animate opacity: 0.7
           tag_bar.addClass 'drag-start'
           elem.addClass 'drag-start'
@@ -92,6 +93,7 @@ class Bm.Views.Bookmark extends Backbone.View
     @collection.trigger 'open-bookmark', @model, visited: visited
 
   removeBookmark: (event) ->
+    @$el.popover('hide')
     remove = true
     if user_settings.getConfirmDelete()
       unless confirm "Are you sure you want to delete: '#{@model.get 'title'}'?"
