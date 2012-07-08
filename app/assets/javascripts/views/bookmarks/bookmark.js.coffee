@@ -12,8 +12,8 @@ class Bm.Views.Bookmark extends Backbone.View
 
   initialize: ->
     @model.on 'change', =>
-      @$el.popover 'hide'
       @renderTags
+      @$el.popover 'hide'
 
   id: =>
     "bookmark-#{@model.get 'id'}"
