@@ -58,7 +58,6 @@ class Bm.Views.Bookmark extends Backbone.View
         containment: 'document'
 
         start: (event, ui) ->
-          elem.popover('hide')
           ($ ui.helper).animate opacity: 0.7
           tag_bar.addClass 'drag-start'
           elem.addClass 'drag-start'
@@ -68,6 +67,7 @@ class Bm.Views.Bookmark extends Backbone.View
             ($ '#bookmarks-read table').addClass 'drag-start'
 
         stop: (event, ui) ->
+          elem.popover('hide')
           tag_bar.removeClass 'drag-start'
           elem.removeClass 'drag-start'
           ($ '#bookmarks-unread table').removeClass 'drag-start'
