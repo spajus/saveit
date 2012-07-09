@@ -31,6 +31,8 @@ class Bm.Views.Search extends Backbone.View
   search: =>
     query = @$el.val()
     query = query.replace(/^\s+/, '').replace /\s+$/, ''
+    query = decodeURIComponent(query)
+    @$el.val query
     @visited.setQuery query
     @unvisited.setQuery query
     @visited.fetch()
