@@ -4,7 +4,6 @@ class BookmarksController < ApplicationController
   respond_to :json
 
   def index
-    visited = params[:visited] == "true"
     tag = params[:tag]
     query = params[:query]
     page = params[:page]
@@ -12,7 +11,6 @@ class BookmarksController < ApplicationController
     per_page = params[:per_page] or current_page_size
 
     bookmarks = current_bookmarks
-      .visited(visited)
       .tagged_with(tag)
       .query(query)
 

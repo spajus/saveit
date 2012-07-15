@@ -3,8 +3,7 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
   model: Bm.Models.Bookmark
   url: '/api/bookmarks'
 
-  initialize: (opts) ->
-    @visited = opts.visited or false
+  initialize: (opts = {}) ->
     @page = opts.page or 1
     @per_page = opts.per_page or user_settings.getPageSize()
 
@@ -72,7 +71,6 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
     data = initial.data or {}
     data.tag = @tag if @tag
     data.query = @query if @query
-    data.visited = @visited
     data.page = @page
     data.per_page = @per_page
     initial.data = data

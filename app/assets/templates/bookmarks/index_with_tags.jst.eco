@@ -6,13 +6,10 @@
 
     <div class="row-fluid">
 
-      <div class="span6 overflow-auto">
-        <div id="bookmarks-unread"></div>
+      <div class="overflow-auto">
+        <div id="bookmarks"></div>
       </div>
 
-      <div class="span6 overflow-auto">
-        <div id="bookmarks-read"></div>
-      </div>
 
     </div>
 

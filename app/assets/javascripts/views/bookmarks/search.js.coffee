@@ -4,8 +4,7 @@ class Bm.Views.Search extends Backbone.View
     'keydown': 'processKeydown'
 
   initialize: (opts) ->
-    @visited = opts.visited
-    @unvisited = opts.unvisited
+    @collection = opts.collection
 
   processKeydown: (event) ->
     if event.which is 27
@@ -33,10 +32,8 @@ class Bm.Views.Search extends Backbone.View
     query = query.replace(/^\s+/, '').replace /\s+$/, ''
     query = decodeURIComponent(query)
     @$el.val query
-    @visited.setQuery query
-    @unvisited.setQuery query
-    @visited.fetch()
-    @unvisited.fetch()
+    @collection.setQuery query
+    @collection.fetch()
     unless query
       # cant @search() to avoid loop
       @$el.val ''

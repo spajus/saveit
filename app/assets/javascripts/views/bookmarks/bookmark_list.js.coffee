@@ -2,9 +2,7 @@ class Bm.Views.BookmarksList extends Backbone.View
 
   template:
     normal: JST['bookmarks/bookmark_list']
-    empty:
-      visited: JST['bookmarks/bookmark_list_empty_visited']
-      unvisited: JST['bookmarks/bookmark_list_empty_unvisited']
+    empty: JST['bookmarks/bookmark_list_empty']
 
   events:
     'click .bookmarklet a' : 'bookmarkletHelp'
@@ -13,7 +11,6 @@ class Bm.Views.BookmarksList extends Backbone.View
     Bm.Views.Bookmarklet::bookmarkletHelp event
 
   initialize: (args) ->
-    @visited = args.visited
     @title = args.title
     @collection.on 'reset', @render
 
@@ -22,51 +19,29 @@ class Bm.Views.BookmarksList extends Backbone.View
 
   render: =>
     if @collection.length > 0
-      @$el.html @template.normal title: @title
+      @$el.html @template.normal
     else
-      if @visited
-        @$el.html @template.empty.visited title: @title
-      else
-        @$el.html @template.empty.unvisited
-          title: @title
-          bookmarklet_js: gon.bookmarklet_js
+      @$el.html @template.empty bookmarklet_js: gon.bookmarklet_js
 
     @pag = new Bm.Views.Pagination
       collection: @collection
       el: @$ '.pagination'
     list = @$ 'tbody'
     @collection.each (bookmark) =>
-      if (bookmark.get 'visited') is @visited
-        view = new Bm.Views.Bookmark
-          model: bookmark
-          collection: @collection
-        list.append view.render().el
-    @$el.droppable
-      hoverClass: 'tag-hover'
-      drop: (event, ui) =>
-        event.preventDefault()
-
-        bookmark = ui.draggable.data 'bookmark'
-        unless @visited is bookmark.get 'visited'
-          ui.draggable.draggable 'option', 'revert', false
-          setTimeout( =>
-            bookmark.set 'visited', @visited
-            bookmark.collection.remove bookmark
-            @collection.add bookmark
-            bookmark.save()
-          , 10)
-
+      view = new Bm.Views.Bookmark
+        model: bookmark
+        collection: @collection
+      list.append view.render().el
     @
 
   appendBookmark: (bookmark) =>
     if @collection.length is 1
       @render()
       return
-    if (bookmark.get 'visited') is @visited
-      view = new Bm.Views.Bookmark
-        model: bookmark
-        collection: @collection
-      (@$ 'tbody').prepend view.render().el
+    view = new Bm.Views.Bookmark
+      model: bookmark
+      collection: @collection
+    (@$ 'tbody').prepend view.render().el
     @
 
   removeBookmark: (bookmark) =>

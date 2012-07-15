@@ -12,7 +12,7 @@ class Bm.Views.Bookmark extends Backbone.View
 
   initialize: ->
     @model.on 'change', =>
-      @renderTags
+      @renderTags()
       @$el.popover 'hide'
 
   id: =>
@@ -27,12 +27,9 @@ class Bm.Views.Bookmark extends Backbone.View
 
     # preload thumbnail so it will exist later on
     $.get @previewUrl()
-    placement = 'right'
-    if @model.get 'visited'
-      placement = 'left'
 
     @$el.popover
-      placement: placement
+      placement: 'bottom'
       content: "<img src=\"#{@previewUrl()}\"/>"
       delay:
         show: 500
@@ -63,17 +60,11 @@ class Bm.Views.Bookmark extends Backbone.View
           ($ ui.helper).animate opacity: 0.7
           tag_bar.addClass 'drag-start'
           elem.addClass 'drag-start'
-          if model_visited
-            ($ '#bookmarks-unread table').addClass 'drag-start'
-          else
-            ($ '#bookmarks-read table').addClass 'drag-start'
 
         stop: (event, ui) ->
           elem.popover('hide')
           tag_bar.removeClass 'drag-start'
           elem.removeClass 'drag-start'
-          ($ '#bookmarks-unread table').removeClass 'drag-start'
-          ($ '#bookmarks-read table').removeClass 'drag-start'
     @
 
   renderTags: =>
