@@ -169,7 +169,7 @@ body
 
 .drag-start
   background-color: $tagBarDragBg !important
-  td
+  li
     background-color: $tagBarDragBg !important
 
   .tag-hover
@@ -187,20 +187,25 @@ body
   div
     padding: 10px
 
+.bookmarks
+  list-style: none
+
 .bookmark
-  td
-    .drag-tag
-      display: none
-      width: 200
-      @include border-radius($borderRadius, $borderRadius)
-      border: 1px solid $borderGray
-      padding: 8px
-      background: $cellBackground
-      .link
-        @extend a
-    .tags
-      .span
-        display: inline
+  .preview
+    background: url(image_path('loading-preview.gif')) no-repeat
+  @extend .well
+  .drag-tag
+    display: none
+    width: 200
+    @include border-radius($borderRadius, $borderRadius)
+    border: 1px solid $borderGray
+    padding: 8px
+    background: $cellBackground
+    .link
+      @extend a
+  .tags
+    .span
+      display: inline
   .close
     display: none
   .date

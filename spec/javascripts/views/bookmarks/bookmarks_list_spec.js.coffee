@@ -11,7 +11,7 @@ describe 'Bm.Views.BookmarkList', ->
       collection: collection
     html = list.render().el
 
-    expect(($ 'tr.bookmark').length).toEqual 10, "Didn't render bookmark list"
+    expect(($ '.bookmark').length).toEqual 10, "Didn't render bookmark list"
 
   it 'Should render pagination', ->
     server.autoRespond = false
@@ -28,7 +28,7 @@ describe 'Bm.Views.BookmarkList', ->
       server.respondWith '50'
     waits 1
     runs ->
-      expect(($ 'tr.bookmark').length).toEqual 10, "Didn't render bookmark list"
+      expect(($ '.bookmark').length).toEqual 10, "Didn't render bookmark list"
       expect(($ 'div.pagination li.active').text().trim()).toEqual '2',
         "Wrong active page"
       expect(($ 'div.pagination li').length).toEqual 7, "Wrong number of pages"

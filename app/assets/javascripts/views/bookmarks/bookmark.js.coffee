@@ -1,7 +1,7 @@
 class Bm.Views.Bookmark extends Backbone.View
 
   template: JST['bookmarks/bookmark']
-  tagName: 'tr'
+  tagName: 'li'
   className: 'bookmark'
 
   events:
@@ -13,7 +13,6 @@ class Bm.Views.Bookmark extends Backbone.View
   initialize: ->
     @model.on 'change', =>
       @renderTags()
-      @$el.popover 'hide'
 
   id: =>
     "bookmark-#{@model.get 'id'}"
@@ -22,18 +21,11 @@ class Bm.Views.Bookmark extends Backbone.View
     "#{gon.preview_url}?url=#{encodeURIComponent(@model.get 'url')}"
 
   render: =>
-    @$el.html @template bookmark: @model
+    @$el.html @template bookmark: @model, previewUrl: @previewUrl()
     tag_bar = ($ '#tag-bar')
 
     # preload thumbnail so it will exist later on
     $.get @previewUrl()
-
-    @$el.popover
-      placement: 'bottom'
-      content: "<img src=\"#{@previewUrl()}\"/>"
-      delay:
-        show: 500
-        hide: 50
 
     if user_settings.getUseTags
       @renderTags()
@@ -62,7 +54,6 @@ class Bm.Views.Bookmark extends Backbone.View
           elem.addClass 'drag-start'
 
         stop: (event, ui) ->
-          elem.popover('hide')
           tag_bar.removeClass 'drag-start'
           elem.removeClass 'drag-start'
     @
@@ -78,7 +69,6 @@ class Bm.Views.Bookmark extends Backbone.View
 
   openBookmark: (event) ->
     event.preventDefault()
-    @$el.popover('hide')
     visited = @model.get 'visited'
     unless visited
       @model.set 'visited', true
@@ -86,7 +76,6 @@ class Bm.Views.Bookmark extends Backbone.View
     @collection.trigger 'open-bookmark', @model, visited: visited
 
   removeBookmark: (event) ->
-    @$el.popover('hide')
     remove = true
     if user_settings.getConfirmDelete()
       unless confirm "Are you sure you want to delete: '#{@model.get 'title'}'?"

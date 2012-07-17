@@ -1,3 +1,4 @@
+<!--
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -7,3 +8,7 @@
   <tbody></tbody>
 </table>
 <div class="pagination"></div>
+-->
+<ul class="bookmarks"></ul>
+<div class="pagination"></div>
+
