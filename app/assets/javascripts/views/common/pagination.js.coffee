@@ -33,6 +33,8 @@ class Bm.Views.Pagination extends Backbone.View
     if page
       @collection.setPage page
       @update()
+      window.scrollTo 0, 0
+    @
 
   update: =>
     @current_page = @collection.getPage()
@@ -41,6 +43,4 @@ class Bm.Views.Pagination extends Backbone.View
       @count = count
       @pages = Math.ceil(parseFloat(@count) / parseFloat(@per_page))
       @render()
-
-
-
+    @
