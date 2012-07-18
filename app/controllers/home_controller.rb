@@ -31,6 +31,14 @@ class HomeController < ApplicationController
     render stream: true, text: data
   end
 
+
+  def snapshot
+    kit = IMGKit.new params[:url]
+    img = kit.to_img
+    response.headers['Content-Type'] = 'image/jpeg'
+    render stream: true, text: img
+  end
+
   def bookmarklet_failover
 
     url = params[:b]
