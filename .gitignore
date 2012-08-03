@@ -22,3 +22,6 @@
 
 # Ignore database config
 #/config/database.yml
+
+# Mac junk
+.DS_Store
