@@ -27,16 +27,18 @@ class HomeController < ApplicationController
 
   def preview
     data = RestClient.get "http://img.bitpixels.com/getthumbnail?code=73310&size=200&url=#{params[:url]}"
-    response.headers['Content-Type'] = 'image/jpeg'
+    response.headers['Content-Type'] = 'image/png'
     render stream: true, text: data
   end
 
 
   def snapshot
-    kit = IMGKit.new params[:url]
+    kit = IMGKit.new(params[:url], width: 1200, height: 800)
     img = kit.to_img
-    response.headers['Content-Type'] = 'image/jpeg'
-    render stream: true, text: img
+    img = MiniMagick::Image.read(img)
+    img.resize "400x300"
+    response.headers['Content-Type'] = 'image/png'
+    render stream: true, text: img.to_blob
   end
 
   def bookmarklet_failover

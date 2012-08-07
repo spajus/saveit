@@ -26,6 +26,7 @@ gem 'net-ssh', '= 2.4.0'
 gem 'devise'
 gem 'rest-client'
 gem 'imgkit'
+gem 'mini_magick'
 
 
 gem 'acts_as_api'
