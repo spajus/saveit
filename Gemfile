@@ -27,6 +27,9 @@ gem 'devise'
 gem 'rest-client'
 gem 'imgkit'
 gem 'mini_magick'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'delayed_job_active_record'
 
 
 gem 'acts_as_api'

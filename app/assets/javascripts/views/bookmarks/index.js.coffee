@@ -5,12 +5,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
   events:
     'submit #new_tag': 'createTag'
 
-  template: ->
-    if user_settings.getUseTags()
-      JST['bookmarks/index_with_tags']
-    else
-      JST['bookmarks/index']
-
+  template: JST['bookmarks/index']
 
   initialize: (opts) ->
     @tag_collection = new Bm.Collections.Tags()

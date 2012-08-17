@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_bookmarks
   before_filter :backbone_settings, :set_encoding
 
-
   protected
 
   def create_bookmark(url, title)

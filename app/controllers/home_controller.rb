@@ -1,5 +1,3 @@
-require 'rest_client'
-
 class HomeController < ApplicationController
 
   def index
@@ -25,20 +23,13 @@ class HomeController < ApplicationController
     render :layout => false, :content_type => 'text/javascript', :formats => [:js]
   end
 
-  def preview
-    data = RestClient.get "http://img.bitpixels.com/getthumbnail?code=73310&size=200&url=#{params[:url]}"
-    response.headers['Content-Type'] = 'image/png'
-    render stream: true, text: data
-  end
-
-
   def snapshot
-    kit = IMGKit.new(params[:url], width: 1200, height: 800)
-    img = kit.to_img
-    img = MiniMagick::Image.read(img)
-    img.resize "400x300"
-    response.headers['Content-Type'] = 'image/png'
-    render stream: true, text: img.to_blob
+    #kit = IMGKit.new(params[:url], width: 1200, height: 800)
+    #img = kit.to_img
+    #img = MiniMagick::Image.read(img)
+    #img.resize "400x300"
+    snap = Snapshot.take(params[:url])
+    render text: snap.image.url()
   end
 
   def bookmarklet_failover

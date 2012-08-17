@@ -15,14 +15,14 @@ class Bm.Routers.Bookmarks extends Backbone.Router
       tag: tag
       fetch: fetch
     view.render()
-    @index = view
+    @indexView = view
 
   search: (q) ->
     view = new Bm.Views.BookmarksIndex
       search_query: q
     view.render()
-    @index = view
+    @indexView = view
 
   indexFix: ->
     @navigate '/'
-    @index()
+    @indexView()

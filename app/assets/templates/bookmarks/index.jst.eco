@@ -1,21 +1,21 @@
 <div class="row-fluid">
-  <div class="span6">
-    <div id="bookmarklet" class="well"></div>
-  </div>
-  <div class="span6">
-    <div id="add-bookmark"></div>
-  </div>
-</div>
 
-
-<div class="row-fluid">
-  <div class="overflow-auto">
-    <div id="bookmarks"></div>
+  <div class="span10">
+    <div class="row-fluid">
+      <div class="overflow-auto">
+        <div id="bookmarks"></div>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="row-fluid">
-  <div class="span12 attribution">
-    <a href='http://www.bitpixels.com/'>Website thumbnails provided by BitPixels</a>
+  <div class="span2 overflow-auto">
+    <div class="row-fluid">
+      <% if user_settings.getUseTags(): %>
+        <div id="tag-bar"></div>
+      <% end %>
+      <div id="bookmarklet" class="well"></div>
+      <div id="add-bookmark"></div>
+    </div>
   </div>
+
 </div>
