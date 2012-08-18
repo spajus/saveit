@@ -7,3 +7,5 @@ add bm.tib.lt localhost alias to /etc/hosts
 
 bundle exec jasmine-headless-webkit --color
 
+== Starting snapshot jobs ==
+rake jobs:work
