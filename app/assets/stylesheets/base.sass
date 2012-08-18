@@ -191,11 +191,9 @@ body
   @extend .row-fluid
 
 .bookmark
-  margin-left: $gridGutterWidth
   tr
     vertical-align: top
   td
-    font-size: 1.3em
   .controls
     width: 20px
     text-align: right
@@ -203,6 +201,11 @@ body
     background: url(image_path('loading-preview.gif')) no-repeat
     min-width: 200px
   .details
+    .title
+      font-size: 1.4em
+    .description
+      font-size: 1.2em
+      margin-bottom: 10px
     width: 100%
     padding-left: $gridGutterWidth
   @extend .well

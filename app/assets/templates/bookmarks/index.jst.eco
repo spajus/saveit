@@ -1,21 +1,17 @@
-<div class="row-fluid">
-
-  <div class="span9">
-    <div class="row-fluid">
-      <div class="overflow-auto">
-        <div id="bookmarks"></div>
-      </div>
+<div class="span8">
+  <div class="row-fluid">
+    <div class="overflow-auto">
+      <div id="bookmarks"></div>
     </div>
   </div>
+</div>
 
-  <div class="span3 overflow-auto">
-    <div class="row-fluid">
-      <% if user_settings.getUseTags(): %>
-        <div id="tag-bar"></div>
-      <% end %>
-      <div id="bookmarklet" class="well"></div>
-      <div id="add-bookmark"></div>
-    </div>
+<div class="span4 overflow-auto">
+  <div class="row-fluid">
+    <% if user_settings.getUseTags(): %>
+      <div id="tag-bar"></div>
+    <% end %>
+    <div id="bookmarklet" class="well"></div>
+    <div id="add-bookmark"></div>
   </div>
-
 </div>

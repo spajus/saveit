@@ -1,6 +1,6 @@
 class Bookmark < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
-  attr_accessible :title, :url, :visited, :tag_names
+  attr_accessible :title, :url, :description, :visited, :tag_names
   attr_accessor :tag_names
 
   belongs_to :user
@@ -17,13 +17,14 @@ class Bookmark < ActiveRecord::Base
 
   scope :visited, lambda {|value| where('visited = (?)', value)}
   scope :tagged_with, lambda {|value| joins(:tags).where('tags.name = (?)', value) if value}
-  scope :query, lambda {|value| where('lower(title) like (?) OR lower(url) like (?)', "%#{value.downcase}%", "%#{value.downcase}%") if value}
+  scope :query, lambda {|value| where('lower(title) like (?) OR lower(url) like (?) OR lower(description) like (?)', "%#{value.downcase}%", "%#{value.downcase}%", "%#{value.downcase}%") if value}
 
   acts_as_api
 
   api_accessible :default do |t|
     t.add :id
     t.add :url
+    t.add :description
     t.add :title
     t.add :visited
     t.add :tag_names

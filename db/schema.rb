@@ -11,17 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817051515) do
+ActiveRecord::Schema.define(:version => 20120818162209) do
 
   create_table "bookmarks", :force => true do |t|
-    t.text     "title",      :limit => 2048
-    t.text     "url",        :limit => 2048
+    t.text     "title",       :limit => 2048
+    t.text     "url",         :limit => 2048
     t.boolean  "visited"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.integer  "user_id"
+    t.text     "description"
   end
 
+  add_index "bookmarks", ["description"], :name => "index_bookmarks_on_description"
   add_index "bookmarks", ["url"], :name => "index_bookmarks_on_url"
   add_index "bookmarks", ["user_id"], :name => "index_bookmarks_on_user_id"
 

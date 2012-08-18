@@ -13,11 +13,12 @@ class HomeController < ApplicationController
   def bookmarklet
     url = params[:b]
     title = params[:t] or url
+    description = params[:d]
 
     if current_user
-      @bookmark = create_bookmark(url, title)
+      @bookmark = create_bookmark(url, title, description)
     else
-      _session_flash(url, title)
+      _session_flash(url, title, description)
     end
 
     render :layout => false, :content_type => 'text/javascript', :formats => [:js]

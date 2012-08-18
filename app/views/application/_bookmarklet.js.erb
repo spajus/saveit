@@ -15,13 +15,25 @@ function iprl5() {
     */%>
 function bm_add_new() {
     try {
-        var d=document,s=d.createElement('script'), l=d.location, t=d.getElementsByTagName('title')[0];
+        var d=document,s=d.createElement('sc' + 'ript'), l=d.location, t=d.getElementsByTagName('title')[0];
+        var m= d.getElementsByTagName('meta');
+        var desc = '';
+        for (var i = 0; i < m.length; i++) {
+          var n = m[i]['name'] || m[i].getAttribute('property');
+          if (n && (n.toLowerCase().indexOf('description') != -1)) {
+            var cnt = m[i]['content'];
+            if (cnt && (cnt.length > desc.length)) {
+              desc = cnt;
+            }
+          }
+        }
         if (!l || l == "about:blank") {
             window.location.assign('<%= url_for controller: '/home', only_path: false %>');
         }
         s.setAttribute('src', '<%= url_for controller: "/home", action: "bookmarklet", only_path: false %>?b='
                 + encodeURIComponent(l.href)
                 + '&t=' + encodeURIComponent(t ? t.innerHTML : l.href)
+                + '&d=' + encodeURIComponent(desc)
                 + '&s='+(new Date().getTime()));
         if (d.body) {
             d.body.appendChild(s);
@@ -31,6 +43,7 @@ function bm_add_new() {
             };
         }
     } catch(e) {
+        alert('error: ' + e);
         window.location.assign('<%= url_for controller: "/home", action: "bookmarklet_failover", only_path: false %>?b='
             + encodeURIComponent(l.href));
     }
