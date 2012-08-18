@@ -7,6 +7,7 @@ class Snapshot < ActiveRecord::Base
   },
   storage: :s3,
   s3_credentials: "#{Rails.root}/config/s3.yml",
+  s3_protocol: "https",
   path: "/:style/:id/:filename"
 
   def self.take(url)
