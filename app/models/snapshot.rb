@@ -14,9 +14,9 @@ class Snapshot < ActiveRecord::Base
     unless snap.image?
       kit = IMGKit.new(url, width: 1000, height: 1000)
       img = kit.to_img
-      img = MiniMagick::Image.read(img)
-      temp = Tempfile.new([Digest::MD5.hexdigest(url), '.png'])
-      img.write(temp.path)
+      temp = Tempfile.new([Digest::MD5.hexdigest(url), '.png'], encoding: 'ascii-8bit')
+      temp.write(img)
+      temp.flush
       snap.image = temp
       snap.save!
       temp.close
