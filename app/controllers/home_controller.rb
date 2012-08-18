@@ -32,7 +32,7 @@ class HomeController < ApplicationController
       redirect_to snap.image.url(:thumb)
     else
       Snapshot.delay.take params[:url]
-      redirect_to "http://dribbble.s3.amazonaws.com/users/784/screenshots/39308/shot_1280370203_teaser.png"
+      redirect_to "/images/thumb/missing.png"
     end
   end
 
