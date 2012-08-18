@@ -21,7 +21,7 @@
             <td class="details">
               <div class="row-fluid">
                 <div class="span12 title">
-                  <%- @bookmark.getIcon() %>&nbsp;<a class="link" href="<%= @bookmark.get 'url' %>"><%- @bookmark.get('title') or @bookmark.get('url') %></a>
+                  <%- @bookmark.getIcon() %>&nbsp;<a class="link" title="<%= @bookmark.get 'url' %>" href="<%= @bookmark.get 'url' %>"><%- @bookmark.get('title') or @bookmark.get('url') %></a>
                   <a class="close">&times;</a>
                 </div>
               </div>
