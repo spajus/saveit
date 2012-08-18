@@ -36,6 +36,15 @@ class HomeController < ApplicationController
     end
   end
 
+  def test_snapping
+    snap = Snapshot.find_by_url params[:url]
+    if snap
+      render text: snap.image.url(:thumb)
+    else
+      render text: Snapshot.all().to_yaml
+    end
+  end
+
   def bookmarklet_failover
 
     url = params[:b]

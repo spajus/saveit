@@ -17,7 +17,7 @@ Bm::Application.routes.draw do
 
   match "/bookmarklet" => "home#bookmarklet"
   match "/url-preview" => "home#preview"
-  match "/snapshot" => "home#snapshot"
+  match "/test-snap" => "home#test_snapping"
   match "/opensearch" => "home#opensearch"
   match "/bookmarklet/failover" => "home#bookmarklet_failover"
 
