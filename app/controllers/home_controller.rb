@@ -23,13 +23,17 @@ class HomeController < ApplicationController
     render :layout => false, :content_type => 'text/javascript', :formats => [:js]
   end
 
-  def snapshot
-    #kit = IMGKit.new(params[:url], width: 1200, height: 800)
-    #img = kit.to_img
-    #img = MiniMagick::Image.read(img)
-    #img.resize "400x300"
-    snap = Snapshot.take(params[:url])
-    render text: snap.image.url()
+  def preview
+    unless current_user
+      redirect_to "http://google.com"
+    end
+    snap = Snapshot.find_by_url params[:url]
+    if snap
+      redirect_to snap.image.url(:thumb)
+    else
+      Snapshot.delay.take params[:url]
+      redirect_to "http://dribbble.s3.amazonaws.com/users/784/screenshots/39308/shot_1280370203_teaser.png"
+    end
   end
 
   def bookmarklet_failover

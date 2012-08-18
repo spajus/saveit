@@ -1,7 +1,7 @@
 class Bm.Views.Bookmark extends Backbone.View
 
   template: JST['bookmarks/bookmark']
-  tagName: 'li'
+  tagName: 'div'
   className: 'bookmark'
 
   events:

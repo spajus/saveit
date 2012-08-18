@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def create_bookmark(url, title)
-    current_bookmarks.where(url: url).first || current_bookmarks.create(url: url, title: title)
+    bookmark = current_bookmarks.where(url: url).first || current_bookmarks.create(url: url, title: title)
+    Snapshot.delay.take(url)
+    bookmark
   end
 
   def require_user

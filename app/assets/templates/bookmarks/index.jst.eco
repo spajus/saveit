@@ -1,6 +1,6 @@
 <div class="row-fluid">
 
-  <div class="span10">
+  <div class="span9">
     <div class="row-fluid">
       <div class="overflow-auto">
         <div id="bookmarks"></div>
@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div class="span2 overflow-auto">
+  <div class="span3 overflow-auto">
     <div class="row-fluid">
       <% if user_settings.getUseTags(): %>
         <div id="tag-bar"></div>

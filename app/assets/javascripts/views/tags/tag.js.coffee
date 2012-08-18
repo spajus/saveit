@@ -46,11 +46,11 @@ class Bm.Views.Tag extends Backbone.View
     if @model.isSelected()
       @model.setSelected false
       app.navigate "/"
-      app.index.showTag()
+      app.indexView.showTag()
     else
       @model.setSelected true
       app.navigate "/tags/#{@model.getSlug()}"
-      app.index.showTag @model.getSlug()
+      app.indexView.showTag @model.getSlug()
 
 
 

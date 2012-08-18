@@ -188,11 +188,23 @@ body
     padding: 10px
 
 .bookmarks
-  list-style: none
+  @extend .row-fluid
 
 .bookmark
+  margin-left: $gridGutterWidth
+  tr
+    vertical-align: top
+  td
+    font-size: 1.3em
+  .controls
+    width: 20px
+    text-align: right
   .preview
     background: url(image_path('loading-preview.gif')) no-repeat
+    min-width: 200px
+  .details
+    width: 100%
+    padding-left: $gridGutterWidth
   @extend .well
   .drag-tag
     display: none
@@ -208,10 +220,12 @@ body
       display: inline
   .close
     display: none
+    font-size:  1.5em
+    margin-top: -2px
   .date
     color: $lightGray
-    font-size: 10px
-    float: right
+    font-size: 0.9em
+    text-align: right
 
 .bookmark:hover
   .close

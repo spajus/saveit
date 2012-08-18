@@ -13,12 +13,48 @@
     <div class="bookmark-content">
 
       <div class="row-fluid ninja">
+        <table class="span12">
+          <tr>
+            <td class="preview">
+              <img src="<%- @previewUrl %>" height="200" width="200"/>
+            </td>
+            <td class="details">
+              <div class="row-fluid ninja">
+                <div class="span12 ninja">
+                  <%- @bookmark.getIcon() %>
+                  <a class="link" href="<%= @bookmark.get 'url' %>"><%- @bookmark.get('title') or @bookmark.get('url') %></a>
+                  <a class="close">&times;</a>
+                </div>
+              </div>
 
-        <div class="span4 preview">
-          <img src="<%- @previewUrl %>" width="200" height="150"/>
+              <div class="row-fluid ninja">
+                <% if user_settings.getUseTags(): %>
+                  <div class="span8 ninja">
+                    <div class="tags">&nbsp;</div>
+                  </div>
+                  <div class="span4 ninja">
+                    <div class="date">
+                      <%= @bookmark.getCreatedAt() %>
+                    </div>
+                  </div>
+                  <% else: %>
+                  <div class="span12 ninja">
+                    <div class="date">
+                      <%= @bookmark.getCreatedAt() %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <!--
+        <div class="preview">
+          <img src="<%- @previewUrl %>" height="200" width="200"/>
         </div>
 
-        <div class="span8">
+        <div class="details">
 
           <div class="row-fluid ninja">
               <div class="span12 ninja">
@@ -47,6 +83,7 @@
             <% end %>
           </div>
         </div>
+        -->
 
       </div>
     </div>

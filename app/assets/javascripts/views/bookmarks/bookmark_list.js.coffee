@@ -26,7 +26,7 @@ class Bm.Views.BookmarksList extends Backbone.View
     @pag = new Bm.Views.Pagination
       collection: @collection
       el: @$ '.pagination'
-    list = @$ 'ul'
+    list = @$ '.bookmarks'
     @collection.each (bookmark) =>
       view = new Bm.Views.Bookmark
         model: bookmark
