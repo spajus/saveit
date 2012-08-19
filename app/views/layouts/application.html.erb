@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html <% unless user_signed_in? %>class="welcome"<% end %>>
 <head>
   <title>Save It</title>
   <%= include_gon %>
