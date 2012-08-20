@@ -32,6 +32,7 @@ gem 'aws-sdk'
 gem 'delayed_job_active_record'
 gem 'daemons'
 
+gem 'thin'
 
 gem 'acts_as_api'
 
