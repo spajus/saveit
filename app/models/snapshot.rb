@@ -13,15 +13,19 @@ class Snapshot < ActiveRecord::Base
   def self.take(url)
     snap = Snapshot.find_or_create_by_url(url)
     unless snap.image?
-      kit = IMGKit.new(url, width: 1000, height: 1000)
-      img = kit.to_img
-      temp = Tempfile.new([Digest::MD5.hexdigest(url), '.png'], encoding: 'ascii-8bit')
-      temp.write(img)
-      temp.flush
-      snap.image = temp
-      snap.save!
-      temp.close
-      temp.unlink
+      begin
+        kit = IMGKit.new(url, width: 1000, height: 1000)
+        img = kit.to_img
+        temp = Tempfile.new([Digest::MD5.hexdigest(url), '.png'], encoding: 'ascii-8bit')
+        temp.write(img)
+        temp.flush
+        snap.image = temp
+        snap.save!
+        temp.close
+        temp.unlink
+      rescue
+        #TODO mark Snapshot as errorneous and save error cause (for debugging)
+      end
     end
     snap
   end
