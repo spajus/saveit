@@ -30,12 +30,10 @@ class HomeController < ApplicationController
       return
     end
     snap = Snapshot.find_by_url params[:url]
-    if snap
-      redirect_to snap.image.url(:thumb)
-    else
+    unless snap or snap.image.url(:thumb).match "/missing"
       snap = Snapshot.take params[:url]
-      redirect_to snap.image.url(:thumb)
     end
+    redirect_to snap.image.url(:thumb)
   end
 
   def test_snapping
