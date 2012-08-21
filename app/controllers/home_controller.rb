@@ -27,13 +27,14 @@ class HomeController < ApplicationController
   def preview
     unless current_user
       redirect_to "http://google.com"
+      return
     end
     snap = Snapshot.find_by_url params[:url]
     if snap
       redirect_to snap.image.url(:thumb)
     else
-      Snapshot.delay.take params[:url]
-      redirect_to "/images/thumb/missing.png"
+      snap = Snapshot.take params[:url]
+      redirect_to snap.image.url(:thumb)
     end
   end
 
