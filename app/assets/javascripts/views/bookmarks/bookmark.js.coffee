@@ -32,7 +32,7 @@ class Bm.Views.Bookmark extends Backbone.View
           (@$ '.drag-tag')
             .clone()
             .show()
-            .width(200)
+            .width(300)
             .draggable('option', 'helper')
             .draggable('option', 'revert', true)
         revert: true
@@ -43,7 +43,7 @@ class Bm.Views.Bookmark extends Backbone.View
         containment: 'document'
 
         start: (event, ui) ->
-          ($ ui.helper).animate opacity: 0.7
+          ($ ui.helper).animate opacity: 0.6
           tag_bar.addClass 'drag-start'
           elem.addClass 'drag-start'
 

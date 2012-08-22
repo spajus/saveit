@@ -208,20 +208,31 @@ body
   .preview
     //background: url(image_path('loading-preview.gif')) no-repeat
     min-width: 100px
+    height: 100px
   .details
+    word-wrap: break-word
+    word-break: break-all
     .title
       font-size: 1.1em
     .description
       margin-bottom: 10px
     width: 100%
-    padding-left: $gridGutterWidth
+    padding-left: 10px
   @extend .well
+  padding: 10px
   .drag-tag
+    overflow: hidden
+    .preview
+      min-width: 40px
+      height: 40px
+      font-size: 1px
+    .details
+      padding-left: 4px
     display: none
-    width: 200
+    font-size: 0.8em
     @include border-radius($borderRadius, $borderRadius)
     border: 1px solid $borderGray
-    padding: 8px
+    padding: 4px
     background: $cellBackground
     .link
       @extend a
