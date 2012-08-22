@@ -16,7 +16,7 @@
         <table class="span12">
           <tr>
             <td class="preview">
-              <img src="<%- @previewUrl %>" height="100" width="100"/>
+              <img src="<%- @bookmark.get 'snapshot' %>" height="100" width="100"/>
             </td>
             <td class="details">
               <div class="row-fluid">

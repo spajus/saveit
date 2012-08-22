@@ -33,7 +33,7 @@ class HomeController < ApplicationController
     if not snap or snap.image.url(:thumb).match "/missing"
       snap = Snapshot.take params[:url]
     end
-    redirect_to snap.image.url(:thumb)
+    redirect_to snap.image.url(:thumb), status: 301
   end
 
   def test_snapping

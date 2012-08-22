@@ -28,4 +28,13 @@ class Snapshot < ActiveRecord::Base
     end
     snap
   end
+
+  def self.image_for_url(url, style)
+    snap = Snapshot.find_by_url(url)
+    if snap.image?
+      snap.image.url(style)
+    else
+      "/images/#{style}/missing.png"
+    end
+  end
 end

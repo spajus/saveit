@@ -29,6 +29,7 @@ class Bookmark < ActiveRecord::Base
     t.add :visited
     t.add :tag_names
     t.add lambda{ |b| b.distance_of_time_in_words_to_now(b.created_at) + " ago" }, as: :created_at
+    t.add lambda{ |b| Snapshot.image_for_url(b.url, :thumb) }, as: :snapshot
   end
 
   def tag_names

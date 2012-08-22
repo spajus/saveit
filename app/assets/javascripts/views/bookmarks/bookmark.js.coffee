@@ -17,15 +17,9 @@ class Bm.Views.Bookmark extends Backbone.View
   id: =>
     "bookmark-#{@model.get 'id'}"
 
-  previewUrl: =>
-    "#{gon.preview_url}?url=#{encodeURIComponent(@model.get 'url')}"
-
   render: =>
-    @$el.html @template bookmark: @model, previewUrl: @previewUrl()
+    @$el.html @template bookmark: @model
     tag_bar = ($ '#tag-bar')
-
-    # preload thumbnail so it will exist later on
-    $.get @previewUrl()
 
     if user_settings.getUseTags
       @renderTags()
