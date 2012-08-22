@@ -15,7 +15,9 @@ $(document).ready ->
   Bm.init() if gon.current_user
 
   ($ '.nav-link').click (e) ->
-    app.navigate e.target.pathname, trigger: true
-    e.preventDefault()
+      app.navigate e.target.pathname, trigger: true
+      e.preventDefault()
+      if e.target.pathname is '/'
+        app.indexView.collection.fetch()
 
 
