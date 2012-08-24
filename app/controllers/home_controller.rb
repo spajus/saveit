@@ -64,13 +64,13 @@ class HomeController < ApplicationController
 
   private
 
-  def _session_flash(url, title)
+  def _session_flash(url, title, description='')
     # Javascript assigns window.location to home page, where user can log in.
     # After login user is redirected back to target url
     flash[:message] = """Please sign in to use the bookmarklet.
 You will be redirected back to <a href=\"#{url}\">#{title}</a>
 afterwards.""".html_safe
-    session[:save_and_return_to] = { title: title, url: url}
+    session[:save_and_return_to] = { title: title, url: url, description: description }
   end
 
 end
