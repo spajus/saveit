@@ -13,7 +13,7 @@ Bm::Application.routes.draw do
     end
   end
 
-  root to: 'home#index'
+  root :to => "home#index"
 
   match "/bookmarklet" => "home#bookmarklet"
   match "/url-preview" => "home#preview"
