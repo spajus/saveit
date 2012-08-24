@@ -1,0 +1,1 @@
+class Bm.Models.User extends Backbone.Model

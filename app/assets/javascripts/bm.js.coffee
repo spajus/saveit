@@ -12,7 +12,7 @@ window.Bm =
 
 
 $(document).ready ->
-  Bm.init() if gon.current_user
+  Bm.init()
 
   ($ '.nav-link').click (e) ->
       app.navigate e.target.pathname, trigger: true

@@ -11,9 +11,12 @@ class Bm.Routers.Bookmarks extends Backbone.Router
     view.render()
 
   index: (tag, fetch) ->
-    view = new Bm.Views.BookmarksIndex
-      tag: tag
-      fetch: fetch
+    if gon.current_user
+      view = new Bm.Views.BookmarksIndex
+        tag: tag
+        fetch: fetch
+    else
+      view = new Bm.Views.Index()
     view.render()
     @indexView = view
 
