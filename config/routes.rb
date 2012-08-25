@@ -24,6 +24,6 @@ Bm::Application.routes.draw do
   mount Jasminerice::Engine => "/specs" unless Rails.env.production?
 
   # This should go last. It's for the main backbone app
-  match "*path" => "home#index"
+  #match "*path" => "home#index"
 
 end
