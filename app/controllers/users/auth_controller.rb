@@ -1,4 +1,4 @@
-class AuthController < Devise::OmniauthCallbacksController
+class Users::AuthController < Devise::OmniauthCallbacksController
 
   def method_missing(provider)
 
