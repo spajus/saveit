@@ -10,13 +10,18 @@
     </div>
   </div>
 
-  <div class="span4">
+  <div class="span6">
     <h2>Sign in</h2>
+    <div>
+      <%= link_to user_omniauth_authorize_path(:twitter) do %><%= image_tag 'sign-in-with-twitter.png'%><% end %>
+      <%= link_to user_omniauth_authorize_path(:facebook) do %><%= image_tag 'sign-in-with-facebook.png'%><% end %>
+    </div>
+    <div>
+      <%= image_tag 'or.png' %>
+    </div>
     <div id="login"></div>
-  </div>
-
-
-  <div class="span4">
     <h2>Sign up</h2>
     <div id="signup"></div>
   </div>
+
+

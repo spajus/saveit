@@ -1,26 +1,14 @@
 <form id="signup-form">
   <fieldset>
-    <div class="control-group">
-      <label class="control-label" for="email">Email</label>
-      <div class="controls">
-        <input id="email" name="email" type="email">
-      </div>
+    <div class="controls">
+      <input id="email" name="email" placeholder="Email" type="email">
     </div>
-    <div class="control-group">
-      <label class="control-label" for="password">Password</label>
-      <div class="controls">
-        <input id="password" name="password" type="password">
-      </div>
+    <div class="controls">
+      <input id="password" name="password" placeholder="Password" type="password">
     </div>
-    <div class="control-group">
-      <label class="control-label" for="password_confirmation">Password confirmation</label>
-      <div class="controls">
-        <input id="password_confirmation" name="password_confirmation" type="password">
-      </div>
-    </div>
-    <div class="form-actions">
+    <div class="controls">
+      <input id="password_confirmation" name="password_confirmation" placeholder="Password confirmation" type="password">
       <input class="btn btn-primary" name="commit" type="submit" value="Sign up">
     </div>
   </fieldset>
-
 </form>
