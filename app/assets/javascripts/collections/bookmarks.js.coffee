@@ -41,6 +41,7 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
       @tag = null
 
   setQuery: (query) ->
+    @page = 1
     @query = query
 
 
