@@ -15,11 +15,7 @@
 </head>
 <body>
 
-<% if user_signed_in? %>
-  <%= render 'nav' %>
-<% else %>
-  <%= render 'nav.anonymous' %>
-<% end %>
+<div id="navbar"></div>
 
 <div class="container">
   <%= render 'alerts' %>
