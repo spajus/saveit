@@ -1,13 +1,18 @@
+<div class="row-fluid">
+
 <form id="login-form">
   <fieldset>
     <div class="control-group ninja">
       <div class="controls">
-        <input id="email" name="email" type="email" placeholder="Email" required="required" />
+        <input class="span12 jumbo" id="email" name="email" type="email" placeholder="Email" required="required" />
       </div>
       <div class="controls">
-          <input id="password" name="password" type="password" placeholder="Password" required="required" />
+        <input class="span12 jumbo" id="password" name="password" type="password" placeholder="Password" required="required" />
       </div>
     </div>
-    <input type="submit" value="Login" class="btn btn-primary" />
+    <input type="submit" value="Sign in" class="btn btn-success btn-large pull-right" />
   </fieldset>
 </form>
+
+</div>
+
