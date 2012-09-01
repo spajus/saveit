@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :name, :image, :provider, :uid
 
+  validates_uniqueness_of :email
+
   has_many :bookmarks
   has_many :settings
   has_many :user_tokens

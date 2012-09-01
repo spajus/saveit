@@ -1,7 +1,22 @@
-  <div class="span5">
-    <div class="hero-unit slim linen word-breaker">
-      <h1>Save It</h1>
-      <p>Simple, secure bookmarks</p>
+  <div class="span6">
+    <div class="hero-unit linen">
+      <div class="row-fluid">
+        <div class="span6">
+          <h1>Save It</h1>
+          <p>Simple, secure bookmarks.</p>
+        </div>
+        <div class="span6">
+          <div class="pull-right">
+            <h2>Sign in</h2>
+            <p>
+              <%= link_to user_omniauth_authorize_path(:facebook) do %><%= image_tag 'icon-fb-50.png'%><% end %>
+              <%= link_to user_omniauth_authorize_path(:twitter) do %><%= image_tag 'icon-twitter-50.png'%><% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <%#
       <hr/>
       <ul class="nav nav-tabs">
         <li class="active">
@@ -18,13 +33,10 @@
         </div>
       </div>
       <div class="control-group">
-        <h3>Or sign in via social account</h3>
+        <h3>Sign in via social account</h3>
       </div>
-      <div class="control-group">
-        <%= link_to user_omniauth_authorize_path(:facebook) do %><%= image_tag 'icon-fb-50.png'%><% end %>
-        <%= link_to user_omniauth_authorize_path(:twitter) do %><%= image_tag 'icon-twitter-50.png'%><% end %>
-      </div>
-    </div>
+      %>
+
   </div>
 
 

@@ -6,7 +6,8 @@ class Bm.Views.Navbar extends Backbone.View
     'click .signout-link': 'signout'
 
   render: ->
-    @$el.html @template()
+    if gon.current_user
+      @$el.html @template()
     @
 
   signout: (e) ->
