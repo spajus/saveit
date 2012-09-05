@@ -20,6 +20,7 @@ Bm::Application.routes.draw do
   match "/test-snap" => "home#test_snapping"
   match "/opensearch" => "home#opensearch"
   match "/bookmarklet/failover" => "home#bookmarklet_failover"
+  match "/zimg/:id" =>"home#zimg"
 
   mount Jasminerice::Engine => "/specs" unless Rails.env.production?
 

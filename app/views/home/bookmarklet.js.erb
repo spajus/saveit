@@ -4,41 +4,30 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
 el=document.createElement('div');
 el.setAttribute('id','bm-notification-id');
 
-css='display:inline-block;';
-css+='position:fixed;';
-css+='top:0px;';
-css+='right:0px;';
-css+='width:100%;';
-css+='z-index:9999999;';
-
-css+='background-color: #5bb75b;';
-css+='background-image: -webkit-linear-gradient(top, #62C462, #51A351);';
-css+='background-image: -o-linear-gradient(top, #62C462, #51A351);';
-css+='background-image: -moz-linear-gradient(top, #62C462, #51A351);';
-css+='background-image: linear-gradient(top, #62C462, #51A351);';
-css+='background-repeat: repeat-x;';
-
-css+='border-color:rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);';
-
-css+='padding:5px;';
-
-css+='font-family: Arial,sans-serif;';
-css+='font-size: 12px;';
-css+='color:white;';
-css+='line-height:18px;';
-css+='text-align:center;';
-css+='vertical-align:middle;';
-
-css+='text-shadow:0 -1px 0 rgba(0,0,0,0.25);';
-css+='-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);';
-css+='box-shadow:inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);';
-css+='-moz-box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);';
-
-el.style.cssText=css;
-el.textContent="Success adding <%= h(@bookmark.title || @bookmark.url).gsub(/\n/, '').gsub(/"/, "'") %>";
-
+el.innerHTML = '<%= render('bookmark-div').gsub(/\s*\n/, '').html_safe %>';
 document.body.appendChild(el);
-setTimeout('removeBmPopup()', 1000);
+
+
+function submitForm(){
+    var elms = document.getElementById("saveitin-form").elements;
+    var title = elms[name="bookmark[title]"].value;
+    var description = elms[name="bookmark[description]"].value;
+    var tags = elms[name="bookmark[tags]"].value;
+    var url = 'http://localhost:3000/zimg/' + <%= @bookmark.id %> + '?title=' + encodeURIComponent(title) +'&description=' +encodeURIComponent(description) + '&tags=' +encodeURIComponent(tags);
+
+    var img = document.createElement("img");
+    img.setAttribute('src', url);
+    img.setAttribute('alt', 'na');
+    img.setAttribute('height', '1px');
+    img.setAttribute('width', '1px');
+    document.body.appendChild(img);
+    var bm_div = document.getElementById('bm-notification-id');
+    document.body.removeChild(bm_div);
+    return false;
+}
+
+
+//setTimeout('removeBmPopup()', 4000);
 
 function removeBmPopup() {
   if ( n = document.getElementById('bm-notification-id')) {

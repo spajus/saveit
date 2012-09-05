@@ -1,0 +1,46 @@
+<style id="saveitin-div-style">
+    #saveitin-top-div {
+        padding: 10px;
+        -moz-box-shadow: 0;
+        position: fixed;
+        top: 0;
+        z-index: 99999;
+        min-height: 34px;
+        background: white;
+        width: 100%;
+        -moz-box-shadow: 0 0 25px #666;
+        -webkit-box-shadow: 0 0 25px #666;
+        box-shadow: 0 0 25px #666;
+
+        font-family: Arial,sans-serif;
+        font-size: 12px;
+        color:#333;
+        line-height:18px;
+        /*text-align:center;*/
+        vertical-align:middle;
+    }
+
+    #saveitin-form label {
+        text-align: right;
+        display: inline-block;
+        width: 8em;
+    }
+    #saveitin-form input {
+        border: 1px solid #ccc;
+        background-color: #fff;
+        text-align: left;
+        display: inline-block;
+    }
+</style>
+
+<div id="saveitin-top-div">
+  Success adding <%= h(@bookmark.title || @bookmark.url).gsub(/\n/, "") %> <br/><br/>
+
+    <form id="saveitin-form" onsubmit="return submitForm();">
+        <%= label_tag :title, 'Title:' %> <%= text_field :bookmark, :title %><br/>
+        <%=  label_tag :description, 'Description:' %> <%= text_field :bookmark, :description %><br/>
+        <%=  label_tag :tags, 'Tags:' %> <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
+        <input name="commit" type="submit" value="Update" />
+      </dl>
+    </form>
+</div>

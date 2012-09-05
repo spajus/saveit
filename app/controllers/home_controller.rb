@@ -59,6 +59,17 @@ class HomeController < ApplicationController
 
   end
 
+  # Does not provide information on success/failure of update
+  def zimg
+	  if params[:id] && params[:tags] && params[:description] && params[:title]
+		    bookmark = current_user.bookmarks.find(params[:id])
+		    tag_names = params[:tags].split(',').map(&:lstrip).map(&:rstrip)
+	      bookmark.update_attributes( tag_names: tag_names, description: params[:description], title: params[:title] ) rescue ''
+	  end
+	  # Always return image 1x1 gif
+	  render text: Base64.decode64("R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="), content_type: "image/gif", layout: false
+  end
+
   def opensearch
     render layout: false, content_type: 'text/xml', formats: [:xml]
   end
