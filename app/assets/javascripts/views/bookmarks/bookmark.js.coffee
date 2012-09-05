@@ -17,15 +17,9 @@ class Bm.Views.Bookmark extends Backbone.View
   id: =>
     "bookmark-#{@model.get 'id'}"
 
-  previewUrl: =>
-    "#{gon.preview_url}?url=#{encodeURIComponent(@model.get 'url')}"
-
   render: =>
-    @$el.html @template bookmark: @model, previewUrl: @previewUrl()
+    @$el.html @template bookmark: @model
     tag_bar = ($ '#tag-bar')
-
-    # preload thumbnail so it will exist later on
-    $.get @previewUrl()
 
     if user_settings.getUseTags
       @renderTags()
@@ -38,7 +32,7 @@ class Bm.Views.Bookmark extends Backbone.View
           (@$ '.drag-tag')
             .clone()
             .show()
-            .width(200)
+            .width(300)
             .draggable('option', 'helper')
             .draggable('option', 'revert', true)
         revert: true
@@ -49,7 +43,7 @@ class Bm.Views.Bookmark extends Backbone.View
         containment: 'document'
 
         start: (event, ui) ->
-          ($ ui.helper).animate opacity: 0.7
+          ($ ui.helper).animate opacity: 0.6
           tag_bar.addClass 'drag-start'
           elem.addClass 'drag-start'
 

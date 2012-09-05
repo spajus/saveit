@@ -1,24 +1,43 @@
-<div class="row-fluid">
-  <div class="span4">
-    <div class="hero-unit">
-      <h1>Save It</h1>
-      <p>Dead simple bookmarking that works everywhere</p>
-      <p>
-        <a class="btn btn-primary btn-large">
-          Learn more
-        </a>
-      </p>
+  <div class="span6">
+    <div class="hero-unit linen">
+      <div class="row-fluid">
+        <div class="span6">
+          <h1>Save It</h1>
+          <p>Simple, secure bookmarks.</p>
+        </div>
+        <div class="span6">
+          <div class="pull-right">
+            <h2>Sign in</h2>
+            <p>
+              <%= link_to user_omniauth_authorize_path(:facebook) do %><%= image_tag 'icon-fb-50.png'%><% end %>
+              <%= link_to user_omniauth_authorize_path(:twitter) do %><%= image_tag 'icon-twitter-50.png'%><% end %>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+      <%#
+      <hr/>
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#signin-tab" data-toggle="tab"><h2>Sign in</h2></a>
+        </li>
+        <li><a href="#signup-tab" data-toggle="tab"><h2>Sign up</h2></a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="signin-tab">
+          <div id="login"></div>
+        </div>
+        <div class="tab-pane" id="signup-tab">
+          <div id="signup"></div>
+        </div>
+      </div>
+      <div class="control-group">
+        <h3>Sign in via social account</h3>
+      </div>
+      %>
+
   </div>
 
-  <div class="span4">
-    <h2>Sign in</h2>
-    <%= render template: "devise/shared/_signin" %>
-  </div>
 
 
-  <div class="span4">
-    <h2>Sign up</h2>
-    <%= render template: "devise/shared/_signup" %>
-  </div>
-</div>

@@ -1,9 +1,8 @@
 class Snapshot < ActiveRecord::Base
   attr_accessible :url, :image
   has_attached_file :image, styles: {
-      thumb: "200",
-      normal: "400",
-      original: "600"
+      thumb: "100",
+      original: "300"
   },
   storage: :s3,
   s3_credentials: "#{Rails.root}/config/s3.yml",
@@ -13,16 +12,29 @@ class Snapshot < ActiveRecord::Base
   def self.take(url)
     snap = Snapshot.find_or_create_by_url(url)
     unless snap.image?
-      kit = IMGKit.new(url, width: 1000, height: 1000)
-      img = kit.to_img
-      temp = Tempfile.new([Digest::MD5.hexdigest(url), '.png'], encoding: 'ascii-8bit')
-      temp.write(img)
-      temp.flush
-      snap.image = temp
-      snap.save!
-      temp.close
-      temp.unlink
+      begin
+        kit = IMGKit.new(url, width: 900, height: 900)
+        img = kit.to_img
+        temp = Tempfile.new([Digest::MD5.hexdigest(url), '.png'], encoding: 'ascii-8bit')
+        temp.write(img)
+        temp.flush
+        snap.image = temp
+        snap.save!
+        temp.close
+        temp.unlink
+      rescue
+        #TODO mark Snapshot as errorneous and save error cause (for debugging)
+      end
     end
     snap
+  end
+
+  def self.image_for_url(url, style)
+    snap = Snapshot.find_by_url(url)
+    if snap and snap.image?
+      snap.image.url(style)
+    else
+      "/images/#{style}/missing.png"
+    end
   end
 end

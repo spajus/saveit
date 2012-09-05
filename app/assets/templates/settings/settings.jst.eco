@@ -9,7 +9,7 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#settings-bookmarks" data-toggle="tab">Bookmarks</a></li>
             <li class=""><a href="#settings-tagging" data-toggle="tab">Tagging</a></li>
-            <li class=""><a href="#settings-account" data-toggle="tab">Account</a></li>
+            <%# <li class=""><a href="#settings-account" data-toggle="tab">Account</a></li> %>
             <li class=""><a href="#settings-misc" data-toggle="tab">Misc</a></li>
           </ul>
 
@@ -28,7 +28,6 @@
                     <option value="15">15</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
-                    <option value="100">100</option>
                   </select>
                 </div>
               </div>

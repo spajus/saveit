@@ -8,7 +8,6 @@ gem 'omniauth-facebook'
 gem 'gon'
 gem 'kaminari'
 
-gem 'sqlite3'
 gem 'yaml_db'
 
 gem 'jquery-rails'
@@ -24,9 +23,9 @@ gem 'cape'
 gem 'net-ssh', '= 2.4.0'
 
 gem 'devise'
-gem 'rest-client'
+#gem 'rest-client'
 gem 'imgkit'
-gem 'mini_magick'
+#gem 'mini_magick'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'delayed_job_active_record'
@@ -50,6 +49,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'sinon-rails'
   gem 'jasminerice'
+  gem 'sqlite3'
 end
 
 group :production do

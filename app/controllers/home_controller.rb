@@ -27,14 +27,13 @@ class HomeController < ApplicationController
   def preview
     unless current_user
       redirect_to "http://google.com"
+      return
     end
     snap = Snapshot.find_by_url params[:url]
-    if snap
-      redirect_to snap.image.url(:thumb)
-    else
-      Snapshot.delay.take params[:url]
-      redirect_to "/images/thumb/missing.png"
+    if not snap or snap.image.url(:thumb).match "/missing"
+      snap = Snapshot.take params[:url]
     end
+    redirect_to snap.image.url(:thumb), status: 301
   end
 
   def test_snapping
@@ -76,13 +75,13 @@ class HomeController < ApplicationController
 
   private
 
-  def _session_flash(url, title)
+  def _session_flash(url, title, description='')
     # Javascript assigns window.location to home page, where user can log in.
     # After login user is redirected back to target url
     flash[:message] = """Please sign in to use the bookmarklet.
 You will be redirected back to <a href=\"#{url}\">#{title}</a>
 afterwards.""".html_safe
-    session[:save_and_return_to] = { title: title, url: url}
+    session[:save_and_return_to] = { title: title, url: url, description: description }
   end
 
 end

@@ -34,12 +34,14 @@ class Bm.Collections.Bookmarks extends Backbone.Collection
       callback count
 
   setSelectedTag: (tag) ->
+    @page = 1 # We have to drop to page 1 otherwise collection will render shit
     if tag
       @tag = tag.replace /\-/g, ' '
     else
       @tag = null
 
   setQuery: (query) ->
+    @page = 1
     @query = query
 
 

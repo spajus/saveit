@@ -7,22 +7,34 @@ class Bm.Routers.Bookmarks extends Backbone.Router
     'settings' : 'settings'
 
   settings: ->
+    @doNavBar()
     view = new Bm.Views.Settings collection: window.user_settings
     view.render()
 
   index: (tag, fetch) ->
-    view = new Bm.Views.BookmarksIndex
-      tag: tag
-      fetch: fetch
+    @doNavBar()
+    if gon.current_user
+      view = new Bm.Views.BookmarksIndex
+        tag: tag
+        fetch: fetch
+    else
+      view = new Bm.Views.Index()
     view.render()
     @indexView = view
 
   search: (q) ->
+    @doNavBar()
     view = new Bm.Views.BookmarksIndex
       search_query: q
     view.render()
     @indexView = view
 
   indexFix: ->
+    @doNavBar()
     @navigate '/'
     @indexView()
+
+  doNavBar: ->
+    @navbar or= new Bm.Views.Navbar()
+    @navbar.render()
+

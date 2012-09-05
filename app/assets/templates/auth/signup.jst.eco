@@ -1,0 +1,18 @@
+<div class="row-fluid">
+  <form id="signup-form">
+    <fieldset>
+      <div class="control-group ninja">
+        <div class="controls">
+          <input class="span12 jumbo" id="email" name="email" placeholder="Email" type="email">
+        </div>
+        <div class="controls">
+          <input class="span12 jumbo" id="password" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="controls">
+          <input class="span12 jumbo" id="password_confirmation" name="password_confirmation" placeholder="Password confirmation" type="password">
+        </div>
+      </div>
+      <input class="btn btn-success btn-large pull-right" name="commit" type="submit" value="Sign up">
+    </fieldset>
+  </form>
+</div>

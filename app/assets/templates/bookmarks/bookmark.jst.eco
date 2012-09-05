@@ -3,9 +3,19 @@
     <% if user_settings.getUseTags(): %>
       <div class="drag-tag">
         <div class="row-fluid ninja">
-          <div class="span12 ninja">
-            <span class="link"><%- @bookmark.get('title') or @bookmark.get('url') %></span>
-          </div>
+          <table class="span12">
+            <tr>
+              <td class="preview"><img class="img-rounded" src="<%- @bookmark.get 'snapshot' %>" height="40" width="40"/></td>
+              <td class="details">
+                <div class="row-fluid">
+                  <div class="span12 title">
+                    <%- @bookmark.getIcon() %>&nbsp;<%- @bookmark.get('title') or @bookmark.get('url') %>
+                  </div>
+                </div>
+
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     <% end %>
@@ -15,9 +25,7 @@
       <div class="row-fluid">
         <table class="span12">
           <tr>
-            <td class="preview">
-              <img src="<%- @previewUrl %>" height="100" width="100"/>
-            </td>
+            <td class="preview"><img class="img-rounded" src="<%- @bookmark.get 'snapshot' %>" height="100" width="100"/></td>
             <td class="details">
               <div class="row-fluid">
                 <div class="span12 title">
