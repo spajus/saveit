@@ -19,6 +19,36 @@
         /*text-align:center;*/
         vertical-align:middle;
     }
+    #saveitin-inner-div {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50em;
+    }
+
+    #saveitin-top-div input[type=submit] {
+       background-color: #14B1E5;
+       -webkit-border-image: none;
+        background-image: -moz-linear-gradient(#1BB8EC, #0AA7DB);
+        background-image: -ms-linear-gradient(#1BB8EC, #0AA7DB);
+        background-image: -o-linear-gradient(#1BB8EC, #0AA7DB);
+        background-image: -webkit-linear-gradient(top, #1BB8EC, #0AA7DB);
+        background-repeat: repeat-x;
+        border: 1px solid #0AA7DB;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -o-border-radius: 4px;
+        -webkit-border-radius: 4px;
+
+        color: white;
+        font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-height: 13px;
+        padding: 4px 10px;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: rgba(0, 0, 0, 0.246094) 0px -1px 0px;
+        vertical-align: middle;
+    }
 
     #saveitin-form {
         display: none;
@@ -38,17 +68,19 @@
 </style>
 
 <div id="saveitin-top-div">
-  Success adding <%= h(@bookmark.title || @bookmark.url).gsub(/\n/, "") %> <br/><br/>
+  <div id="saveitin-inner-div">
+      <h4>Success adding <%= h(@bookmark.title || @bookmark.url).gsub(/\n/, "") %></h4>
 
-    <div id="saveitin-edit-button">
-      <input name="edit" type="submit" onclick="return showFormEdit()" value="Edit bookmark"/>
+        <div id="saveitin-edit-button">
+          <input name="edit" type="submit" onclick="return showBmFormEdit()" value="Edit bookmark"/>
+        </div>
+
+        <form id="saveitin-form" onsubmit="return submitBmForm();">
+            <%= label_tag :title, 'Title:' %> <%= text_field :bookmark, :title %><br/>
+            <%=  label_tag :description, 'Description:' %> <%= text_field :bookmark, :description %><br/>
+            <%=  label_tag :tags, 'Tags:' %> <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
+            <input name="commit" type="submit" value="Update" />
+          </dl>
+        </form>
     </div>
-
-    <form id="saveitin-form" onsubmit="return submitBmForm();">
-        <%= label_tag :title, 'Title:' %> <%= text_field :bookmark, :title %><br/>
-        <%=  label_tag :description, 'Description:' %> <%= text_field :bookmark, :description %><br/>
-        <%=  label_tag :tags, 'Tags:' %> <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
-        <input name="commit" type="submit" value="Update" />
-      </dl>
-    </form>
 </div>

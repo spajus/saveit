@@ -3,9 +3,10 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
 <%- else -%>
 function submitBmForm(){
     var elms = document.getElementById("saveitin-form").elements;
-    var title = elms[name="bookmark[title]"].value;
+    var title       = elms[name="bookmark[title]"].value;
     var description = elms[name="bookmark[description]"].value;
-    var tags = elms[name="bookmark[tags]"].value;
+    var tags        = elms[name="bookmark[tags]"].value;
+
     var url = '<%= url_for(controller: :home, action: 'zimg', id: @bookmark, only_path: false)%>?title=' + encodeURIComponent(title) +'&description=' +encodeURIComponent(description) + '&tags=' +encodeURIComponent(tags);
 
     var img = document.createElement("img");
@@ -13,15 +14,17 @@ function submitBmForm(){
     img.setAttribute('alt', 'na');
     img.setAttribute('height', '1px');
     img.setAttribute('width', '1px');
+
     document.body.appendChild(img);
     var bm_div = document.getElementById('bm-notification-id');
     document.body.removeChild(bm_div);
     return false;
 }
 
-function showFormEdit(){
+function showBmFormEdit(){
     var btn = document.getElementById("saveitin-edit-button");
     btn.setAttribute("style", "display:none;");
+
     var frm = document.getElementById("saveitin-form");
     frm.setAttribute("style", "display:block;");
 }
@@ -40,7 +43,7 @@ function removeBmPopup() {
 el=document.createElement('div');
 el.setAttribute('id','bm-notification-id');
 
-el.innerHTML = '<%= render('bookmark-div').gsub(/\s*\n/, '').html_safe %>';
+el.innerHTML = '<%= render('bookmark-div').gsub(/\s*\n/, '').gsub(/[']/, '\\\\\'').html_safe %>';
 document.body.appendChild(el);
 
 setTimeout('removeBmPopup()', 3000);
