@@ -44,7 +44,7 @@
       <input name="edit" type="submit" onclick="return showFormEdit()" value="Edit bookmark"/>
     </div>
 
-    <form id="saveitin-form" onsubmit="return submitForm();">
+    <form id="saveitin-form" onsubmit="return submitBmForm();">
         <%= label_tag :title, 'Title:' %> <%= text_field :bookmark, :title %><br/>
         <%=  label_tag :description, 'Description:' %> <%= text_field :bookmark, :description %><br/>
         <%=  label_tag :tags, 'Tags:' %> <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>

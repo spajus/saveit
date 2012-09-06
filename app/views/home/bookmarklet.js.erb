@@ -1,19 +1,13 @@
 <%- if not current_user %>
 window.location.assign('<%= url_for controller: :home, only_path: false %>');
 <%- else -%>
-el=document.createElement('div');
-el.setAttribute('id','bm-notification-id');
-
-el.innerHTML = '<%= render('bookmark-div').gsub(/\s*\n/, '').html_safe %>';
-document.body.appendChild(el);
-
-
-function submitForm(){
+function submitBmForm(){
     var elms = document.getElementById("saveitin-form").elements;
     var title = elms[name="bookmark[title]"].value;
     var description = elms[name="bookmark[description]"].value;
     var tags = elms[name="bookmark[tags]"].value;
-    var url = 'http://localhost:3000/zimg/' + <%= @bookmark.id %> + '?title=' + encodeURIComponent(title) +'&description=' +encodeURIComponent(description) + '&tags=' +encodeURIComponent(tags);
+    var url = '<%= request.protocol + request.host_with_port %>/zimg/<%= @bookmark.id %>?title=' + encodeURIComponent(title) +'&description=' +encodeURIComponent(description) + '&tags=' +encodeURIComponent(tags);
+    console.log(url);
 
     var img = document.createElement("img");
     img.setAttribute('src', url);
@@ -33,12 +27,22 @@ function showFormEdit(){
     frm.setAttribute("style", "display:block;");
 }
 
+function removeBmPopup() {
+    if (frm = document.getElementById("saveitin-form")) {
+        var style = document.defaultView.getComputedStyle(frm,null).getPropertyValue("display");
+        if (style == "none") {
+            if ( n = document.getElementById('bm-notification-id')) {
+                document.body.removeChild(n);
+            }
+        }
+    }
+}
+
+el=document.createElement('div');
+el.setAttribute('id','bm-notification-id');
+
+el.innerHTML = '<%= render('bookmark-div').gsub(/\s*\n/, '').html_safe %>';
+document.body.appendChild(el);
 
 setTimeout('removeBmPopup()', 3000);
-
-function removeBmPopup() {
-  if ( n = document.getElementById('bm-notification-id')) {
-    document.body.removeChild(n);
-  }
-}
 <%- end %>
