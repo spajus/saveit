@@ -6,8 +6,7 @@ function submitBmForm(){
     var title = elms[name="bookmark[title]"].value;
     var description = elms[name="bookmark[description]"].value;
     var tags = elms[name="bookmark[tags]"].value;
-    var url = '<%= request.protocol + request.host_with_port %>/zimg/<%= @bookmark.id %>?title=' + encodeURIComponent(title) +'&description=' +encodeURIComponent(description) + '&tags=' +encodeURIComponent(tags);
-    console.log(url);
+    var url = '<%= url_for(controller: :home, action: 'zimg', id: @bookmark, only_path: false)%>?title=' + encodeURIComponent(title) +'&description=' +encodeURIComponent(description) + '&tags=' +encodeURIComponent(tags);
 
     var img = document.createElement("img");
     img.setAttribute('src', url);
