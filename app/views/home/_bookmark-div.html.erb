@@ -24,6 +24,9 @@
         margin-right: auto;
         width: 50em;
     }
+    /*#saveitin-top-div h4 {*/
+        /*text-align: center;*/
+    /*}*/
 
     #saveitin-top-div input[type=submit] {
        background-color: #14B1E5;
@@ -69,6 +72,7 @@
 
 <div id="saveitin-top-div">
   <div id="saveitin-inner-div">
+    <% if @bookmark %>
       <h4>Success adding <%= h(@bookmark.title || @bookmark.url).gsub(/\n/, "") %></h4>
 
         <div id="saveitin-edit-button">
@@ -76,11 +80,14 @@
         </div>
 
         <form id="saveitin-form" onsubmit="return submitBmForm();">
-            <%= label_tag :title, 'Title:' %> <%= text_field :bookmark, :title %><br/>
-            <%=  label_tag :description, 'Description:' %> <%= text_field :bookmark, :description %><br/>
-            <%=  label_tag :tags, 'Tags:' %> <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
+            <%= label_tag :title, 'Title:' %>             <%= text_field :bookmark, :title %><br/>
+            <%= label_tag :description, 'Description:' %> <%= text_field :bookmark, :description %><br/>
+            <%= label_tag :tags, 'Tags:' %>               <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
             <input name="commit" type="submit" value="Update" />
           </dl>
         </form>
+    <% else %>
+        <h4>Loading...</h4>
+    <% end %>
     </div>
 </div>

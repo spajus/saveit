@@ -14,8 +14,18 @@ function iprl5() {
     }catch(e){alert('Please wait until the page has loaded.');}}iprl5();void(0)
     */%>
 function bm_add_new() {
+    var d = document;
+    var el = d.getElementById('bm-notification-id');
+
+    if (el == null) {
+        el = d.createElement('div');
+        el.setAttribute('id','bm-notification-id');
+        d.body.appendChild(el);
+    }
+    el.innerHTML = '<%= render('home/bookmark-div').gsub(/\s*\n/, '').gsub(/[']/, '\\\\\'').html_safe %>';
+
     try {
-        var d=document,s=d.createElement('sc' + 'ript'), l=d.location, t=d.getElementsByTagName('title')[0];
+        s=d.createElement('sc' + 'ript'), l=d.location, t=d.getElementsByTagName('title')[0];
         var m= d.getElementsByTagName('meta');
         var desc = '';
         for (var i = 0; i < m.length; i++) {

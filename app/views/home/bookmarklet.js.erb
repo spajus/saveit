@@ -7,7 +7,10 @@ function submitBmForm(){
     var description = elms[name="bookmark[description]"].value;
     var tags        = elms[name="bookmark[tags]"].value;
 
-    var url = '<%= url_for(controller: :home, action: 'zimg', id: @bookmark, only_path: false)%>?title=' + encodeURIComponent(title) +'&description=' +encodeURIComponent(description) + '&tags=' +encodeURIComponent(tags);
+    var url = '<%= url_for(controller: :home, action: 'zimg', id: @bookmark, only_path: false)%>'
+            + '?title='       + encodeURIComponent(title)
+            + '&description=' + encodeURIComponent(description)
+            + '&tags='        + encodeURIComponent(tags);
 
     var img = document.createElement("img");
     img.setAttribute('src', url);
@@ -40,11 +43,13 @@ function removeBmPopup() {
     }
 }
 
-el=document.createElement('div');
-el.setAttribute('id','bm-notification-id');
-
+var el = document.getElementById('bm-notification-id');
+if (el == null) {
+    document.createElement('div');
+    el.setAttribute('id','bm-notification-id');
+    document.body.appendChild(el);
+}
 el.innerHTML = '<%= render('bookmark-div').gsub(/\s*\n/, '').gsub(/[']/, '\\\\\'').html_safe %>';
-document.body.appendChild(el);
-
 setTimeout('removeBmPopup()', 3000);
+
 <%- end %>
