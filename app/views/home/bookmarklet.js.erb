@@ -26,8 +26,15 @@ function submitForm(){
     return false;
 }
 
+function showFormEdit(){
+    var btn = document.getElementById("saveitin-edit-button");
+    btn.setAttribute("style", "display:none;");
+    var frm = document.getElementById("saveitin-form");
+    frm.setAttribute("style", "display:block;");
+}
 
-//setTimeout('removeBmPopup()', 4000);
+
+setTimeout('removeBmPopup()', 3000);
 
 function removeBmPopup() {
   if ( n = document.getElementById('bm-notification-id')) {
