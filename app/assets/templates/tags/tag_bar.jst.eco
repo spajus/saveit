@@ -1,9 +1,4 @@
 <table class="table <% if @tag_count > 15: %>table-condensed<% end %>">
-  <thead>
-    <tr>
-      <th><i class="icon-tags"></i> Tags</th>
-    </tr>
-  </thead>
   <tbody class="tags">
   <tr>
     <td>
