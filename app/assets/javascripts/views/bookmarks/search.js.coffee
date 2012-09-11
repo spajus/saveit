@@ -1,12 +1,12 @@
 class Bm.Views.Search extends Backbone.View
   el: '#bookmark-search'
   events:
-    'keydown': 'processKeydown'
+    'keyup': 'processKeyup'
 
   initialize: (opts) ->
     @collection = opts.collection
 
-  processKeydown: (event) ->
+  processKeyup: (event) ->
     if event.which is 27
       event.preventDefault()
       @cancel()
@@ -25,7 +25,6 @@ class Bm.Views.Search extends Backbone.View
     @$el.val q
     @search()
     @$el.focus()
-
 
   search: =>
     query = @$el.val()

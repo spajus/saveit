@@ -1,3 +1,8 @@
+<div class="span12">
+  <form class="" action="">
+    <input id="bookmark-search" onfocus="this.value = this.value" type="text" class="span12 rounded-input" placeholder="Search within your bookmarks...">
+  </form>
+</div>
 <div class="span8">
   <div class="row-fluid">
     <div class="overflow-auto">

@@ -27,11 +27,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
 
     window.collections = [@collection, @tag_collection]
 
-    search = new Bm.Views.Search
-      collection: @collection
-
-    if opts.search_query
-      search.loadSearch opts.search_query
+    @searchQuery = opts.search_query
 
 
   showTag: (tag) =>
@@ -45,6 +41,13 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     @collection.updatePageSize user_settings.getPageSize()
 
     @$el.html @template()
+
+    search = new Bm.Views.Search
+      collection: @collection
+
+    if @searchQuery
+      search.loadSearch @searchQuery
+      @searchQuery = ''
 
     @bookmarklet = new Bm.Views.Bookmarklet el: '#bookmarklet'
 
