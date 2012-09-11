@@ -1,9 +1,4 @@
 <table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th><i class="icon-bookmark"></i> <%= @title %></th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
       <td class="empty-info">
