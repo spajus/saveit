@@ -8,6 +8,9 @@ class Bm.Views.Navbar extends Backbone.View
   render: ->
     if gon.current_user
       @$el.html @template()
+
+    @bookmarklet = new Bm.Views.Bookmarklet el: '#bookmarklet'
+    @bookmarklet.render()
     @
 
   signout: (e) ->

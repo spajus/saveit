@@ -49,8 +49,6 @@ class Bm.Views.BookmarksIndex extends Backbone.View
       search.loadSearch @searchQuery
       @searchQuery = ''
 
-    @bookmarklet = new Bm.Views.Bookmarklet el: '#bookmarklet'
-
     @bookmarks = new Bm.Views.BookmarksList
       el: '#bookmarks'
       collection: @collection
@@ -68,7 +66,6 @@ class Bm.Views.BookmarksIndex extends Backbone.View
       collection: @collection
 
     @add_bookmark.render()
-    @bookmarklet.render()
     @bookmarks.render()
     @
 

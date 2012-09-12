@@ -90,10 +90,10 @@ a:hover
 .btn-primary:hover
   background-color: darken($btnPrimaryBackgroundHighlight, 2%)
 
-//.btn:hover
-//  background-color: darken($btnBackground, 2%)
-//.btn.active, .btn:active
-//  background-color: #eaeaea
+.btn:hover
+  background-color: darken($btnBackground, 2%)
+.btn.active, .btn:active
+  background-color: #eaeaea
 
 .btn-primary:active
   background-color: $btnPrimaryPressedBackground
@@ -148,6 +148,8 @@ body
   color: $white
   text-decoration: none
 
+#bookmarklet
+  line-height: 37px
 .bookmarklet
   padding: 3px 5px
 
@@ -318,4 +320,8 @@ input.jumbo
 .rounded-input
   @include border-radius(15px, 15px)
   padding-left: 15px
-  margin-right: 15px
+  display: block
+  width: 98%
+
+
+

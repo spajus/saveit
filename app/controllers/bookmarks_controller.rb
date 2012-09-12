@@ -26,7 +26,9 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    respond_with current_bookmarks.create(params[:bookmark]), api_template: :default
+    bookmark = current_bookmarks.create(params[:bookmark])
+    Snapshot.delay.take(bookmark.url)
+    respond_with bookmark, api_template: :default
   end
 
   def update
