@@ -1,38 +1,10 @@
-$baseColor: #17B4E8 - #0d0d0d
-
-$bodyBackground: #f8f8ff
-
-$navbarBackground: $baseColor
-$navbarBackgroundHighlight: $baseColor
-$dropdownLinkBackgroundHover: $baseColor + #111
-
-$navbarText: #fff
-$navbarBrandColor: #fff
-$navbarLinkColor: #fff
-$navbarLinkColorHover: #fff
-$navbarSearchPlaceholderColor: #1181A7
-
-$btnBackground: #fcfcfc
-$btnBackgroundHighlight: #fefefe
-$btnPrimaryBackground: $baseColor + #111
-$btnPrimaryBackgroundHighlight: $baseColor
-$btnPrimaryPressedBackground: $baseColor - #050505
-
-$tagBarDragBg: #ecf9fd
-$tagDragHoverBg: #a2e1f6
-
-$linkNormalColor: #666
-$linkHoverColor: #333
-
-$badgeBackground: #e3e9e8 - #0c0c0c
-
-
 @import compass
 @import compass_twitter_bootstrap_awesome
 @import compass_twitter_bootstrap_responsive
 @import "compass/layout/stretching"
 @import "compass/css3/border-radius"
 @import "compass/css3"
+@import "style.less"
 
 // -- remove after migrating to bootstrap 2.1 -- //
 
@@ -43,8 +15,8 @@ $badgeBackground: #e3e9e8 - #0c0c0c
 
 // ----------------------------------------------------- //
 
-body
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, sans-serif
+//body
+//  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, sans-serif
 
 .navbar
   border-bottom: 1px solid #eee
@@ -60,22 +32,6 @@ body
 .table
   +box-shadow(#eaeaea 0px 2px 3px)
 
-a
-  color: $linkNormalColor
-  font-weight: bold
-
-a:hover
-  color: $linkHoverColor
-
-.badge, .label
-  background-color: $badgeBackground
-  color: #fff
-  text-shadow: 0px 0px 2px #666
-
-.table
-  thead
-    background-color: $navbarBackground
-    color: #fff
 
 #bookmarks-unread .bookmark, #bookmarks-read .bookmark
   background-color: #fff
@@ -86,26 +42,7 @@ a:hover
   .active
     background-color: #eaeaea
 
-
-.btn-primary:hover
-  background-color: darken($btnPrimaryBackgroundHighlight, 2%)
-
-.btn:hover
-  background-color: darken($btnBackground, 2%)
-.btn.active, .btn:active
-  background-color: #eaeaea
-
-.btn-primary:active
-  background-color: $btnPrimaryPressedBackground
-
 // ----------------------------------------------------- //
-
-$lightGray: #d3d3d3
-$screamingGreen: #006400
-$lawnGreen: #7cfc00
-$borderGray: #DDD
-$cellBackground: #F9F9F9
-
 
 $borderRadius: 5px
 
@@ -185,10 +122,12 @@ body
     padding: 25px 10px
     text-align: center
     @include border-radius($borderRadius, $borderRadius)
-    border: 3px dashed $lightGray
 
   .tag-name
     width: 80%
+
+$tagBarDragBg: #faa
+$tagDragHoverBg: #b00
 
 .drag-start
   background-color: $tagBarDragBg !important
@@ -202,7 +141,6 @@ body
     .add-tag-zone
       color: $black
   .add-tag-zone
-    border: 3px dashed $screamingGreen !important
     position: relative
     bottom: 0px
 
@@ -216,7 +154,6 @@ body
 .bookmark
   tr
     vertical-align: top
-  td
   .controls
     width: 20px
     text-align: right
@@ -246,9 +183,7 @@ body
     display: none
     font-size: 0.8em
     @include border-radius($borderRadius, $borderRadius)
-    border: 1px solid $borderGray
     padding: 4px
-    background: $cellBackground
     .link
       @extend a
   .tags
@@ -259,15 +194,12 @@ body
     font-size:  1.5em
     margin-top: -2px
   .date
-    color: $lightGray
     font-size: 0.9em
     text-align: right
 
 .bookmark:hover
   .close
     display: inline-block
-  .label
-    background-color: $badgeBackground - #222
 
 .ninja
   padding: 0
@@ -285,15 +217,8 @@ body
   float: none !important
   padding: 20px
   background: $white
-  border: 1px solid $borderGray
   @include border-radius($borderRadius, $borderRadius)
   +box-shadow(#eaeaea 0px 2px 3px)
-
-.attribution
-  text-align: right
-  font-size: 8px
-  font-weight: normal
-  color: $borderGray
 
 .popover
   z-index: 23000

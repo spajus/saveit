@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Save It - Simple, secure bookmarks</title>
+  <%= include_gon %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Condiment' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <link rel="search" type="application/opensearchdescription+xml" title="saveit.in" href="<%= url_for controller: "/home", action: "opensearch", format: "xml" -%>">
+  <link rel="apple-touch-icon" href="apple-touch-icon-iphone.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-ipad.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone4.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-ipad3.png" />
+</head>
+
+<body id="home">
+<!-- Start Header -->
+<div id="header">
+  <div class="container">
+    <div class="row">
+      <p class="logo"><%= link_to 'Save It', root_path %></p>
+      <ul class="navigation">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <h1>Simple, secure bookmarks</h1>
+    <p class="description">Sign in with Facebook or Twitter to use it right away</p>
+    <p>
+      <%= link_to user_omniauth_authorize_path(:facebook) do %><%= image_tag 'icon-fb-50.png'%><% end %>
+      <%= link_to user_omniauth_authorize_path(:twitter) do %><%= image_tag 'icon-twitter-50.png'%><% end %>
+    </p>
+    <%#<p><a class="btn btn-success btn-large"> Sign Up Today</a> &nbsp; <a class="btn btn-primary btn-large"> Learn More</a></p>
+        %>
+    <%= image_tag "screenshot.png", alt: "Screenshot" %>
+  </div>
+</div>
+<!-- End Header -->
+<!-- Start Content -->
+<div id="content">
+  <div class="container">
+    <%= render 'alerts' %>
+    <div class="row">
+      <div class="span4 feature">
+        <h3>HTML5</h3>
+        <img src="http://placehold.it/50x50" class="thumb" alt="Placeholder">
+        <p>Quisque pellentesque tincidunt pellentesque. Integer malesuada ligula ac lorem commodo varius. Vivamus non tristique urna. Nam eu massa ut lacus imperdiet gravida. Nullam at leo.</p>
+      </div>
+      <div class="span4 feature">
+        <h3>Simple Layout</h3>
+        <img src="http://placehold.it/50x50" class="thumb" alt="Placeholder">
+        <p>Quisque pellentesque tincidunt pellentesque. Integer malesuada ligula ac lorem commodo varius. Vivamus non tristique urna. Nam eu massa ut lacus imperdiet gravida. Nullam at leo.</p>
+      </div>
+      <div class="span4 feature">
+        <h3>Web Fonts</h3>
+        <img src="http://placehold.it/50x50" class="thumb" alt="Placeholder">
+        <p>Quisque pellentesque tincidunt pellentesque. Integer malesuada ligula ac lorem commodo varius. Vivamus non tristique urna. Nam eu massa ut lacus imperdiet gravida. Nullam at leo.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4 feature">
+        <h3>Clean &amp; Modern</h3>
+        <img src="http://placehold.it/50x50" class="thumb" alt="Placeholder">
+        <p>Quisque pellentesque tincidunt pellentesque. Integer malesuada ligula ac lorem commodo varius. Vivamus non tristique urna. Nam eu massa ut lacus imperdiet gravida. Nullam at leo.</p>
+      </div>
+      <div class="span4 feature">
+        <h3>Easy to Customize</h3>
+        <img src="http://placehold.it/50x50" class="thumb" alt="Placeholder">
+        <p>Quisque pellentesque tincidunt pellentesque. Integer malesuada ligula ac lorem commodo varius. Vivamus non tristique urna. Nam eu massa ut lacus imperdiet gravida. Nullam at leo.</p>
+      </div>
+      <div class="span4 feature">
+        <h3>Great Support</h3>
+        <img src="http://placehold.it/50x50" class="thumb" alt="Placeholder">
+        <p>Quisque pellentesque tincidunt pellentesque. Integer malesuada ligula ac lorem commodo varius. Vivamus non tristique urna. Nam eu massa ut lacus imperdiet gravida. Nullam at leo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Content -->
+<!-- Start Footer -->
+<div id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="span2">
+        <h3>About</h3>
+        <ul>
+          <li><a href="/">About Alfaroa</a></li>
+          <li><a href="/">Jobs</a></li>
+          <li><a href="/">Press Resources</a></li>
+          <li><a href="/">Press Releases</a></li>
+        </ul>
+      </div>
+      <div class="span2">
+        <h3>Features</h3>
+        <ul>
+          <li><a href="/">Twitter Bootstrap</a></li>
+          <li><a href="/">HTML5 Markup</a></li>
+          <li><a href="/">Google Web Fonts</a></li>
+        </ul>
+      </div>
+      <div class="span2">
+        <h3>Legal Info</h3>
+        <ul>
+          <li><a href="/">Terms of Use</a></li>
+          <li><a href="/">Privacy Policy</a></li>
+          <li><a href="/">Copyright Policy</a></li>
+        </ul>
+      </div>
+      <div class="span2">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="/">Contact Alfaroa</a></li>
+          <li><a href="/">Partner With Us</a></li>
+          <li><a href="/">Find an Expert</a></li>
+        </ul>
+      </div>
+      <div class="span4">
+        <h3>Support</h3>
+        <p>Quisque pellentesque tincidunt pellentesque. Integer malesuada ligula ac lorem commodo varius. Vivamus non tristique urna. Nam eu massa ut lacus imperdiet gravida. Nullam at leo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Footer -->
+</body>
+</html>
+

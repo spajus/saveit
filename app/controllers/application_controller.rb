@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :current_bookmarks
   before_filter :backbone_settings, :set_encoding
+  layout :select_layout
 
   protected
 
@@ -60,6 +61,10 @@ class ApplicationController < ActionController::Base
 
   def set_encoding
     response.headers["Content-Type"] ||= "text/html; charset=utf8"
+  end
+
+  def select_layout
+    current_user ? "application" : "intro"
   end
 
 end

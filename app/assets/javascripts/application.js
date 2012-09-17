@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery.ui.core
 //= require jquery.ui.widget
 //= require jquery.ui.mouse
@@ -22,7 +23,7 @@
 //= require jquery.effects.fade
 //= require jquery.effects.highlight
 //= require jquery-cookie/jquery.cookie
-//= require bootstrap-all
+//= require bootstrap
 //= require underscore
 //= require backbone
 //= require .//bm
