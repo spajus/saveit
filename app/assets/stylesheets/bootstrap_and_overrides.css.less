@@ -1,9 +1,22 @@
 @import "twitter/bootstrap/bootstrap";
-//body {
-//	padding-top: 60px;
-//}
+body {
+  padding-top: 44px;
+}
 
 @import "twitter/bootstrap/responsive";
+@media (max-width: 979px) {
+  body {
+     padding-top: 0px;
+  }
+  .navbar-fixed-top {
+     margin-bottom: 0px;
+  }
+}
+@media (max-width: 767px) {
+  #content {
+    margin: 0 -20px;
+  }
+}
 
 // Set the correct sprite paths
 @iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
@@ -20,7 +33,6 @@
 // Font Awesome
 @import "fontawesome";
 
-@import "style";
 
 // Your custom LESS stylesheets goes here
 //
@@ -31,4 +43,22 @@
 // See http://twitter.github.com/bootstrap/less.html for their names and documentation
 //
 // Example:
-// @linkColor: #ff0000;
+// @linkColor: #ff0000;@import
+
+// Alfaroa
+body#home {
+  padding-top: 0px;
+}
+
+// Alfroa hacks
+.navbar {
+  border-top: 2px solid #414C60;
+  .navbar-inner {
+    background: #3E495D image-url("header-background.jpg") center 0 repeat-x;
+  }
+  .brand {
+    font-family: 'Condiment', cursive;
+    font-weight: bold;
+    font-size: 28px;
+  }
+}

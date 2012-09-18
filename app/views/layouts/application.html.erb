@@ -17,9 +17,11 @@
 
 <div id="navbar"></div>
 
-<div class="container">
-  <%= render 'alerts' %>
-  <%= yield %>
+<div id="content">
+  <div class="container">
+    <%= render 'alerts' %>
+    <%= yield %>
+  </div>
 </div>
 
 <% if current_user %>

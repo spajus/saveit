@@ -1,0 +1,38 @@
+@import 'bootstrap_and_overrides.css.less'
+@import 'style.less'
+
+// From style.less, just a reference, don't change!
+$grey: #666
+$dark-grey: darken($grey, 50%)
+$medium-grey: darken($grey, 25%)
+$light-grey: lighten($grey, 35%)
+$green: #648d8c
+$purple: #757e9e
+$slate: #a2b1b6
+$rust: #ab8785
+$basefont: "Helvetica Neue", Arial, Helvetica, sans-serif
+$logofont: 'Condiment', cursive
+$headerfont: 'Lato', sans-serif
+
+// Colors
+$tagBarDragBg: $purple
+$tagDragHoverBg: $green
+
+// Mixins
+@mixin cursor-grab
+  cursor: hand !important
+  cursor: grab !important
+  cursor: -moz-grab !important
+  cursor: -webkit-grab !important
+@mixin cursor-grabbing
+  cursor: hand !important
+  cursor: grabbing !important
+  cursor: -moz-grabbing !important
+  cursor: -webkit-grabbing !important
+
+// Draggable stuff
+.ui-draggable
+  @include cursor-grab
+.ui-draggable-dragging
+  @include cursor-grabbing
+
