@@ -36,8 +36,8 @@ table [class*="span"], .row-fluid table [class*="span"]
 .ui-draggable-dragging
   @include cursor-grabbing
 
-$tagBarDragBg: #faa
-$tagDragHoverBg: #b00
+$tagBarDragBg: $yellow
+$tagDragHoverBg: $orange
 
 .drag-start
   background-color: $tagBarDragBg !important
@@ -78,6 +78,11 @@ $tagDragHoverBg: #b00
 .label-big
   padding: 5px 15px
   font-size: 1.1em
+
+// Misc
+
+.table, .bookmark, #tag-bar
+  +box-shadow(#eaeaea 0px 2px 3px)
 
 
 // Bookmarklet
@@ -133,6 +138,41 @@ $tagDragHoverBg: #b00
 .bookmark:hover
   .close
     display: inline-block
+
+// Tag bar
+
+#tag-bar
+
+  margin-bottom: 20px
+
+  table
+    margin-bottom: 0px
+    margin-top: 0px
+
+  .tag
+    a.close
+      display: none
+    .selected
+      background-color: $white
+      a.link
+        font-weight: bold
+
+  .tag:hover
+    a.close
+      display: inline-block
+
+  .tag-hover
+    .badge
+      @extend .badge-success
+
+  .add-tag-zone
+    @include opacity(0.75)
+    padding: 25px 10px
+    text-align: center
+    @include border-radius($borderRadius, $borderRadius)
+
+  .tag-name
+    width: 80%
 
 // Grid hacks
 

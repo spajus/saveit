@@ -3,13 +3,13 @@
   <div class="row-fluid">
     <div class="span8">
       <input id="bookmark-search" onfocus="this.value = this.value" type="text"
-             class="span12"
+             class="input-block-level"
              placeholder="Search within your bookmarks...">
 
     </div>
 
-    <div class="span4">
-      <span id="bookmarklet" class="visible-desktop">aa</span>
+    <div class="span4 visible-desktop">
+      <span id="bookmarklet"></span>
     </div>
   </div>
 </form>
@@ -24,10 +24,12 @@
 </div>
 
 <div class="span4 overflow-auto">
+  <% if user_settings.getUseTags(): %>
+    <div class="row-fluid">
+      <div id="tag-bar" class="span12"></div>
+    </div>
+  <% end %>
   <div class="row-fluid">
-    <% if user_settings.getUseTags(): %>
-      <div id="tag-bar"></div>
-    <% end %>
-    <div id="add-bookmark"></div>
+    <div id="add-bookmark" class="span12"></div>
   </div>
 </div>
