@@ -14,11 +14,3 @@ window.Bm =
 
 $(document).ready ->
   Bm.init()
-
-  $(document).on 'click', '.nav-link', (e) ->
-    app.navigate e.target.pathname, trigger: true
-    e.preventDefault()
-    if e.target.pathname is '/'
-      app.indexView.collection.fetch()
-
-

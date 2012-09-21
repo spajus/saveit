@@ -1,1 +1,1 @@
-Drag this bookmarklet to your bookmarks bar <i class="icon-arrow-right"></i>&nbsp;<span class="bookmarklet label label-info"><a href="javascript:<%= @bookmarklet_js %>">Save It</a></span>
+<span class="bookmarklet label label-info"><a href="javascript:<%= @bookmarklet_js %>">Save It</a></span>&nbsp;<i class="icon-hand-left"></i> Drag this to your bookmarks bar <i class="icon-hand-up"></i>

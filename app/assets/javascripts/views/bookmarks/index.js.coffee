@@ -40,18 +40,22 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     # that collections are refetched
     @collection.updatePageSize user_settings.getPageSize()
 
-    @$el.html @template()
+    @$el.html @template
+      has_bookmarks: @collection.length
 
     search = new Bm.Views.Search
       collection: @collection
 
+    searching = false
     if @searchQuery
       search.loadSearch @searchQuery
+      searching = true
       @searchQuery = ''
 
     @bookmarks = new Bm.Views.BookmarksList
       el: '#bookmarks'
       collection: @collection
+      searching: searching
 
     if user_settings.getUseTags()
       @tagBar = new Bm.Views.TagBar
@@ -60,6 +64,9 @@ class Bm.Views.BookmarksIndex extends Backbone.View
       inputClass = 'span3'
     else
       inputClass = 'span4'
+
+    @bookmarklet = new Bm.Views.Bookmarklet el: '#bookmarklet'
+    @bookmarklet.render()
 
     @add_bookmark = new Bm.Views.AddBookmark
       inputClass: inputClass #inputClass controls width of bookmark input

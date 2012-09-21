@@ -28,8 +28,10 @@
             <td class="preview"><img class="img-rounded" src="<%- @bookmark.get 'snapshot' %>" height="100" width="100"/></td>
             <td class="details">
               <div class="row-fluid">
-                <div class="span12 title">
+                <div class="span11 title">
                   <%- @bookmark.getIcon() %>&nbsp;<a class="link" title="<%= @bookmark.get 'url' %>" href="<%= @bookmark.get 'url' %>"><%- @bookmark.get('title') or @bookmark.get('url') %></a>
+                </div>
+                <div class="span1 pull-right">
                   <a class="close">&times;</a>
                 </div>
               </div>
@@ -42,18 +44,18 @@
                 </div>
               <% end %>
 
-              <div class="row-fluid">
+              <div class="row-fluid thin">
                 <% if user_settings.getUseTags(): %>
                   <div class="span8">
                     <div class="tags">&nbsp;</div>
                   </div>
-                  <div class="span4">
+                  <div class="span4 pull-right">
                     <div class="date">
                       <%= @bookmark.getCreatedAt() %>
                     </div>
                   </div>
                   <% else: %>
-                  <div class="span12">
+                  <div class="span12 pull-right">
                     <div class="date">
                       <%= @bookmark.getCreatedAt() %>
                     </div>

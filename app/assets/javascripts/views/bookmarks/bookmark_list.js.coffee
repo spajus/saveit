@@ -3,6 +3,7 @@ class Bm.Views.BookmarksList extends Backbone.View
   template:
     normal: JST['bookmarks/bookmark_list']
     empty: JST['bookmarks/bookmark_list_empty']
+    empty_search: JST['bookmarks/bookmark_list_empty_search']
 
   events:
     'click .bookmarklet a' : 'bookmarkletHelp'
@@ -10,8 +11,8 @@ class Bm.Views.BookmarksList extends Backbone.View
   bookmarkletHelp: (event) ->
     Bm.Views.Bookmarklet::bookmarkletHelp event
 
-  initialize: (args) ->
-    @title = args.title
+  initialize: (options) ->
+    @searching = options.searching
     @collection.on 'reset', @render
 
     @collection.on 'add', @appendBookmark
@@ -21,7 +22,11 @@ class Bm.Views.BookmarksList extends Backbone.View
     if @collection.length > 0
       @$el.html @template.normal
     else
-      @$el.html @template.empty bookmarklet_js: gon.bookmarklet_js
+      if @searching
+        @$el.html @template.empty_search
+      else
+        console.log 'snot'
+        @$el.html @template.empty bookmarklet_js: gon.bookmarklet_js
 
     @pag = new Bm.Views.Pagination
       collection: @collection

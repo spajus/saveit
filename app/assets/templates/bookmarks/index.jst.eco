@@ -1,10 +1,20 @@
-  <form class="form-inline span12" action="">
-    <div class="search-wrapper">
+<% if @has_bookmarks: %>
+<form class="span12" action="">
+  <div class="row-fluid">
+    <div class="span8">
       <input id="bookmark-search" onfocus="this.value = this.value" type="text"
-             class="rounded-input"
+             class="span12"
              placeholder="Search within your bookmarks...">
+
     </div>
-  </form>
+
+    <div class="span4">
+      <span id="bookmarklet" class="visible-desktop">aa</span>
+    </div>
+  </div>
+</form>
+<% end %>
+
 <div class="span8">
   <div class="row-fluid">
     <div class="overflow-auto">

@@ -1,22 +1,22 @@
 @import 'bootstrap_and_overrides.css.less'
+// Copy of bootstrap variables for reference
+@import 'variables.sass'
 @import 'style.less'
-
-// From style.less, just a reference, don't change!
-$grey: #666
-$dark-grey: darken($grey, 50%)
-$medium-grey: darken($grey, 25%)
-$light-grey: lighten($grey, 35%)
-$green: #648d8c
-$purple: #757e9e
-$slate: #a2b1b6
-$rust: #ab8785
-$basefont: "Helvetica Neue", Arial, Helvetica, sans-serif
-$logofont: 'Condiment', cursive
-$headerfont: 'Lato', sans-serif
+@import "compass/css3/border-radius"
+@import "compass/css3"
 
 // Colors
 $tagBarDragBg: $purple
 $tagDragHoverBg: $green
+
+// Variables
+$borderRadius: 5px
+
+// Grid bugfix
+
+table [class*="span"], .row-fluid table [class*="span"]
+  display: block
+  float: left
 
 // Mixins
 @mixin cursor-grab
@@ -36,3 +36,105 @@ $tagDragHoverBg: $green
 .ui-draggable-dragging
   @include cursor-grabbing
 
+$tagBarDragBg: #faa
+$tagDragHoverBg: #b00
+
+.drag-start
+  background-color: $tagBarDragBg !important
+  li
+    background-color: $tagBarDragBg !important
+
+  .tag-hover
+    background-color: $tagDragHoverBg !important
+    .badge
+      @extend .badge-success
+    .add-tag-zone
+      color: $black
+  .add-tag-zone
+    position: relative
+    bottom: 0px
+
+// Settings
+
+.settings-box
+  form
+    margin: 0
+  .form-actions
+    margin-bottom: 0
+  .nav
+    margin-bottom: 0
+  margin: 0 auto !important
+  float: none !important
+  padding: 20px
+  background: $white
+  @include border-radius($borderRadius, $borderRadius)
+  +box-shadow(#eaeaea 0px 2px 3px)
+
+// Labels
+.label
+  a
+    color: $white
+    text-decoration: none
+.label-big
+  padding: 5px 15px
+  font-size: 1.1em
+
+
+// Bookmarklet
+#bookmarklet
+  line-height: 29px
+
+// Bookmark
+.bookmark
+  @extend .well
+  padding: 10px
+  tr
+    vertical-align: top
+  .controls
+    width: 20px
+    text-align: right
+  .preview
+    min-width: 100px
+    height: 100px
+  .details
+    word-wrap: break-word
+    .title
+      font-size: 1.1em
+    .description
+      margin-bottom: 10px
+    width: 100%
+    padding-left: 10px
+  .tags
+    .span
+      display: inline
+  .close
+    display: none
+    font-size:  1.5em
+    margin-top: -2px
+  .date
+    font-size: 0.9em
+    padding-bottom: 13px
+    text-align: right
+  .drag-tag
+    overflow: hidden
+    .preview
+      min-width: 40px
+      height: 40px
+      font-size: 1px
+    .details
+      padding-left: 4px
+    display: none
+    font-size: 0.8em
+    @include border-radius($borderRadius, $borderRadius)
+    padding: 4px
+    .link
+      @extend a
+
+.bookmark:hover
+  .close
+    display: inline-block
+
+// Grid hacks
+
+.row-fluid.thin
+  margin-bottom: -20px

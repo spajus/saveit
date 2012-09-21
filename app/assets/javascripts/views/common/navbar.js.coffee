@@ -4,14 +4,11 @@ class Bm.Views.Navbar extends Backbone.View
 
   events:
     'click .signout-link': 'signout'
+    'click .nav-link': 'navigate'
 
   render: ->
     if gon.current_user
       @$el.html @template()
-
-    @bookmarklet = new Bm.Views.Bookmarklet el: '#bookmarklet'
-    @bookmarklet.render()
-    @
 
   signout: (e) ->
     e.preventDefault()
@@ -20,3 +17,11 @@ class Bm.Views.Navbar extends Backbone.View
       type: 'DELETE'
       success: ->
         window.location.assign('/')
+
+  navigate: (e) ->
+    app.navigate e.target.pathname, trigger: true
+    if e.target.pathname is '/'
+      app.indexView.collection.fetch()
+    e.preventDefault()
+
+
