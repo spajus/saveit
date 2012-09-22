@@ -1,9 +1,9 @@
 <% if @has_bookmarks: %>
-<form class="span12" action="">
+<form class="form-search span12" action="">
   <div class="row-fluid">
     <div class="span8">
       <input id="bookmark-search" onfocus="this.value = this.value" type="text"
-             class="input-block-level"
+             class="input-block-level search-query"
              placeholder="Search within your bookmarks...">
 
     </div>
