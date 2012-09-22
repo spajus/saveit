@@ -1,7 +1,7 @@
 class Snapshot < ActiveRecord::Base
   attr_accessible :url, :image
   has_attached_file :image, styles: {
-      thumb: "100",
+      thumb: "100x100#",
       original: "300"
   },
   storage: :s3,
@@ -13,7 +13,7 @@ class Snapshot < ActiveRecord::Base
     snap = Snapshot.find_or_create_by_url(url)
     unless snap.image?
       begin
-        kit = IMGKit.new(url, width: 900, height: 900)
+        kit = IMGKit.new(url, width: 1000, height: 1000)
         img = kit.to_img
         temp = Tempfile.new([Digest::MD5.hexdigest(url), '.png'], encoding: 'ascii-8bit')
         temp.write(img)
