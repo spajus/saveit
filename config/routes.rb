@@ -1,5 +1,9 @@
 Bm::Application.routes.draw do
 
+  match "/privacy" => "static#privacy"
+  match "/about" => "static#about"
+  match "/eula" => "static#eula"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
