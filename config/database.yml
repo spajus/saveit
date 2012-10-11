@@ -21,9 +21,10 @@ test:
   timeout: 5000
 
 production:
-  encoding: utf8
   adapter: mysql2
+  encoding: utf8
   database: saveitin
   username: saveitin
   password: example_pass
   host: localhost
+
