@@ -70,12 +70,12 @@ Bm::Application.configure do
   config.middleware.use ExceptionNotifier,
     email_prefix:         '[Exception] ',
     sender_address:       %{'Exception Notifier' <no-reply@saveit.in>},
-    exception_recipients: %w{simas.cepaitis@snc.lt tomas.varaneckas@gmail.com vd@par.lt}
+    exception_recipients: %w{tomas.varaneckas@gmail.com}
 
   config.action_mailer.smtp_settings = {
     address:               'localhost',
     port:                  25,
-    domain:                'tib.lt',
+    domain:                'example.com',
     delivery_method:       'sendmail',
     enable_starttls_auto:  false
   }
