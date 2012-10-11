@@ -23,7 +23,7 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="/settings"><i class="icon-cogs"></i> Settings</a></li>
                 <li class="divider"></li>
-                <li><a href="#" class="signout-link"><i class="icon-signout"></i> Sign out</a> </li>
+                <li><a href="/users/sign_out" class="signout-link"><i class="icon-signout"></i> Sign out</a></li>
               </ul>
             </li>
           <% end %>
