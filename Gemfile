@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
@@ -54,5 +54,5 @@ group :test, :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'mysql2'
 end
