@@ -1,3 +1,11 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=181302638561743";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="footer">
   <div class="container">
     <div class="row">
@@ -14,9 +22,17 @@
           <li><%=  link_to "Privacy Policy", controller: "static", action: "privacy" %></li>
         </ul>
       </div>
-      <div class="span2 offset4">
+      <div class="span2">
         <h3>Feedback</h3>
         <p>Please send your feedback to <a href="mailto:feedback@saveit.in">feedback@saveit.in</a>.</p>
+      </div>
+      <div class="span6">
+        <h3>Spread The Word</h3>
+        <ul>
+          <li>
+            <div class="fb-like" data-send="true" data-width="400" data-show-faces="false"></div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
