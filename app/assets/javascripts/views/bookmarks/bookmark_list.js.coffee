@@ -25,7 +25,6 @@ class Bm.Views.BookmarksList extends Backbone.View
       if @searching
         @$el.html @template.empty_search
       else
-        console.log 'snot'
         @$el.html @template.empty bookmarklet_js: gon.bookmarklet_js
 
     @pag = new Bm.Views.Pagination
