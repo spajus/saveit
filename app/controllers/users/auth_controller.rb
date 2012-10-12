@@ -34,7 +34,7 @@ class Users::AuthController < Devise::OmniauthCallbacksController
           user.apply_omniauth(omniauth)
 
           if user.save
-            flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth['provider']
+            flash[:notice] = I18n.t("devise.omniauth_callbacks.success", :kind => I18n.t("auth.#{omniauth['provider']}"))
             user.remember_me = true
             sign_in_and_redirect(:user, user)
           else
