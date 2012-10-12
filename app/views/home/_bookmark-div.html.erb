@@ -1,5 +1,6 @@
 <% if current_user %>
 <% use_tags = (current_user.get_setting("useTags") == 'true') %>
+
 <style id="saveitin-div-style">
     #saveitin-top-div {
         padding: 10px;
@@ -24,7 +25,13 @@
     #saveitin-inner-div {
         margin-left: auto;
         margin-right: auto;
-        width: 50em;
+        width: 500px;
+    }
+    #saveitin-top-div table {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
     }
     /*#saveitin-top-div h4 {*/
         /*text-align: center;*/
@@ -62,35 +69,56 @@
     #saveitin-form label {
         text-align: right;
         display: inline-block;
-        width: 8em;
+        padding-right: 10px;
+        width: 100px;
     }
-    #saveitin-form input {
+    #saveitin-form input[type=text] {
         border: 1px solid #ccc;
         background-color: #fff;
         text-align: left;
         display: inline-block;
+        width: 100%;
     }
+<% if use_tags %>
+    <%= render 'commons/jquery-tagit-css' %>
+<% end %>
 </style>
 
 <div id="saveitin-top-div">
   <div id="saveitin-inner-div">
     <% if @bookmark %>
-      <h4>Success adding <%= h(@bookmark.title || @bookmark.url).gsub(/\n/, "") %></h4>
+      <h4>Success adding "<%= h(@bookmark.title || @bookmark.url).gsub(/\n/, "") %>"</h4>
 
         <div id="saveitin-edit-button">
           <input name="edit" type="submit" onclick="return showBmFormEdit()" value="Edit bookmark"/>
         </div>
 
         <form id="saveitin-form" onsubmit="return submitBmForm();">
-            <%= label_tag :title, 'Title:' %>             <%= text_field :bookmark, :title %><br/>
-            <%= label_tag :description, 'Description:' %> <%= text_field :bookmark, :description %><br/>
+          <table>
+            <tr>
+              <td><%= label_tag :title, 'Title' %></td>
+              <td style="width: 90%"><%= text_field :bookmark, :title %></td>
+            </tr>
+            <tr>
+              <td><%= label_tag :title, 'Description' %></td>
+              <td><%= text_field :bookmark, :description %></td>
+            </tr>
             <% if use_tags %>
-              <%= label_tag :tags, 'Tags:' %>               <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
+              <tr>
+                <td><%= label_tag :tags, 'Tags' %></td>
+                <td><%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %></td>
+              </tr>
             <% else %>
-              <%= hidden_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
+              <%= hidden_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %>
             <% end %>
-            <input name="commit" type="submit" value="Update" />
-            <input type="button" value="Close" onclick="killBmPopup()"/>
+            <tr>
+              <td></td>
+              <td>
+                <input name="commit" type="submit" value="Update" />
+                <input type="button" value="Close" onclick="killBmPopup()"/>
+              </td>
+            </tr>
+          </table>
         </form>
     <% else %>
         <h4>Loading...</h4>

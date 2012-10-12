@@ -1,64 +1,121 @@
 <%- if not current_user %>
 window.location.assign('<%= url_for controller: :home, only_path: false %>');
 <%- else -%>
-function submitBmForm(){
-    var elms = document.getElementById("saveitin-form").elements;
-    var title       = elms[name="bookmark[title]"].value;
-    var description = elms[name="bookmark[description]"].value;
-    var tags        = elms[name="bookmark[tags]"].value;
+<% use_tags = (current_user.get_setting("useTags") == 'true') %>
+(function(){
 
-    var url = '<%= url_for(controller: :home, action: 'zimg', id: @bookmark, only_path: false)%>'
-            + '?title='       + encodeURIComponent(title)
-            + '&description=' + encodeURIComponent(description)
-            + '&tags='        + encodeURIComponent(tags);
+  // the minimum version of jQuery we want
+  var v = "1.8.2";
 
-    var img = document.createElement("img");
-    img.setAttribute('src', url);
-    img.setAttribute('alt', 'na');
-    img.setAttribute('height', '1px');
-    img.setAttribute('width', '1px');
-
-    document.body.appendChild(img);
-    var bm_div = document.getElementById('bm-notification-id');
-    document.body.removeChild(bm_div);
-    return false;
-}
-
-function showBmFormEdit(){
-    var btn = document.getElementById("saveitin-edit-button");
-    btn.setAttribute("style", "display:none;");
-
-    var frm = document.getElementById("saveitin-form");
-    frm.setAttribute("style", "display:block;");
-}
-
-function removeBmPopup() {
-    if (frm = document.getElementById("saveitin-form")) {
-        var style = document.defaultView.getComputedStyle(frm,null).getPropertyValue("display");
-        if (style == "none") {
-            if (n = document.getElementById('bm-notification-id')) {
-                document.body.removeChild(n);
-            }
-        }
-    }
-}
-
-function killBmPopup() {
-  if (n = document.getElementById('bm-notification-id')) {
-    document.body.removeChild(n);
+  // check prior inclusion and version
+  if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
+    var done = false;
+    var script = document.createElement("script");
+    script.src = "//ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
+    script.onload = script.onreadystatechange = function(){
+      if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+        done = true;
+        loadJqueryUI();
+      }
+    };
+    document.getElementsByTagName("head")[0].appendChild(script);
+  } else {
+    loadJqueryUI();
   }
-}
 
-var el = document.getElementById('bm-notification-id');
-if (el == null) {
-    document.createElement('div');
-    el.setAttribute('id','bm-notification-id');
-    document.body.appendChild(el);
-}
-el.innerHTML = '<%= render('home/bookmark-div').gsub(/\s*\n/, '').gsub(/[']/, '\\\\\'').html_safe %>';
-if (window.bmPopupTimeout) {
- clearTimeout(window.bmPopupTimeout);
-}
-window.bmPopupTimeout = setTimeout('removeBmPopup()', 3000);
+  function loadJqueryUI() {
+    var fileref=document.createElement("link");
+    fileref.setAttribute("rel", "stylesheet");
+    fileref.setAttribute("type", "text/css");
+    fileref.setAttribute("href", "<%= request.protocol + request.host_with_port %>/css/smoothness/jquery-ui-1.9.0.custom.min.css");
+    document.getElementsByTagName("head")[0].appendChild(fileref);
+    var done = false;
+    var script = document.createElement("script");
+    script.src = "<%= request.protocol + request.host_with_port %>/js/jquery-ui-1.9.0.custom.min.js";
+    script.onload = script.onreadystatechange = function() {
+      if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+        done = true;
+        initMyBookmarklet();
+      }
+    };
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+
+  function initMyBookmarklet() {
+
+    <% if use_tags %>
+      <%= render 'commons/tag-it' %>
+    <% end %>
+    (window.myBookmarklet = function() {
+      window.submitBmForm = function(){
+        var elms = document.getElementById("saveitin-form").elements;
+        var title       = elms[name="bookmark[title]"].value;
+        var description = elms[name="bookmark[description]"].value;
+        var tags        = elms[name="bookmark[tags]"].value;
+
+        var url = '<%= url_for(controller: :home, action: 'zimg', id: @bookmark, only_path: false)%>'
+                + '?title='       + encodeURIComponent(title)
+                + '&description=' + encodeURIComponent(description)
+                + '&tags='        + encodeURIComponent(tags);
+
+        var img = document.createElement("img");
+        img.setAttribute('src', url);
+        img.setAttribute('alt', 'na');
+        img.setAttribute('height', '1px');
+        img.setAttribute('width', '1px');
+
+        document.body.appendChild(img);
+        var bm_div = document.getElementById('bm-notification-id');
+        document.body.removeChild(bm_div);
+        return false;
+      }
+
+      window.showBmFormEdit = function() {
+        var btn = document.getElementById("saveitin-edit-button");
+        btn.setAttribute("style", "display:none;");
+
+        var frm = document.getElementById("saveitin-form");
+        frm.setAttribute("style", "display:block;");
+        $("#bookmark_tags").tagit({
+          allowSpaces: true,
+          caseSensitive: false,
+          availableTags: <%= available_tags_js %>
+        });
+      }
+
+      window.removeBmPopup = function() {
+        if (frm = document.getElementById("saveitin-form")) {
+          var style = document.defaultView.getComputedStyle(frm,null).getPropertyValue("display");
+          if (style == "none") {
+            if (n = document.getElementById('bm-notification-id')) {
+              document.body.removeChild(n);
+            }
+          }
+        }
+      }
+
+      window.killBmPopup = function() {
+        if (n = document.getElementById('bm-notification-id')) {
+          document.body.removeChild(n);
+        }
+      }
+
+      var el = document.getElementById('bm-notification-id');
+      if (el == null) {
+        document.createElement('div');
+        el.setAttribute('id','bm-notification-id');
+        document.body.appendChild(el);
+      }
+      el.innerHTML = '<%= render('home/bookmark-div').gsub(/\s*\n/, '').gsub(/[']/, '\\\\\'').html_safe %>';
+      if (window.bmPopupTimeout) {
+        clearTimeout(window.bmPopupTimeout);
+      }
+      window.bmPopupTimeout = setTimeout('removeBmPopup()', 3000);
+    })();
+  }
+
+})();
+
+
 
 <%- end %>
