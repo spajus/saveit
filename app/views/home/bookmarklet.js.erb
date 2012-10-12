@@ -36,11 +36,17 @@ function removeBmPopup() {
     if (frm = document.getElementById("saveitin-form")) {
         var style = document.defaultView.getComputedStyle(frm,null).getPropertyValue("display");
         if (style == "none") {
-            if ( n = document.getElementById('bm-notification-id')) {
+            if (n = document.getElementById('bm-notification-id')) {
                 document.body.removeChild(n);
             }
         }
     }
+}
+
+function killBmPopup() {
+  if (n = document.getElementById('bm-notification-id')) {
+    document.body.removeChild(n);
+  }
 }
 
 var el = document.getElementById('bm-notification-id');
@@ -49,7 +55,10 @@ if (el == null) {
     el.setAttribute('id','bm-notification-id');
     document.body.appendChild(el);
 }
-el.innerHTML = '<%= render('bookmark-div').gsub(/\s*\n/, '').gsub(/[']/, '\\\\\'').html_safe %>';
-setTimeout('removeBmPopup()', 3000);
+el.innerHTML = '<%= render('home/bookmark-div').gsub(/\s*\n/, '').gsub(/[']/, '\\\\\'').html_safe %>';
+if (window.bmPopupTimeout) {
+ clearTimeout(window.bmPopupTimeout);
+}
+window.bmPopupTimeout = setTimeout('removeBmPopup()', 3000);
 
 <%- end %>

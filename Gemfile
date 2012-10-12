@@ -51,6 +51,7 @@ group :test, :development do
   gem 'sinon-rails'
   gem 'jasminerice'
   gem 'sqlite3'
+  gem 'pry-rails'
 end
 
 group :production do

@@ -68,6 +68,7 @@ $tagDragHoverBg: $orange
   padding: 20px
   background: $white
   @include border-radius($borderRadius, $borderRadius)
+  border: 1px solid #eaeaea
   +box-shadow(#eaeaea 0px 2px 3px)
 
 // Labels
@@ -143,7 +144,6 @@ $tagDragHoverBg: $orange
 // Tag bar
 
 #tag-bar
-
   margin-bottom: 20px
 
   table
@@ -151,6 +151,7 @@ $tagDragHoverBg: $orange
     margin-top: 0px
 
   .tag
+
     a.close
       display: none
     .selected

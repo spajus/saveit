@@ -1,3 +1,5 @@
+<% if current_user %>
+<% use_tags = (current_user.get_setting("useTags") == 'true') %>
 <style id="saveitin-div-style">
     #saveitin-top-div {
         padding: 10px;
@@ -28,7 +30,7 @@
         /*text-align: center;*/
     /*}*/
 
-    #saveitin-top-div input[type=submit] {
+    #saveitin-top-div input[type=submit], #saveitin-top-div input[type=button] {
        background-color: #14B1E5;
        -webkit-border-image: none;
         background-image: -moz-linear-gradient(#1BB8EC, #0AA7DB);
@@ -82,12 +84,17 @@
         <form id="saveitin-form" onsubmit="return submitBmForm();">
             <%= label_tag :title, 'Title:' %>             <%= text_field :bookmark, :title %><br/>
             <%= label_tag :description, 'Description:' %> <%= text_field :bookmark, :description %><br/>
-            <%= label_tag :tags, 'Tags:' %>               <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
+            <% if use_tags %>
+              <%= label_tag :tags, 'Tags:' %>               <%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
+            <% else %>
+              <%= hidden_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %><br/>
+            <% end %>
             <input name="commit" type="submit" value="Update" />
-          </dl>
+            <input type="button" value="Close" onclick="killBmPopup()"/>
         </form>
     <% else %>
         <h4>Loading...</h4>
     <% end %>
     </div>
 </div>
+<% end %>

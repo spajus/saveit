@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :name, :image, :provider, :uid
 
-  validates_uniqueness_of :email
-
   has_many :bookmarks
   has_many :settings
   has_many :user_tokens
@@ -25,6 +23,15 @@ class User < ActiveRecord::Base
 
   def password_required?
     (user_tokens.empty? || !password.blank?) && super
+  end
+
+  def get_setting(key, default='')
+    setting = settings.where(key: key)
+    if setting.length == 1
+      setting.first.value
+    else
+      default
+    end
   end
 
   def self.new_with_session(params, session)

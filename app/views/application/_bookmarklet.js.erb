@@ -13,7 +13,8 @@ function iprl5() {
         b.appendChild(z);
     }catch(e){alert('Please wait until the page has loaded.');}}iprl5();void(0)
     */%>
-function bm_add_new() {
+<% @prefix = rand(36**8).to_s(36) %>
+function bm_add_new<%= @prefix %>() {
     var d = document;
     var el = d.getElementById('bm-notification-id');
 
@@ -58,4 +59,4 @@ function bm_add_new() {
             + encodeURIComponent(l.href));
     }
 };
-bm_add_new();
+bm_add_new<%= @prefix %>();

@@ -40,7 +40,7 @@ class Users::AuthController < Devise::OmniauthCallbacksController
           else
             flash[:alert] = "Failed saving auth data: #{omniauth.except('extra')}"
             session[:omniauth] = omniauth.except('extra')
-            redirect_to new_user_registration_url
+            redirect_to '/'
           end
 
         end #if authentication
