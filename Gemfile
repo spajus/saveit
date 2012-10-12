@@ -5,6 +5,7 @@ gem 'rails', '3.2.8'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem 'gon'
 gem 'kaminari'
 

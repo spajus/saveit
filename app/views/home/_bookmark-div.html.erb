@@ -2,6 +2,7 @@
 <% use_tags = (current_user.get_setting("useTags") == 'true') %>
 
 <style id="saveitin-div-style">
+
     #saveitin-top-div {
         padding: 10px;
         -moz-box-shadow: 0;
@@ -29,9 +30,12 @@
     }
     #saveitin-top-div table {
         border: 0;
-        padding: 0;
+        padding: 10px;
         margin: 0;
         width: 100%;
+    }
+    #saveitin-top-div table td {
+      vertical-align: top;
     }
     /*#saveitin-top-div h4 {*/
         /*text-align: center;*/

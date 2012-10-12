@@ -24,11 +24,6 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
   }
 
   function loadJqueryUI() {
-    var fileref=document.createElement("link");
-    fileref.setAttribute("rel", "stylesheet");
-    fileref.setAttribute("type", "text/css");
-    fileref.setAttribute("href", "<%= request.protocol + request.host_with_port %>/css/smoothness/jquery-ui-1.9.0.custom.min.css");
-    document.getElementsByTagName("head")[0].appendChild(fileref);
     var done = false;
     var script = document.createElement("script");
     script.src = "<%= request.protocol + request.host_with_port %>/js/jquery-ui-1.9.0.custom.min.js";
@@ -81,6 +76,11 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
           caseSensitive: false,
           availableTags: <%= available_tags_js %>
         });
+        var fileref=document.createElement("link");
+        fileref.setAttribute("rel", "stylesheet");
+        fileref.setAttribute("type", "text/css");
+        fileref.setAttribute("href", "<%= request.protocol + request.host_with_port %>/css/smoothness/jquery-ui-1.9.0.custom.min.css");
+        document.getElementsByTagName("head")[0].appendChild(fileref);
       }
 
       window.removeBmPopup = function() {

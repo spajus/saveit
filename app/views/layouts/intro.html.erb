@@ -12,10 +12,11 @@
       <p class="logo"><%= link_to 'Save It', root_path %></p>
     </div>
     <h1>Simple, secure bookmarks</h1>
-    <p class="description">Sign in with Facebook or Twitter to use it right away</p>
+    <p class="description">Sign in with Facebook, Twitter or Google to use it right away</p>
     <p>
       <%= link_to user_omniauth_authorize_path(:facebook) do %><%= image_tag 'icon-fb-50.png'%><% end %>
       <%= link_to user_omniauth_authorize_path(:twitter) do %><%= image_tag 'icon-twitter-50.png'%><% end %>
+      <%= link_to user_omniauth_authorize_path(:google_oauth2) do %><%= image_tag 'icon-google-50.png'%><% end %>
     </p>
     <%#<p><a class="btn btn-success btn-large"> Sign Up Today</a> &nbsp; <a class="btn btn-primary btn-large"> Learn More</a></p>
         %>
