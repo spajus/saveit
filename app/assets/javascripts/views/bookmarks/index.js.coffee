@@ -15,7 +15,7 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     if user_settings.getUseTags() and tag
       @tag_collection.setSelectedTag tag
       @collection.setSelectedTag tag
-
+      @collection.fetch()
 
     @tag_collection.reset gon.user_tags or []
     @tag_collection.on 'remove', =>
@@ -35,7 +35,6 @@ class Bm.Views.BookmarksIndex extends Backbone.View
     @collection.fetch()
 
   render: =>
-
     # If settings were changed along with page size, we have to make sure
     # that collections are refetched
     @collection.updatePageSize user_settings.getPageSize()

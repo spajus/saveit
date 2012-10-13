@@ -66,6 +66,7 @@
                   <label class="checkbox">
                     <input type="checkbox" id="useTags"> Enable Tagging
                   </label>
+                  <span class="help-block">Enables tagging and tag management features</span>
                 </div>
               </div>
 
@@ -88,6 +89,7 @@
                   <label class="radio">
                     <input type="radio" name="confirmDelete" value="false"> Delete bookmarks and tags instantly
                   </label>
+                  <span class="help-block">Affects how bookmarks and tags are deleted when you click <a class="close" style="float: none">×</a></span>
                 </div>
               </div>
 

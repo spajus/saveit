@@ -6,7 +6,7 @@ class Bm.Views.Tag extends Backbone.View
 
   events:
     'click a.close': 'removeTag'
-    'click a.link': 'showTag'
+    'click': 'showTag'
 
   id: =>
     "tag-#{@model.get 'id'}"
@@ -34,6 +34,7 @@ class Bm.Views.Tag extends Backbone.View
     @
 
   removeTag: (event) ->
+    event.stopPropagation()
     remove = true
     if user_settings.getConfirmDelete()
       unless confirm "Are you sure you want to delete tag: '#{@model.get 'name'}'?"
