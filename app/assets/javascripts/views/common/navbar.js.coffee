@@ -13,4 +13,5 @@ class Bm.Views.Navbar extends Backbone.View
     app.navigate e.target.pathname, trigger: true
     if e.target.pathname is '/'
       app.indexView.collection.fetch()
+      app.indexView.tag_collection.fetch()
     e.preventDefault()
