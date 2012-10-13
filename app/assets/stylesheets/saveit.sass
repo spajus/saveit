@@ -91,6 +91,9 @@ $tagDragHoverBg: $orange
 
 // Bookmark
 .bookmark
+  &.unvisited
+    .title
+      font-weight: bold
   @extend .well
   padding: 10px
   tr
@@ -117,6 +120,7 @@ $tagDragHoverBg: $orange
     font-size:  1.5em
     margin-top: -2px
   .date
+    color: #555
     font-size: 0.9em
     padding-bottom: 13px
     text-align: right
@@ -136,6 +140,7 @@ $tagDragHoverBg: $orange
     padding: 4px
     .link
       @extend a
+
 
 .bookmark:hover
   .close

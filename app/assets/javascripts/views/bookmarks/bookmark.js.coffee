@@ -19,7 +19,12 @@ class Bm.Views.Bookmark extends Backbone.View
 
   render: =>
     @$el.html @template bookmark: @model
+
+    unless @model.get 'visited'
+      @$el.addClass 'unvisited'
+
     tag_bar = ($ '#tag-bar')
+
 
     if user_settings.getUseTags
       @renderTags()
@@ -61,7 +66,7 @@ class Bm.Views.Bookmark extends Backbone.View
         tag_view = new Bm.Views.BookmarkTag tag: tagging
         (@$ '.tags').append tag_view.render().el
 
-  openBookmark: (event) ->
+  openBookmark: (event) =>
     event.preventDefault()
     visited = @model.get 'visited'
     unless visited
