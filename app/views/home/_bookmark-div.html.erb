@@ -5,7 +5,6 @@
 
     #saveitin-top-div {
         padding: 10px;
-        -moz-box-shadow: 0;
         position: fixed;
         top: 0;
         z-index: 99999;
@@ -19,7 +18,7 @@
         font-family: Arial,sans-serif;
         font-size: 12px;
         color:#333;
-        line-height:18px;
+        line-height: 24px;
         /*text-align:center;*/
         vertical-align:middle;
     }
@@ -33,13 +32,53 @@
         padding: 10px;
         margin: 0;
         width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
     }
-    #saveitin-top-div table td {
+    #saveitin-top-div table td, #saveitin-top-div table tr {
+      color: #333;
+      border: 0;
+      padding: 0;
+      margin: 0;
       vertical-align: top;
+      text-align: left;
+    }
+    #saveitin-edit-button {
+      text-align: left;
+    }
+    #saveitin-top-div .title {
+      color: #333;
+      margin: 0 0 10px 0;
+      padding: 0;
+      text-align: left;
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    #saveitin-top-div .saveitin-tags ul {
+      margin: 0 0 10px 0;
+      padding: 0 10px 0 0;
+    }
+    #saveitin-top-div .tagit-choice {
+      margin: 2px 0px 2px 5px;
+      width: auto;
+      padding: 1px 17px 1px 7px;
+    }
+    #saveitin-top-div .tagit-new {
+      padding: 2px 0px 0px 5px;
+    }
+    #saveitin-top-div .tagit-choice .tagit-label {
+      line-height: 18px;
+    }
+    #saveitin-top-div .tagit.ui-widget-content {
+      height: auto;
+      min-height: 28px;
     }
     /*#saveitin-top-div h4 {*/
         /*text-align: center;*/
     /*}*/
+
 
     #saveitin-top-div input[type=submit], #saveitin-top-div input[type=button] {
        background-color: #14B1E5;
@@ -56,9 +95,9 @@
         -webkit-border-radius: 4px;
 
         color: white;
-        font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
         font-weight: bold;
-        font-height: 13px;
+        font-size: 13px;
         padding: 4px 10px;
         text-align: center;
         text-decoration: none;
@@ -69,32 +108,51 @@
     #saveitin-form {
         display: none;
     }
+    #saveitin-form .tagit-label {
+      line-height: 15px;
+    }
 
     #saveitin-form label {
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 13px;
         text-align: right;
         display: inline-block;
         padding-right: 10px;
         width: 100px;
+      line-height: 24px;
     }
-    #saveitin-form input[type=text] {
-        border: 1px solid #ccc;
-        background-color: #fff;
-        text-align: left;
-        display: inline-block;
-        width: 100%;
+    #saveitin-form #bookmark_title, #saveitin-form #bookmark_description {
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-weight: normal;
+      font-size: 14px;
+      background-color: #fff;
+      text-align: left;
+      display: inline-block;
+      width: 100%;
+      border: 1px solid #aaa;
+      height: 28px;
+      margin: 0 0 10px 0;
+      padding: 0px 5px;
+      line-height: 24px;
+    }
+    #saveitin-form #bookmark_description {
+      height: 50px;
+      line-height: 16px;
+      padding: 3px 5px;
+      resize: vertical;
     }
 <% if use_tags %>
     <%= render 'commons/jquery-tagit-css' %>
 <% end %>
 </style>
-
 <div id="saveitin-top-div">
   <div id="saveitin-inner-div">
     <% if @bookmark %>
-      <h4>Success adding "<%= h(@bookmark.title || @bookmark.url).gsub(/\n/, "") %>"</h4>
+      <div class="title">Success adding "<%= h(@bookmark.title || @bookmark.url).gsub(/\n/, "") %>"</div>
 
         <div id="saveitin-edit-button">
-          <input name="edit" type="submit" onclick="return showBmFormEdit()" value="Edit bookmark"/>
+          <input id="saveitin-form-edit" name="edit" type="submit" onclick="return showBmFormEdit()" value="Edit bookmark"/>
         </div>
 
         <form id="saveitin-form" onsubmit="return submitBmForm();">
@@ -105,12 +163,12 @@
             </tr>
             <tr>
               <td><%= label_tag :title, 'Description' %></td>
-              <td><%= text_field :bookmark, :description %></td>
+              <td><%= text_area :bookmark, :description -%></td>
             </tr>
             <% if use_tags %>
               <tr>
                 <td><%= label_tag :tags, 'Tags' %></td>
-                <td><%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %></td>
+                <td class="saveitin-tags"><%= text_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %></td>
               </tr>
             <% else %>
               <%= hidden_field :bookmark, :tags, value: @bookmark.tag_names.join(', ') %>

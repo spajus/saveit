@@ -25,6 +25,11 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
 
   function loadJqueryUI() {
     var done = false;
+    var fileref=document.createElement("link");
+    fileref.setAttribute("rel", "stylesheet");
+    fileref.setAttribute("type", "text/css");
+    fileref.setAttribute("href", "<%= request.protocol + request.host_with_port %>/css/smoothness/jquery-ui-1.9.0.custom.min.css");
+    document.getElementsByTagName("head")[0].appendChild(fileref);
     var script = document.createElement("script");
     script.src = "<%= request.protocol + request.host_with_port %>/js/jquery-ui-1.9.0.custom.min.js";
     script.onload = script.onreadystatechange = function() {
@@ -61,7 +66,9 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
 
         document.body.appendChild(img);
         var bm_div = document.getElementById('bm-notification-id');
-        document.body.removeChild(bm_div);
+        $("#bm-notification-id").fadeOut('slow', function() {
+          document.body.removeChild(bm_div);
+        });
         return false;
       }
 
@@ -76,11 +83,6 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
           caseSensitive: false,
           availableTags: <%= available_tags_js %>
         });
-        var fileref=document.createElement("link");
-        fileref.setAttribute("rel", "stylesheet");
-        fileref.setAttribute("type", "text/css");
-        fileref.setAttribute("href", "<%= request.protocol + request.host_with_port %>/css/smoothness/jquery-ui-1.9.0.custom.min.css");
-        document.getElementsByTagName("head")[0].appendChild(fileref);
       }
 
       window.removeBmPopup = function() {
@@ -88,7 +90,9 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
           var style = document.defaultView.getComputedStyle(frm,null).getPropertyValue("display");
           if (style == "none") {
             if (n = document.getElementById('bm-notification-id')) {
-              document.body.removeChild(n);
+              $("#bm-notification-id").fadeOut('slow', function() {
+                document.body.removeChild(n);
+              });
             }
           }
         }
@@ -96,7 +100,10 @@ window.location.assign('<%= url_for controller: :home, only_path: false %>');
 
       window.killBmPopup = function() {
         if (n = document.getElementById('bm-notification-id')) {
-          document.body.removeChild(n);
+          //document.body.removeChild(n);
+          $("#bm-notification-id").fadeOut('slow', function() {
+            document.body.removeChild(n);
+          });
         }
       }
 
