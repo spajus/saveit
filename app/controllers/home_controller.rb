@@ -21,7 +21,7 @@ class HomeController < ApplicationController
       _session_flash(url, title, description)
     end
 
-    render :layout => false, :content_type => 'text/javascript', :formats => [:js]
+    render layout: false, content_type: 'text/javascript', formats: [:js]
   end
 
   def preview
