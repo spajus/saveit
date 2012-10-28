@@ -5,6 +5,7 @@ class Bm.Routers.Bookmarks extends Backbone.Router
     'tags/:tag': 'index'
     'search/:q': 'search'
     'settings' : 'settings'
+    'import-export' : 'importExport'
 
   settings: ->
     @doNavBar()
@@ -21,6 +22,11 @@ class Bm.Routers.Bookmarks extends Backbone.Router
       view = new Bm.Views.Index()
     view.render()
     @indexView = view
+
+  importExport: ->
+    @doNavBar()
+    view = new Bm.Views.ImportExport()
+    view.render()
 
   search: (q) ->
     @doNavBar()

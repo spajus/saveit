@@ -47,13 +47,13 @@ ActiveRecord::Schema.define(:version => 20120923051027) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "bookmarks", :force => true do |t|
-    t.text     "title",       :limit => 255
-    t.text     "url",         :limit => 255
+    t.string   "title",       :limit => 2048
+    t.string   "url",         :limit => 2048
     t.boolean  "visited"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.integer  "user_id"
-    t.text     "description"
+    t.string   "description", :limit => 2048
   end
 
   add_index "bookmarks", ["description"], :name => "index_bookmarks_on_description"

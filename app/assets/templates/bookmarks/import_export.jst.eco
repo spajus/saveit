@@ -1,0 +1,18 @@
+<div class="span6">
+  <h2>Import</h2>
+  <p class="lead">Import bookmarks from browsers and other bookmarking services.</p>
+  <p>
+    <input name="new-bookmarks" type="file" multiple accept="text/*"/>
+  </p>
+  <p>
+    <a class="btn btn-large btn-success">Import File</a>
+  </p>
+</div>
+
+<div class="span6">
+  <h2>Export</h2>
+  <p class="lead">Export everything you have at Save It. No lock in!</p>
+  <a class="btn btn-large btn-primary">Export All Bookmarks</a>
+
+
+</div>

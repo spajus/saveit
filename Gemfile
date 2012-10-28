@@ -9,6 +9,7 @@ gem 'omniauth-google-oauth2'
 gem 'gon'
 gem 'kaminari'
 gem 'newrelic_rpm'
+gem 'markio'
 
 gem 'yaml_db'
 
