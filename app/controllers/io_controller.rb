@@ -32,7 +32,9 @@ class IoController < ApplicationController
         book.tag_names ||= []
         book.tag_names += b.folders + ["Imported"]
         unless book.save
-          binding.pry
+          Rails.logger.error("Couldn't save an imported bookmark: #{book.errors}")
+        else
+          Snapshot.delay.take(book.url)
         end
       end
       flash[:success] = "Imported #{bookmarks.length} bookmarks!"
