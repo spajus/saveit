@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="span8 settings-box">
 
-    <form class="form-horizontal">
+    <form class="settings-form form-horizontal">
       <fieldset>
 
         <div class="tabbable tabs-left">

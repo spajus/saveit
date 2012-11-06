@@ -5,7 +5,7 @@ class Bm.Views.Settings extends Backbone.View
   events:
     'click .save': 'save'
     'click .back': 'back'
-    'submit': 'save'
+    'submit .settings-form': 'save'
 
   render: ->
     @$el.html @template()

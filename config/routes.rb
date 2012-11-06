@@ -4,6 +4,9 @@ Bm::Application.routes.draw do
   match "/about" => "static#about"
   match "/eula" => "static#eula"
 
+  match "/bookmarks-export" => "io#export"
+  match "/bookmarks-import" => "io#import"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
