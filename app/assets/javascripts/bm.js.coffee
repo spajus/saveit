@@ -14,3 +14,5 @@ window.Bm =
 
 $(document).ready ->
   Bm.init()
+  # Clear flashes
+  setTimeout (-> ($ '#app-alerts').children().fadeOut  -> ($ '#app-alerts').empty()), 5000

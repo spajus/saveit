@@ -20,5 +20,3 @@ window.show_alert = (message, type) ->
   clear_alerts()
   new Bm.Views.Alert(message, type).show()
   setTimeout (-> ($ '#app-alerts').children().fadeOut  -> ($ '#app-alerts').empty()), 5000
-
-
