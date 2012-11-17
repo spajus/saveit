@@ -28,6 +28,9 @@ class Bm.Collections.Settings extends Backbone.Collection
   getUseTags: ->
     (@getSettingValue 'useTags', 'false') is 'true'
 
+  getEnableSharing: ->
+    (@getSettingValue 'enableSharing', 'true') is 'true'
+
   getPageSize: ->
     parseInt(@getSettingValue 'pageSize', 10)
 

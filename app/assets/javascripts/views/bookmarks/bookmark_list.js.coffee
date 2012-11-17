@@ -36,6 +36,14 @@ class Bm.Views.BookmarksList extends Backbone.View
         model: bookmark
         collection: @collection
       list.append view.render().el
+    @loadSharing()
+    @
+
+  loadSharing: ->
+    if user_settings.getEnableSharing
+      twttr.widgets.load() if twttr and twttr.widgets
+      FB.XFBML.parse @el if typeof(FB) != 'undefined'
+      gapi.plus.go() if gapi
     @
 
   appendBookmark: (bookmark) =>
@@ -46,6 +54,7 @@ class Bm.Views.BookmarksList extends Backbone.View
       model: bookmark
       collection: @collection
     (@$ '.bookmarks').prepend view.render().el
+    @loadSharing()
     @
 
   removeBookmark: (bookmark) =>
@@ -56,9 +65,10 @@ class Bm.Views.BookmarksList extends Backbone.View
     @collection.trigger 'tags-changed' # Tag bar needs to know
     if @collection.size() is 0
       setTimeout  =>
-          page = @collection.getPage()
-          if page > 1
-            @collection.setPage page - 1
-          @collection.fetch()
-        , 10
+        page = @collection.getPage()
+        if page > 1
+          @collection.setPage page - 1
+        @collection.fetch()
+      , 10
+    @loadSharing()
     @

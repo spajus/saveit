@@ -50,12 +50,60 @@
                     <div class="tags">&nbsp;</div>
                   </div>
                   <div class="span4 pull-right">
+                    <% if user_settings.getEnableSharing(): %>
+                    <div class="share">
+                      <div class="fb">
+                        <div class="fb-like" data-href="<%= @bookmark.get 'url' %>" data-send="false"
+                          data-layout="button_count" data-width="450" data-show-faces="false"
+                          data-action="recommend"></div>
+                      </div>
+                      <div class="gp">
+                        <div class="g-plus"
+                          data-action="share"
+                          data-annotation="bubble"
+                          data-href="<%= @bookmark.get 'url'%>"></div>
+                      </div>
+                      <div class="tw">
+                        <a href="https://twitter.com/share"
+                          class="twitter-share-button"
+                          data-url="<%= @bookmark.get 'url' %>"
+                          data-text="<%= @bookmark.get 'title'%>"
+                          data-via="saveit"
+                          data-related="saveit:Save It"
+                          >Tweet</a>
+                      </div>
+                    </div>
+                    <% end %>
                     <div class="date">
                       <%= @bookmark.getCreatedAt() %>
                     </div>
                   </div>
                   <% else: %>
                   <div class="span12 pull-right">
+                    <% if user_settings.getEnableSharing(): %>
+                    <div class="share">
+                      <div class="fb">
+                        <div class="fb-like" data-href="<%= @bookmark.get 'url' %>" data-send="false"
+                          data-layout="button_count" data-width="450" data-show-faces="false"
+                          data-action="like"></div>
+                      </div>
+                      <div class="gp">
+                        <div class="g-plus"
+                          data-action="share"
+                          data-annotation="bubble"
+                          data-href="<%= @bookmark.get 'url'%>"></div>
+                      </div>
+                      <div class="tw">
+                        <a href="https://twitter.com/share"
+                          class="twitter-share-button"
+                          data-url="<%= @bookmark.get 'url' %>"
+                          data-text="<%= @bookmark.get 'title'%>"
+                          data-via="saveit"
+                          data-related="saveit:Save It"
+                          >Tweet</a>
+                      </div>
+                    </div>
+                    <% end %>
                     <div class="date">
                       <%= @bookmark.getCreatedAt() %>
                     </div>

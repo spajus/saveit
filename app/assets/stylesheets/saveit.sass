@@ -115,15 +115,32 @@ $tagDragHoverBg: $orange
   .tags
     .span
       display: inline
+  .share
+    height: 20px
+    width: 300px
+    vertical-align: top
+    display: none
+    text-align: right
+    .tw
+      float: left
+    .fb
+      float: left
+      margin-right: 5px
+    .gp
+      float: left
+      margin-right: 3px
   .close
     display: none
     font-size:  1.5em
     margin-top: -2px
   .date
+    display: inline-block
+    width: 100px
     color: #555
     font-size: 0.9em
     padding-bottom: 13px
     text-align: right
+    float: right
   .drag-tag
     overflow: hidden
     @extend .well
@@ -143,6 +160,8 @@ $tagDragHoverBg: $orange
 
 
 .bookmark:hover
+  .share
+    display: inline-block
   .close
     display: inline-block
 

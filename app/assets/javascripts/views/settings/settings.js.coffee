@@ -15,6 +15,7 @@ class Bm.Views.Settings extends Backbone.View
     @_loadSetting 'linkTarget', 'same', 'radio'
     @_loadSetting 'confirmDelete', 'true', 'radio'
     @_loadSetting 'useTags', 'false', 'checkbox'
+    @_loadSetting 'enableSharing', 'true', 'checkbox'
 
     @
 
@@ -30,6 +31,7 @@ class Bm.Views.Settings extends Backbone.View
     @_saveSetting 'linkTarget', 'radio'
     @_saveSetting 'confirmDelete', 'radio'
     @_saveSetting 'useTags', 'checkbox'
+    @_saveSetting 'enableSharing', 'checkbox'
 
     show_alert 'Settings saved!', 'success'
 

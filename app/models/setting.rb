@@ -2,6 +2,6 @@ class Setting < ActiveRecord::Base
   attr_accessible :key, :value
   belongs_to :user
   validates :key, uniqueness: { scope: :user_id }, inclusion: {
-    in: %w( linkTarget confirmDelete useTags pageSize )
+    in: %w( linkTarget confirmDelete useTags pageSize enableSharing )
   }
 end

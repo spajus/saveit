@@ -5,6 +5,8 @@
 <link href='//fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Condiment' rel='stylesheet' type='text/css'>
 <%= javascript_include_tag "application" %>
+<%= javascript_include_tag "//platform.twitter.com/widgets.js" %>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <%= csrf_meta_tags %>
 <link rel="search" type="application/opensearchdescription+xml" title="saveit.in" href="<%= url_for controller: "/home", action: "opensearch", format: "xml" -%>">
 <link rel="apple-touch-icon" href="apple-touch-icon-iphone.png" />
