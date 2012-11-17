@@ -26,7 +26,7 @@ class Bm.Collections.Settings extends Backbone.Collection
     (@getSettingValue 'confirmDelete', 'true') is 'true'
 
   getUseTags: ->
-    (@getSettingValue 'useTags', 'false') is 'true'
+    (@getSettingValue 'useTags', 'true') is 'true'
 
   getEnableSharing: ->
     (@getSettingValue 'enableSharing', 'true') is 'true'

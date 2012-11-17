@@ -14,7 +14,7 @@ class Bm.Views.Settings extends Backbone.View
     @_loadSetting 'pageSize', 10
     @_loadSetting 'linkTarget', 'same', 'radio'
     @_loadSetting 'confirmDelete', 'true', 'radio'
-    @_loadSetting 'useTags', 'false', 'checkbox'
+    @_loadSetting 'useTags', 'true', 'checkbox'
     @_loadSetting 'enableSharing', 'true', 'checkbox'
 
     @
