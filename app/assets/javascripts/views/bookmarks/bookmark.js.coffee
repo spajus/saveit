@@ -9,6 +9,8 @@ class Bm.Views.Bookmark extends Backbone.View
     'click a.close': 'removeBookmark'
     'click a.remove': 'removeTag'
     'dblclick' : 'openBookmark'
+    'click .show-share a' : 'showSharing'
+    'click .hide-share a' : 'hideSharing'
 
   initialize: ->
     @model.on 'change', =>
@@ -55,6 +57,18 @@ class Bm.Views.Bookmark extends Backbone.View
         stop: (event, ui) ->
           tag_bar.removeClass 'drag-start'
           elem.removeClass 'drag-start'
+    @
+
+  showSharing: (e) =>
+    e.preventDefault()
+    (@$ '.tags-parent,.date-parent').hide()
+    (@$ '.share').show()
+    @
+
+  hideSharing: (e) =>
+    e.preventDefault()
+    (@$ '.share').hide()
+    (@$ '.tags-parent,.date-parent').show()
     @
 
   renderTags: =>

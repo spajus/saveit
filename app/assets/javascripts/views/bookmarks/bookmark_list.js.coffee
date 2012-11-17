@@ -40,10 +40,9 @@ class Bm.Views.BookmarksList extends Backbone.View
     @
 
   loadSharing: ->
-    if user_settings.getEnableSharing
-      twttr.widgets.load() if twttr and twttr.widgets
-      FB.XFBML.parse @el if typeof(FB) != 'undefined'
-      gapi.plus.go() if gapi
+    twttr.widgets.load() if twttr and twttr.widgets
+    FB.XFBML.parse @el if typeof(FB) != 'undefined'
+    gapi.plus.go() if gapi
     @
 
   appendBookmark: (bookmark) =>

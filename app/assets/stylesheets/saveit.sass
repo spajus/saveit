@@ -115,12 +115,19 @@ $tagDragHoverBg: $orange
   .tags
     .span
       display: inline
+  .show-share
+    float: right
+    text-align: right
+    display: none
+  .hide-share
+    float: right
+    text-align: right
   .share
+    display: none
     height: 40px
-    width: 500px
     vertical-align: top
     display: none
-    text-align: right
+    text-align: left
     .tw
       float: left
     .fb
@@ -160,7 +167,9 @@ $tagDragHoverBg: $orange
 
 
 .bookmark:hover
-  .share
+  .date
+    display: none
+  .show-share
     display: inline-block
   .close
     display: inline-block

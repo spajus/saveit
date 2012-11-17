@@ -93,19 +93,6 @@
                 </div>
               </div>
 
-              <!-- enable sharing -->
-              <div class="control-group well">
-                <label class="control-label" for="enableSharing"></label>
-
-                <div class="controls">
-                  <label class="checkbox">
-                    <input type="checkbox" id="enableSharing"> Enable Sharing
-                  </label>
-                  <span class="help-block">Displays Facebook, Google+ and Twitter sharing buttons
-                  for your bookmarks</span>
-                </div>
-              </div>
-
               <div class="form-actions">
                 <a href="#" class="save btn btn-primary">Save changes</a>
                 <a href="#" class="back btn">Back to Bookmarks</a>
