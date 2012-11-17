@@ -81,8 +81,8 @@
                         class="twitter-share-button"
                         data-url="<%= @bookmark.get 'url' %>"
                         data-text="<%= @bookmark.get 'title'%>"
-                        data-via="saveit"
-                        data-related="saveit:Save It"
+                        data-via="saveitin"
+                        data-related="saveitin:Save It"
                         >Tweet</a>
                     </div>
                     <div class="hide-share"><a href="#"><i class="icon-circle-arrow-left"></i> Back</a></div>
